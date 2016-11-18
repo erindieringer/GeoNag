@@ -14,5 +14,5 @@ struct List {
     let date_modified: NSDate
     let shared: Bool
     let user: Int
-    
+    let items: [Reminder]
 }
