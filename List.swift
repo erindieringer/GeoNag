@@ -15,4 +15,5 @@ struct List {
     let shared: Bool
     let user: Int
     let items: [Reminder]
+    var notifications = true
 }
