@@ -12,13 +12,23 @@ class ListDetailViewModel {
     var reminderList: List
     
     init(list: List) {
-        reminderList = List(id: list.id, name: list.name, date_created: list.date_created, date_modified: list.date_modified, shared: list.shared, user: list.user)
+        reminderList = List(id: list.id, name: list.name, date_created: list.date_created, date_modified: list.date_modified, shared: list.shared, user: list.user, items: list.items)
     }
     
-    func title()
+    func title() -> String {
+        return reminderList.name
+    }
     
-    func getSharedUserNames()
+    func getSharedUserInitials() -> [String] {
+        //let currentUser = reminderList.user
+        // TO DO: Call up to the API and get user's friends
+        return ["KW", "ED"]
+    }
     
-    func 
+    func getReminderItems() -> [Reminder] {
+        return reminderList.items
+    }
+    
+    
     
 }
