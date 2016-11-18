@@ -16,6 +16,9 @@
 		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
 		599088CB1DDF82460090A137 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CA1DDF82460090A137 /* ListViewController.swift */; };
 		599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CC1DDF82580090A137 /* ListDetailViewController.swift */; };
+		599088CF1DDF82C10090A137 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CE1DDF82C10090A137 /* ListViewModel.swift */; };
+		599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D01DDF82D20090A137 /* ListDetailViewModel.swift */; };
+		599088D31DDF831E0090A137 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D21DDF831E0090A137 /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		599088CA1DDF82460090A137 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		599088CC1DDF82580090A137 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
+		599088CE1DDF82C10090A137 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		599088D01DDF82D20090A137 /* ListDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewModel.swift; sourceTree = "<group>"; };
+		599088D21DDF831E0090A137 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,9 @@
 		599088C81DDF820B0090A137 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				599088CE1DDF82C10090A137 /* ListViewModel.swift */,
+				599088D01DDF82D20090A137 /* ListDetailViewModel.swift */,
+				599088D21DDF831E0090A137 /* List.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -278,10 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599088CF1DDF82C10090A137 /* ListViewModel.swift in Sources */,
 				595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */,
+				599088D31DDF831E0090A137 /* List.swift in Sources */,
 				599088CB1DDF82460090A137 /* ListViewController.swift in Sources */,
 				595A0F481DDF7F1F00A68502 /* iOSApp.xcdatamodeld in Sources */,
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
+				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
