@@ -14,6 +14,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var tableView: UITableView!
     
+    @IBAction func addItem(sender: AnyObject) {
+        
+        //TO DO: Set up core data
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
