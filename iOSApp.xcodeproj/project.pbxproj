@@ -21,6 +21,7 @@
 		599088D31DDF831E0090A137 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D21DDF831E0090A137 /* List.swift */; };
 		599088D51DDF86750090A137 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D41DDF86750090A137 /* Reminder.swift */; };
 		599088D71DDF86D00090A137 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D61DDF86D00090A137 /* Tag.swift */; };
+		803EBEBD1DDF8C6C0032D357 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803EBEBC1DDF8C6C0032D357 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		599088D21DDF831E0090A137 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		599088D41DDF86750090A137 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		599088D61DDF86D00090A137 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		803EBEBC1DDF8C6C0032D357 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				599088CE1DDF82C10090A137 /* ListViewModel.swift */,
 				599088D01DDF82D20090A137 /* ListDetailViewModel.swift */,
 				599088D21DDF831E0090A137 /* List.swift */,
+				803EBEBC1DDF8C6C0032D357 /* Location.swift */,
 				599088D41DDF86750090A137 /* Reminder.swift */,
 				599088D61DDF86D00090A137 /* Tag.swift */,
 			);
@@ -295,6 +298,7 @@
 			files = (
 				599088CF1DDF82C10090A137 /* ListViewModel.swift in Sources */,
 				595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */,
+				803EBEBD1DDF8C6C0032D357 /* Location.swift in Sources */,
 				599088D31DDF831E0090A137 /* List.swift in Sources */,
 				599088CB1DDF82460090A137 /* ListViewController.swift in Sources */,
 				595A0F481DDF7F1F00A68502 /* iOSApp.xcdatamodeld in Sources */,
