@@ -13,8 +13,14 @@ class CurrentLocation {
     
     let manager = CLLocationManager()
     var matchingItems:[MKMapItem] = []
-    let latitude: CLLocationDegrees
-    let longitude: CLLocationDegrees
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
+    
+    //intitialize to zero before calling getCurrentLocation()
+    init() {
+        self.latitude = 0.0
+        self.longitude = 0.0
+    }
     
     func getCurrentLocation() {
         manager.requestWhenInUseAuthorization()
@@ -44,7 +50,6 @@ class CurrentLocation {
                 return
             }
             self.matchingItems = response.mapItems
-            self.tableView.reloadData()
             for item in self.matchingItems {
                 print(item)
             
