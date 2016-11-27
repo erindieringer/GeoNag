@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 public class Reminder: NSManagedObject {
-    @NSManaged private var id: Int
-    @NSManaged private var text: String
-    @NSManaged private var tags: [Tag]
+    @NSManaged public var id: Int
+    @NSManaged public var text: String
+    @NSManaged public var tags: [Tag]
 }

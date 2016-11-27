@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 public class List: NSManagedObject {
-    @NSManaged private var id: Int
-    @NSManaged private var name: String
-    @NSManaged private var date_created: NSDate
-    @NSManaged private var date_modified: NSDate
-    @NSManaged private var shared: Bool
-    @NSManaged private var user: Int
-    @NSManaged private var items: [Reminder]
-    @NSManaged private var notifications: Bool
+    @NSManaged public var id: Int
+    @NSManaged public var name: String
+    @NSManaged public var date_created: NSDate
+    @NSManaged public var date_modified: NSDate
+    @NSManaged public var shared: Bool
+    @NSManaged public var user: Int
+    @NSManaged public var items: [Reminder]
+    @NSManaged public var notifications: Bool
 }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-private class Tag: NSManagedObject {
-    @NSManaged private var id: Int
-    @NSManaged private var name: String
+public class Tag: NSManagedObject {
+    @NSManaged public var id: Int
+    @NSManaged public var name: String
 }
