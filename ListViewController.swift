@@ -7,22 +7,76 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     let viewModel = ListViewModel()
     
+    var items = [NSManagedObject]()
+    
     @IBOutlet var tableView: UITableView!
     
     @IBAction func addItem(sender: AnyObject) {
         
-        //TO DO: Set up core data
+        let alert = UIAlertController(title: "New Item",
+                                      message: "Add a new list",
+                                      preferredStyle: .Alert)
         
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .Default,
+                                       handler: { (action:UIAlertAction) -> Void in
+                                        
+                                        let textField = alert.textFields!.first
+                                        self.saveItem(textField!.text!)
+                                        self.tableView.reloadData()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField) -> Void in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert,
+                              animated: true,
+                              completion: nil)
+        
+    }
+    
+    func saveItem(name: String) {
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("Item",
+                                                        inManagedObjectContext:managedContext)
+        
+        let item = NSManagedObject(entity: entity!,
+                                   insertIntoManagedObjectContext: managedContext)
+        
+        item.setValue(name, forKey: "text")
+        
+        do {
+            try managedContext.save()
+            items.append(item)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        title = "The List"
+        tableView.registerClass(UITableViewCell.self,
+                                forCellReuseIdentifier: "Cell")
     }
     
     override func didReceiveMemoryWarning() {
