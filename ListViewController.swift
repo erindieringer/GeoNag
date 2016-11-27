@@ -13,9 +13,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let viewModel = ListViewModel()
     
-    var items = [NSManagedObject]()
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet var tableView: UITableView!
+    var items = [NSManagedObject]()
     
     @IBAction func addItem(sender: AnyObject) {
         
@@ -50,18 +50,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveList(name: String) {
+        let entityName = "List"
+        
+        let coreDataStack = CoreDataStack()
+        
+        let listEntity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: coreDataStack.context)
+        
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("List",
+        let entity =  NSEntityDescription.entityForName("Item",
                                                         inManagedObjectContext:managedContext)
         
         let item = NSManagedObject(entity: entity!,
                                    insertIntoManagedObjectContext: managedContext)
         
-        item.setValue(name, forKey: "name")
+        item.setValue(name, forKey: "text")
         
         do {
             try managedContext.save()
@@ -74,9 +80,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        title = "The List"
+        title = "Lists"
         tableView.registerClass(UITableViewCell.self,
-                                forCellReuseIdentifier: "Cell")
+                                forCellReuseIdentifier: "cell")
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,7 +101,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "List")
+        let fetchRequest = NSFetchRequest(entityName: "Item")
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
