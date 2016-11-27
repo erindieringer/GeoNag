@@ -28,7 +28,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                        handler: { (action:UIAlertAction) -> Void in
                                         
                                         let textField = alert.textFields!.first
-                                        self.saveItem(textField!.text!)
+                                        self.saveList(textField!.text!)
                                         self.tableView.reloadData()
         })
         
@@ -49,19 +49,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func saveItem(name: String) {
+    func saveList(name: String) {
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("Item",
+        let entity =  NSEntityDescription.entityForName("List",
                                                         inManagedObjectContext:managedContext)
         
         let item = NSManagedObject(entity: entity!,
                                    insertIntoManagedObjectContext: managedContext)
         
-        item.setValue(name, forKey: "text")
+        item.setValue(name, forKey: "name")
         
         do {
             try managedContext.save()
@@ -86,16 +86,16 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let selectedRow = tableView.indexPathForSelectedRow {
-            tableView.deselectRowAtIndexPath(selectedRow, animated: true)
-        }
+//        if let selectedRow = tableView.indexPathForSelectedRow {
+//            tableView.deselectRowAtIndexPath(selectedRow, animated: true)
+//        }
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Item")
+        let fetchRequest = NSFetchRequest(entityName: "List")
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
