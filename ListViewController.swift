@@ -89,6 +89,21 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedRow, animated: true)
         }
+        
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Item")
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            items = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+
     }
     
     //Table View
