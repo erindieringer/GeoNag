@@ -21,10 +21,10 @@ class List: NSManagedObject {
         self.setValue(0, forKey: "shared")
         self.setValue(1, forKey: "notifications")
         //self.setValue(currentUser, forKey: "user")
-        self.setValue([], forKey: "items")
-        self.setValue([], forKey: "friends")
+        self.setValue(NSOrderedSet(), forKey: "items")
+        self.setValue(NSOrderedSet(), forKey: "friends")
         // save entity
-        delegate.saveContext()
+        delegate.coreDataStack.saveContext()
     }
 
 }

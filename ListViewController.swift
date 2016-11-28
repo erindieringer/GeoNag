@@ -53,7 +53,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
+        let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new list entity
         //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
@@ -85,7 +85,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let managedContext = appDelegate.managedObjectContext
+        let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         let fetchRequest = NSFetchRequest(entityName: "List")
         do {

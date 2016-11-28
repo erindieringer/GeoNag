@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let managedObjectContext = coreDataManager.managedObjectContext
+        let managedObjectContext = coreDataStack.managedObjectContext
         
         // Helpers
         var list: NSManagedObject? = nil
@@ -27,48 +27,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let listRecord = lists.first {
             list = listRecord
+            print("yes\n")
         } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
             list = listRecord
+            print("no\n")
         }
         
-        print("number of lists: \(lists.count)")
-        print("--")
-        print(list)
+        if let list = list {
+            print(list)
+            print(list.valueForKey("name"))
+            print(list)
+        }
+
         
         do {
             // Save Managed Object Context
             try managedObjectContext.save()
             
         } catch {
+            print ("\(error)")
             print("Unable to save managed object context.")
         }
         
         return true
     }
-    
-    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
-        // Create Fetch Request
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        
-        // Helpers
-        var result = [NSManagedObject]()
-        
-        do {
-            // Execute Fetch Request
-            let records = try managedObjectContext.executeFetchRequest(fetchRequest)
-            
-            if let records = records as? [NSManagedObject] {
-                result = records
-            }
-            
-        } catch {
-            print("Unable to fetch managed objects for entity \(entity).")
-        }
-        
-        return result
-    }
-
-
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -94,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStack.saveContext()
     }
 
-    // MARK: - Core Data Create Entity Support
+    // MARK: - Core Data Method for Creating Records
     
     func createRecordForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
         // Helpers
@@ -106,6 +88,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let entityDescription = entityDescription {
             // Create Managed Object
             result = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+        }
+        
+        return result
+    }
+    
+    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.executeFetchRequest(fetchRequest)
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+            
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
         }
         
         return result
