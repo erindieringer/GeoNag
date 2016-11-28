@@ -56,11 +56,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let managedContext = appDelegate.managedObjectContext
         
         // create new list entity
-        let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
-        let newList = List(entity: listEntity!, insertIntoManagedObjectContext: managedContext)
+        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
+        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
         
         // set values of new list entity
-        newList.assignAttributes(appDelegate, name: <#T##String#>)
+        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
     }
     
     override func viewDidLoad() {

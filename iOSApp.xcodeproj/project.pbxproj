@@ -30,6 +30,7 @@
 		59B430121DECC764009F615E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430061DECC764009F615E /* User.swift */; };
 		59B430131DECC764009F615E /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430071DECC764009F615E /* Location+CoreDataProperties.swift */; };
 		59B430141DECC764009F615E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430081DECC764009F615E /* Location.swift */; };
+		59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430191DECE199009F615E /* CoreDataStack.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		59B430061DECC764009F615E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		59B430071DECC764009F615E /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B430081DECC764009F615E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
+		59B430191DECE199009F615E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,9 +199,9 @@
 				59B42FFE1DECC764009F615E /* Tag.swift */,
 				59B430001DECC764009F615E /* Item.swift */,
 				59B430021DECC764009F615E /* Friend.swift */,
-				59B430041DECC764009F615E /* List.swift */,
 				59B430061DECC764009F615E /* User.swift */,
 				59B430081DECC764009F615E /* Location.swift */,
+				59B430041DECC764009F615E /* List.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -213,6 +215,7 @@
 				59B430011DECC764009F615E /* Friend+CoreDataProperties.swift */,
 				59B42FFF1DECC764009F615E /* Item+CoreDataProperties.swift */,
 				59B42FFD1DECC764009F615E /* Tag+CoreDataProperties.swift */,
+				59B430191DECE199009F615E /* CoreDataStack.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
 				59B4300A1DECC764009F615E /* Tag.swift in Sources */,
 				59B430141DECC764009F615E /* Location.swift in Sources */,
+				59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */,
 				59B430131DECC764009F615E /* Location+CoreDataProperties.swift in Sources */,
 				59B430091DECC764009F615E /* Tag+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
