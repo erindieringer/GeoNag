@@ -21,7 +21,7 @@ class ListViewModel {
             return ""
         }
         let retString = lists[index].name
-        return retString
+        return retString!
     }
     
     func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailViewModel {

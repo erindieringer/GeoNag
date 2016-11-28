@@ -16,7 +16,7 @@ class ListDetailViewModel {
     }
     
     func title() -> String {
-        return reminderList.name
+        return reminderList.name!
     }
     
     func getSharedUserInitials() -> [String] {
@@ -25,12 +25,13 @@ class ListDetailViewModel {
         return ["KW", "ED"]
     }
     
-    func getReminderItems() -> [Reminder] {
-        return reminderList.items
+    func getReminderItems() -> [Item] {
+        // if there is a problem with this, loop through the NSOrdered Set and recreate Item Objects
+        return reminderList.items!.array as! [Item]
     }
     
     func numberOfRows() -> Int {
-        return reminderList.items.count
+        return reminderList.items!.count
     }
     
     func textForRowAtIndexPath(indexPath: NSIndexPath) -> String {
@@ -38,8 +39,9 @@ class ListDetailViewModel {
         if index < 0 || index >= numberOfRows() {
             return ""
         }
-        let retString = reminderList.items[index].text
-        return retString
+        let reminderItem = reminderList.items![index] as! Item
+        let reminderString = reminderItem.text!
+        return reminderString
     }
     
     
