@@ -1,5 +1,5 @@
 //
-//  Location.swift
+//  Item.swift
 //  iOSApp
 //
 //  Created by Katie Williams on 11/28/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Location: NSManagedObject {
+class Item: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
