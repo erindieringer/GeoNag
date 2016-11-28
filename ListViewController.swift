@@ -50,24 +50,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveList(name: String) {
-        let entityName = "List"
-        
-        let coreDataStack = CoreDataStack()
-        
-        let listEntity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: coreDataStack.context)
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("Item",
-                                                        inManagedObjectContext:managedContext)
+        let item = List.createManagedObjectContextEntity(managedContext, name: name)
         
-        let item = NSManagedObject(entity: entity!,
-                                   insertIntoManagedObjectContext: managedContext)
+//        let item = NSManagedObject(entity: entity,
+//                                   insertIntoManagedObjectContext: managedContext)
         
-        item.setValue(name, forKey: "text")
+        item.setValue(name, forKey: "name")
         
         do {
             try managedContext.save()
@@ -101,7 +95,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Item")
+        let fetchRequest = NSFetchRequest(entityName: "List")
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)

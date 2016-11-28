@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Friend" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lists" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="friends" inverseEntity="List" syncable="YES"/>
+    </entity>
     <entity name="Item" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="list" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="items" inverseEntity="List" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="items" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="List" representedClassName="List" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notifications" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="shared" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friend" inverseName="lists" inverseEntity="Friend" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="list" inverseEntity="Item" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="lists" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Location" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placemark" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="locations" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="tags" inverseEntity="Item" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="tags" inverseEntity="Location" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageSrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="user" inverseEntity="List" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="List" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Item" positionX="-63" positionY="36" width="128" height="90"/>
+        <element name="Tag" positionX="-54" positionY="45" width="128" height="90"/>
+        <element name="User" positionX="-36" positionY="54" width="128" height="120"/>
+        <element name="Location" positionX="-18" positionY="72" width="128" height="150"/>
+        <element name="Friend" positionX="-9" positionY="126" width="128" height="105"/>
     </elements>
 </model>

@@ -18,4 +18,10 @@ public class List: NSManagedObject {
     @NSManaged public var user: Int
     @NSManaged public var items: [Reminder]
     @NSManaged public var notifications: Bool
+
+class func createManagedObjectContextEntity(moc: NSManagedObjectContext, name: String) -> List {
+    let newItem = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: moc) as! List
+    newItem.name = name
+    return newItem
+}
 }
