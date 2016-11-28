@@ -30,6 +30,7 @@
 		59B430121DECC764009F615E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430061DECC764009F615E /* User.swift */; };
 		59B430131DECC764009F615E /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430071DECC764009F615E /* Location+CoreDataProperties.swift */; };
 		59B430141DECC764009F615E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430081DECC764009F615E /* Location.swift */; };
+		59B430181DECCAB4009F615E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430171DECCAB4009F615E /* CoreDataStack.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		59B430061DECC764009F615E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		59B430071DECC764009F615E /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B430081DECC764009F615E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
+		59B430171DECCAB4009F615E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,30 +164,30 @@
 			path = iOSAppUITests;
 			sourceTree = "<group>";
 		};
-		599088C81DDF820B0090A137 /* Models */ = {
+		599088C81DDF820B0090A137 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				599088CE1DDF82C10090A137 /* ListViewModel.swift */,
 				599088D01DDF82D20090A137 /* ListDetailViewModel.swift */,
 				8078646B1DE1373100BD92AC /* CurrentLocation.swift */,
 			);
-			name = Models;
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
-		599088C91DDF82120090A137 /* Controllers */ = {
+		599088C91DDF82120090A137 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				599088CA1DDF82460090A137 /* ListViewController.swift */,
 				599088CC1DDF82580090A137 /* ListDetailViewController.swift */,
 			);
-			name = Controllers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		59B42FE41DECC63A009F615E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				599088C81DDF820B0090A137 /* Models */,
-				599088C91DDF82120090A137 /* Controllers */,
+				599088C81DDF820B0090A137 /* ViewModels */,
+				599088C91DDF82120090A137 /* ViewControllers */,
 			);
 			name = Views;
 			path = ..;
@@ -213,6 +215,7 @@
 				59B430011DECC764009F615E /* Friend+CoreDataProperties.swift */,
 				59B42FFF1DECC764009F615E /* Item+CoreDataProperties.swift */,
 				59B42FFD1DECC764009F615E /* Tag+CoreDataProperties.swift */,
+				59B430171DECCAB4009F615E /* CoreDataStack.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
 				59B4300A1DECC764009F615E /* Tag.swift in Sources */,
 				59B430141DECC764009F615E /* Location.swift in Sources */,
+				59B430181DECCAB4009F615E /* CoreDataStack.swift in Sources */,
 				59B430131DECC764009F615E /* Location+CoreDataProperties.swift in Sources */,
 				59B430091DECC764009F615E /* Tag+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
