@@ -53,22 +53,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext
         
-        let item = List.createManagedObjectContextEntity(managedContext, name: name)
+        // create new list entity
+        let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
+        let newList = List(entity: listEntity!, insertIntoManagedObjectContext: managedContext)
         
-//        let item = NSManagedObject(entity: entity,
-//                                   insertIntoManagedObjectContext: managedContext)
-        
-        item.setValue(name, forKey: "name")
-        
-        do {
-            try managedContext.save()
-            items.append(item)
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
+        // set values of new list entity
+        newList.assignAttributes(appDelegate, name: <#T##String#>)
     }
     
     override func viewDidLoad() {
