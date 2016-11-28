@@ -27,17 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let listRecord = lists.first {
             list = listRecord
-            print("yes\n")
         } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
             list = listRecord
-            print("no\n")
         }
         
-        if let list = list {
-            print(list)
-            print(list.valueForKey("name"))
-            print(list)
-        }
+        print("number of lists: \(lists.count)")
+        print("--")
+        print(list)
 
         
         do {

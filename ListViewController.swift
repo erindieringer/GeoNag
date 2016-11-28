@@ -43,6 +43,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         
+        alert.view.setNeedsLayout()
+        
         presentViewController(alert,
                               animated: true,
                               completion: nil)
@@ -78,9 +80,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        if let selectedRow = tableView.indexPathForSelectedRow {
-//            tableView.deselectRowAtIndexPath(selectedRow, animated: true)
-//        }
+        if let selectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedRow, animated: true)
+        }
         
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
