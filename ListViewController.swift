@@ -99,6 +99,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
+        cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
     }
     

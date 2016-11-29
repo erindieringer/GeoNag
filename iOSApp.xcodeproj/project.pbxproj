@@ -31,6 +31,8 @@
 		59B430301DECF501009F615E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302A1DECF501009F615E /* Tag+CoreDataProperties.swift */; };
 		59B430311DECF501009F615E /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302B1DECF501009F615E /* Item+CoreDataProperties.swift */; };
 		59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302C1DECF501009F615E /* User+CoreDataProperties.swift */; };
+		59B4303D1DED3CAC009F615E /* ListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */; };
+		59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		59B4302A1DECF501009F615E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "../Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B4302B1DECF501009F615E /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B4302C1DECF501009F615E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsTableViewCell.swift; sourceTree = "<group>"; };
+		59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListsTableViewCell.xib; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,8 @@
 		595A0F331DDF7F1F00A68502 = {
 			isa = PBXGroup;
 			children = (
+				59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */,
+				59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */,
 				595A0F3E1DDF7F1F00A68502 /* iOSApp */,
 				595A0F561DDF7F2000A68502 /* iOSAppTests */,
 				595A0F611DDF7F2000A68502 /* iOSAppUITests */,
@@ -325,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */,
+				59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */,
 				595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */,
 				595A0F451DDF7F1F00A68502 /* Main.storyboard in Resources */,
 			);
@@ -353,6 +360,7 @@
 			files = (
 				599088CF1DDF82C10090A137 /* ListViewModel.swift in Sources */,
 				59B4302D1DECF501009F615E /* List+CoreDataProperties.swift in Sources */,
+				59B4303D1DED3CAC009F615E /* ListsTableViewCell.swift in Sources */,
 				595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */,
 				8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */,
 				59B430311DECF501009F615E /* Item+CoreDataProperties.swift in Sources */,

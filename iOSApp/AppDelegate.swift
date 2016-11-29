@@ -54,13 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 items.addObject(item)
             }
             
-            
-            print("number of items: \(items.count)")
-            print("---")
-            
-            for itemRecord in items {
-                print(itemRecord.valueForKey("text"))
-            }
         }
 
 
