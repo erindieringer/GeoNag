@@ -31,9 +31,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             list = listRecord
         }
         
-        print("number of lists: \(lists.count)")
-        print("--")
-        print(list)
+        if let list = list {
+            if list.valueForKey("name") == nil {
+                list.setValue("Shopping List", forKey: "name")
+            }
+            
+            if list.valueForKey("dateCreated") == nil {
+                list.setValue(NSDate(), forKey: "dateCreated")
+            }
+            
+            let items = list.mutableOrderedSetValueForKey("items")
+            
+            // Create Item Record
+            if let item = createRecordForEntity("Item", inManagedObjectContext: managedObjectContext) {
+                // Set Attributes
+                item.setValue("Item \(items.count + 1)", forKey: "text")
+                
+                // Set Relationship
+                item.setValue(list, forKey: "list")
+                
+                // Add Item to Items
+                items.addObject(item)
+            }
+            
+            
+            print("number of items: \(items.count)")
+            print("---")
+            
+            for itemRecord in items {
+                print(itemRecord.valueForKey("text"))
+            }
+        }
+
 
         
         do {

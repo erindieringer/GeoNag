@@ -15,8 +15,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
-    var items = [NSManagedObject]()
-    
     @IBAction func addItem(sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Item",
@@ -87,16 +85,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
+        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "List")
-        do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-            items = results as! [NSManagedObject]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
 
     }
     

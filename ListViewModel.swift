@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import CoreData
 
 class ListViewModel {
-    var lists = [List]()
+    var lists = [NSManagedObject]()
     
     func numberOfRows() -> Int {
         return lists.count
@@ -20,13 +21,15 @@ class ListViewModel {
         if index < 0 || index >= numberOfRows() {
             return ""
         }
-        let retString = lists[index].name
-        return retString!
+        let returnList = lists[index] as! List
+        let listName = returnList.name!
+        return listName
     }
     
     func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailViewModel {
-        let ret = ListDetailViewModel(list: lists[indexPath.item])
-        return ret
+        let list = lists[indexPath.item] as! List
+        let detailVM = ListDetailViewModel(list: list)
+        return detailVM
     }
     
 }
