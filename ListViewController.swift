@@ -61,12 +61,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // set values of new list entity
         newList.assignAttributes(appDelegate, name: name, currentUser: 2)
+        viewModel.lists.append(newList)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        title = "Lists"
         tableView.registerClass(UITableViewCell.self,
                                 forCellReuseIdentifier: "cell")
     }
