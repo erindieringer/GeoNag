@@ -3,12 +3,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController modalTransitionStyle="partialCurl" id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
@@ -16,12 +19,41 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REMIND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnE-ad-lTg">
+                                <rect key="frame" x="82" y="267" width="436" height="66"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="84"/>
+                                <color key="textColor" red="0.78153044871794874" green="0.78153044871794874" blue="0.78153044871794874" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminder.png" translatesAutoresizingMaskIntoConstraints="NO" id="nhn-9b-Zzt">
+                                <rect key="frame" x="266.5" y="353" width="68" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="VQK-I2-xXU"/>
+                                    <constraint firstAttribute="width" secondItem="nhn-9b-Zzt" secondAttribute="height" multiplier="1:1" id="enP-ie-vYc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12363782051282046" green="0.12363782051282046" blue="0.12363782051282046" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nhn-9b-Zzt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2kP-2j-paS"/>
+                            <constraint firstItem="dnE-ad-lTg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="62" id="UaG-EV-ZhT"/>
+                            <constraint firstItem="nhn-9b-Zzt" firstAttribute="top" secondItem="dnE-ad-lTg" secondAttribute="bottom" constant="20" id="cEI-ae-Zay"/>
+                            <constraint firstItem="nhn-9b-Zzt" firstAttribute="centerX" secondItem="dnE-ad-lTg" secondAttribute="centerX" id="dv3-t6-92x"/>
+                            <constraint firstItem="dnE-ad-lTg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gtQ-OE-5n6"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nhn-9b-Zzt" secondAttribute="bottom" constant="135" id="tHS-WR-XyX"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="H9K-Da-7p6"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reminder.png" width="68" height="90"/>
+    </resources>
 </document>

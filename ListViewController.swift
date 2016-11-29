@@ -67,8 +67,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tableView.registerClass(UITableViewCell.self,
-                                forCellReuseIdentifier: "cell")
+        // register the nib
+        let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,10 +98,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
         cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("toDetailVC", sender: indexPath)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
