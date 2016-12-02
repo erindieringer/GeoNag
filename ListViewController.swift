@@ -83,8 +83,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // register the nib
-        let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
+//        let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
+//        tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,8 +107,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if let userInfo = user.first {
             currentUser = userInfo
-        } else {
-            performSegueWithIdentifier("toUserLogin", sender: nil)
         }
         
         viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
