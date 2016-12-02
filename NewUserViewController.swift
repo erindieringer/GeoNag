@@ -23,13 +23,6 @@ class NewUserViewController: UIViewController {
         }
     }
     
-    func validate(value: String) -> Bool {
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluateWithObject(value)
-        return result
-    }
-    
     @IBAction func saveUser(sender: AnyObject) {
         
         if (isEmpty(firstName) || isEmpty(lastName) || isEmpty(phoneNumber)) {
@@ -54,17 +47,12 @@ class NewUserViewController: UIViewController {
             } else {
                 // Create new User Entity
                 let newUser = appDelegate.createRecordForEntity("User", inManagedObjectContext: managedObjectContext)!
-                print("createdUser")
-                print(newUser)
                 
                 // Set values for new user
                 newUser.setValue(firstName.text!, forKey: "firstName")
                 newUser.setValue(lastName.text!, forKey: "lastName")
                 newUser.setValue(phone, forKey: "phoneNumber")
                 appDelegate.coreDataStack.saveContext()
-                print("fetchingUser")
-                let user = appDelegate.fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
-                print(user)
                 
                 // Get permission for contacts @Erin
                 
