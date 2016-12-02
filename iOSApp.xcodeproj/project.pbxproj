@@ -397,11 +397,8 @@
 				59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
-<<<<<<< HEAD
-=======
 				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
 				59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */,
->>>>>>> 922c644cd7c029ed7b30d8f019d9e39b6d2d56a8
 				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
