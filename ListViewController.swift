@@ -58,24 +58,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new list entity
-        let listEntity = appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext)
+        let listEntity = (appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext))!
         
 //        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
 //        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
 //        
 //      // set values of new list entity
-        self.setValue(name, forKey: "name")
-        self.setValue(NSDate(), forKey: "dateCreated" )
-        self.setValue(NSDate(), forKey: "dateModified")
-        self.setValue(0, forKey: "shared")
-        self.setValue(1, forKey: "notifications")
-        self.setValue(currentUser, forKey: "user")
-        self.setValue(NSOrderedSet(), forKey: "items")
-        self.setValue(NSOrderedSet(), forKey: "friends")
+        listEntity.setValue(name, forKey: "name")
+        listEntity.setValue(NSDate(), forKey: "dateCreated" )
+        listEntity.setValue(NSDate(), forKey: "dateModified")
+        listEntity.setValue(0, forKey: "shared")
+        listEntity.setValue(1, forKey: "notifications")
+        listEntity.setValue(currentUser, forKey: "user")
+        listEntity.setValue(NSOrderedSet(), forKey: "items")
+        listEntity.setValue(NSOrderedSet(), forKey: "friends")
         // save entity
         appDelegate.coreDataStack.saveContext()
 //        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
-        viewModel.lists.append(listEntity!)
+        viewModel.lists.append(listEntity)
         
     }
     
@@ -119,7 +119,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("list", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
         //cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell

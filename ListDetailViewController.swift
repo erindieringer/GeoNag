@@ -102,7 +102,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reminder_item", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("item", forIndexPath: indexPath)
         cell.textLabel?.text =  viewModel!.textForRowAtIndexPath(indexPath)
         return cell
     }
