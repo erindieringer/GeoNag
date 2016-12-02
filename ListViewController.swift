@@ -60,15 +60,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // create new list entity
         let listEntity = (appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext))!
         
-//        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
-//        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
-//
-//      
-        print("current user:")
-        print(currentUser)
-        
         // set values of new list entity
-//      // set values of new list entity
         listEntity.setValue(name, forKey: "name")
         listEntity.setValue(NSDate(), forKey: "dateCreated" )
         listEntity.setValue(NSDate(), forKey: "dateModified")
@@ -88,8 +80,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // register the nib
-//        let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
-//        tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
+        let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "list")
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,10 +128,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("will it happen?")
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
-            cell = sender as? UITableViewCell,
-            indexPath = tableView.indexPathForCell(cell) {
-            detailVC.viewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
+            indexPath = sender as? NSIndexPath {
+            print("it is happening")
+            detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
+            detailVC.list = viewModel.getListForIndexPath(indexPath)
+            print("list")
+            print(detailVC.list)
         }
     }
     

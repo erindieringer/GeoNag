@@ -50,4 +50,8 @@ class ListViewModel {
         return detailVM
     }
     
+    func getListForIndexPath(indexPath:NSIndexPath) -> NSManagedObject {
+        return lists[indexPath.item]
+    }
+    
 }

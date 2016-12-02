@@ -54,11 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ListDetailViewModel.swift"
-            timestampString = "502058306.094409"
+            timestampString = "502349455.331953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "getReminderItems()"
             landmarkType = "5">
          </BreakpointContent>
@@ -86,13 +86,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ListViewController.swift"
-            timestampString = "502346060.66894"
+            timestampString = "502349455.331953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ListDetailViewModel.swift"
+            timestampString = "502349455.331953"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "ListDetailViewModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOSApp.ListDetailViewModel.reminderList.getter : iOSApp.List"
+                  moduleName = "iOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/KatieWilliams/Desktop/Fall%20Semester%20&apos;16/MobileIOSDev/iOSApp/ListDetailViewModel.swift"
+                  timestampString = "502348946.813772"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOSApp.ListDetailViewModel.reminderList.setter : iOSApp.List"
+                  moduleName = "iOSApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/KatieWilliams/Desktop/Fall%20Semester%20&apos;16/MobileIOSDev/iOSApp/ListDetailViewModel.swift"
+                  timestampString = "502348946.819302"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

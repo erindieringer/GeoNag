@@ -14,6 +14,8 @@
 		595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595A0F4B1DDF7F1F00A68502 /* LaunchScreen.storyboard */; };
 		595A0F581DDF7F2000A68502 /* iOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F571DDF7F2000A68502 /* iOSAppTests.swift */; };
 		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
+		596D2E5D1DF1441F00089476 /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */; };
+		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		599088CB1DDF82460090A137 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CA1DDF82460090A137 /* ListViewController.swift */; };
 		599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CC1DDF82580090A137 /* ListDetailViewController.swift */; };
 		599088CF1DDF82C10090A137 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CE1DDF82C10090A137 /* ListViewModel.swift */; };
@@ -70,6 +72,8 @@
 		595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
+		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		599088CA1DDF82460090A137 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		599088CC1DDF82580090A137 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		599088CE1DDF82C10090A137 /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */,
 				599088C81DDF820B0090A137 /* ViewModels */,
 				599088C91DDF82120090A137 /* ViewControllers */,
+				596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */,
+				596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -347,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */,
 				595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */,
 				59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */,
 				595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */,
@@ -386,6 +393,7 @@
 				59B430121DECC764009F615E /* User.swift in Sources */,
 				59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */,
 				595A0F481DDF7F1F00A68502 /* iOSApp.xcdatamodeld in Sources */,
+				596D2E5D1DF1441F00089476 /* DetailListTableViewCell.swift in Sources */,
 				59B430101DECC764009F615E /* List.swift in Sources */,
 				59B430301DECF501009F615E /* Tag+CoreDataProperties.swift in Sources */,
 				59B4300C1DECC764009F615E /* Item.swift in Sources */,
@@ -398,7 +406,6 @@
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
 				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
-				59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

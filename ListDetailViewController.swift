@@ -12,7 +12,8 @@ import CoreData
 
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    var viewModel: ListDetailViewModel?
+    var detailViewModel:ListDetailViewModel?
+    var list:NSManagedObject?
     
     @IBAction func addItem(sender: AnyObject) {
         
@@ -54,15 +55,19 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
-        // create new list entity
-        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: managedContext) as! Item
+        // create new item entity
+        let itemEntity = (appDelegate.createRecordForEntity("Item", inManagedObjectContext: managedContext))!
         
         // set values of new list entity
-        newItem.assignAttributes(appDelegate, text: text, list: viewModel!.reminderList)
-        var items = viewModel?.getReminderItems()
-        items!.append(newItem)
-        viewModel!.reminderList.items = NSOrderedSet(array: items!)
+        itemEntity.setValue(text, forKey: "text")
+        itemEntity.setValue(NSOrderedSet(), forKey: "tags" )
+        itemEntity.setValue(list, forKey: "list")
+        // save entity
+        appDelegate.coreDataStack.saveContext()
+        
+        let itemPredicate = NSPredicate(format:"list == %@", list!)
+        let items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedContext, predicate: itemPredicate)
+        detailViewModel!.items = items
     }
 
     
@@ -71,11 +76,11 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func notificationSwitch(sender: AnyObject) {
-        if viewModel!.reminderList.notifications == false {
-            viewModel!.reminderList.notifications = true
+        if detailViewModel!.reminderList.notifications == false {
+            detailViewModel!.reminderList.notifications = true
         }
         else {
-             viewModel!.reminderList.notifications = false
+             detailViewModel!.reminderList.notifications = false
         }
     }
     
@@ -98,12 +103,13 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     //Table View
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
-        return viewModel!.numberOfRows()
+        return detailViewModel!.numberOfRows()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("item", forIndexPath: indexPath)
-        cell.textLabel?.text =  viewModel!.textForRowAtIndexPath(indexPath)
+        print("showing table view......")
+        cell.textLabel?.text =  detailViewModel!.textForRowAtIndexPath(indexPath)
         return cell
     }
     
