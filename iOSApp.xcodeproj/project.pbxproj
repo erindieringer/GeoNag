@@ -30,10 +30,10 @@
 		59B4302F1DECF501009F615E /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430291DECF501009F615E /* Location+CoreDataProperties.swift */; };
 		59B430301DECF501009F615E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302A1DECF501009F615E /* Tag+CoreDataProperties.swift */; };
 		59B430311DECF501009F615E /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302B1DECF501009F615E /* Item+CoreDataProperties.swift */; };
-		59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4302C1DECF501009F615E /* User+CoreDataProperties.swift */; };
 		59B4303D1DED3CAC009F615E /* ListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */; };
 		59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */; };
 		59B430411DEDF677009F615E /* reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 59B430401DEDF677009F615E /* reminder.png */; };
+		59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430441DF0A135009F615E /* User+CoreDataProperties.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,10 +84,10 @@
 		59B430291DECF501009F615E /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B4302A1DECF501009F615E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "../Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B4302B1DECF501009F615E /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		59B4302C1DECF501009F615E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsTableViewCell.swift; sourceTree = "<group>"; };
 		59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListsTableViewCell.xib; sourceTree = "<group>"; };
 		59B430401DEDF677009F615E /* reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder.png; sourceTree = "<group>"; };
+		59B430441DF0A135009F615E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,12 +218,12 @@
 		59B430161DECC783009F615E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				59B430441DF0A135009F615E /* User+CoreDataProperties.swift */,
 				59B430271DECF501009F615E /* List+CoreDataProperties.swift */,
 				59B430281DECF501009F615E /* Friend+CoreDataProperties.swift */,
 				59B430291DECF501009F615E /* Location+CoreDataProperties.swift */,
 				59B4302A1DECF501009F615E /* Tag+CoreDataProperties.swift */,
 				59B4302B1DECF501009F615E /* Item+CoreDataProperties.swift */,
-				59B4302C1DECF501009F615E /* User+CoreDataProperties.swift */,
 				59B430191DECE199009F615E /* CoreDataStack.swift */,
 			);
 			name = CoreData;
@@ -387,9 +387,9 @@
 				59B430141DECC764009F615E /* Location.swift in Sources */,
 				59B4302F1DECF501009F615E /* Location+CoreDataProperties.swift in Sources */,
 				59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */,
+				59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
-				59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="STk-6J-sop" customClass="TableViewCell" customModule="iOSApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="STk-6J-sop" id="1Zi-oS-cDa">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GKJ-Jv-diS">
-                                <rect key="frame" x="0.0" y="123" width="600" height="394"/>
+                                <rect key="frame" x="0.0" y="105" width="600" height="412"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BPo-ks-qre">
@@ -125,8 +125,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="ListDetailViewController" prompt="" id="uJA-j4-y5M">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="vzF-ch-uGG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="TgI-3F-uZu"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="vzF-ch-uGG">
+                            <connections>
+                                <segue destination="n7b-nS-j9o" kind="show" id="S2S-AG-EzH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TgI-3F-uZu">
+                            <connections>
+                                <action selector="addItem:" destination="BYZ-38-t0r" id="RJO-k3-GI8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="GKJ-Jv-diS" id="oMb-QV-Rzm"/>
@@ -137,4 +145,7 @@
             <point key="canvasLocation" x="493" y="207"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S2S-AG-EzH"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -37,7 +37,6 @@
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageSrc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="List" inverseName="user" inverseEntity="List" syncable="YES"/>
@@ -48,6 +47,6 @@
         <element name="List" positionX="-369" positionY="-117" width="128" height="163"/>
         <element name="Location" positionX="196" positionY="-27" width="128" height="148"/>
         <element name="Tag" positionX="34" positionY="-0" width="128" height="90"/>
-        <element name="User" positionX="-171" positionY="141" width="128" height="120"/>
+        <element name="User" positionX="-171" positionY="141" width="128" height="105"/>
     </elements>
 </model>

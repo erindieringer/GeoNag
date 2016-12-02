@@ -17,55 +17,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let managedObjectContext = coreDataStack.managedObjectContext
+//        let managedObjectContext = coreDataStack.managedObjectContext
         
-        // Helpers
-        var list: NSManagedObject? = nil
-        
-        // Fetch List Records
-        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
-        
-        if let listRecord = lists.first {
-            list = listRecord
-        } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
-            list = listRecord
-        }
-        
-        if let list = list {
-            if list.valueForKey("name") == nil {
-                list.setValue("Shopping List", forKey: "name")
-            }
-            
-            if list.valueForKey("dateCreated") == nil {
-                list.setValue(NSDate(), forKey: "dateCreated")
-            }
-            
-            let items = list.mutableOrderedSetValueForKey("items")
-            
-            // Create Item Record
-            if let item = createRecordForEntity("Item", inManagedObjectContext: managedObjectContext) {
-                // Set Attributes
-                item.setValue("Item \(items.count + 1)", forKey: "text")
-                
-                // Set Relationship
-                item.setValue(list, forKey: "list")
-                
-                // Add Item to Items
-                items.addObject(item)
-            }
-            
-        }
-
-
-        
-        do {
-            // Save Managed Object Context
-            try managedObjectContext.save()
-            
-        } catch {
-            print ("\(error)")
-            print("Unable to save managed object context.")
-        }
+//        // Helpers
+//        var list: NSManagedObject? = nil
+//        
+//        // Fetch List Records
+//        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
+//        
+//        // Fetch Item Records
+//        let items = fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext)
+//        
+//        if let listRecord = lists.first {
+//            list = listRecord
+//        } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
+//            list = listRecord
+//        }
+//        
+//        if let list = list {
+//            if list.valueForKey("name") == nil {
+//                list.setValue("Shopping List", forKey: "name")
+//            }
+//            
+//            if list.valueForKey("dateCreated") == nil {
+//                list.setValue(NSDate(), forKey: "dateCreated")
+//            }
+//            
+//            let items = list.mutableOrderedSetValueForKey("items")
+//            
+//            // Create Item Record
+//            if let item = createRecordForEntity("Item", inManagedObjectContext: managedObjectContext) {
+//                // Set Attributes
+//                item.setValue("Item \(items.count + 1)", forKey: "text")
+//                
+//                // Set Relationship
+//                item.setValue(list, forKey: "list")
+//                
+//                // Add Item to Items
+//                items.addObject(item)
+//            }
+//            
+//        }
+//
+//
+//        
+//        do {
+//            // Save Managed Object Context
+//            try managedObjectContext.save()
+//            
+//        } catch {
+//            print ("\(error)")
+//            print("Unable to save managed object context.")
+//        }
         
         return true
     }

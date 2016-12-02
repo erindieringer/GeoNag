@@ -13,6 +13,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let viewModel = ListViewModel()
     
+    var currentUser:User?
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func addItem(sender: AnyObject) {
@@ -56,12 +58,25 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new list entity
-        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
-        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
+        let listEntity = appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext)
         
-        // set values of new list entity
-        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
-        viewModel.lists.append(newList)
+//        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
+//        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
+//        
+//      // set values of new list entity
+        self.setValue(name, forKey: "name")
+        self.setValue(NSDate(), forKey: "dateCreated" )
+        self.setValue(NSDate(), forKey: "dateModified")
+        self.setValue(0, forKey: "shared")
+        self.setValue(1, forKey: "notifications")
+        self.setValue(currentUser, forKey: "user")
+        self.setValue(NSOrderedSet(), forKey: "items")
+        self.setValue(NSOrderedSet(), forKey: "friends")
+        // save entity
+        appDelegate.coreDataStack.saveContext()
+//        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
+        viewModel.lists.append(listEntity!)
+        
     }
     
     override func viewDidLoad() {
@@ -88,6 +103,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         
+        let user = appDelegate.fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
+        
+        if let userInfo = user.first {
+            let fname = String(userInfo.valueForKey("firstName"))
+            let lname = String(userInfo.valueForKey("lastName"))
+            let phone = String(userInfo.valueForKey("phoneNumber"))
+            currentUser = User(fname, lastName: lname, phoneNumber: phone)
+        } else {
+            performSegueWithIdentifier("toUserLogin", sender: nil)
+        }
+        
         viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
 
     }
@@ -100,7 +126,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
-        cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
+        //cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
     }
     

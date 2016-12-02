@@ -7,11 +7,64 @@
 //
 
 import UIKit
+import CoreData
+
 
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     var viewModel: ListDetailViewModel?
     
+    @IBAction func addItem(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "New Reminder",
+                                      message: "Add a new reminder",
+                                      preferredStyle: .Alert)
+        
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .Default,
+                                       handler: { (action:UIAlertAction) -> Void in
+                                        
+                                        let textField = alert.textFields!.first
+                                        self.saveItem(textField!.text!)
+                                        self.tableView.reloadData()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField) -> Void in
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        alert.view.setNeedsLayout()
+        
+        presentViewController(alert,
+                              animated: true,
+                              completion: nil)
+        
+    }
+    
+    func saveItem(text: String) {
+        
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.coreDataStack.managedObjectContext
+        
+        // create new list entity
+        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: managedContext) as! Item
+        
+        // set values of new list entity
+        newItem.assignAttributes(appDelegate, text: text, list: viewModel!.reminderList)
+        var items = viewModel?.getReminderItems()
+        items!.append(newItem)
+        viewModel!.reminderList.items = NSOrderedSet(array: items!)
+    }
+
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         //TO DO: delete from API
