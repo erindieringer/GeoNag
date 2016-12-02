@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     
+    var currentUser:NSManagedObject?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        let managedObjectContext = coreDataStack.managedObjectContext
+        let managedObjectContext = coreDataStack.managedObjectContext
         
 //        // Helpers
 //        var list: NSManagedObject? = nil
@@ -69,7 +71,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("Unable to save managed object context.")
 //        }
         
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newUserViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserVC") as! UIViewController
+        
+        let listViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ListNavVC") as! UIViewController
+        
+        
+        let user = fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
+        
+        if let userInfo = user.first {
+            currentUser = userInfo
+            self.window?.rootViewController = listViewController
+        } else {
+            self.window?.rootViewController = newUserViewController
+        }
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
