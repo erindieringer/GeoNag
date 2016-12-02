@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentUser:NSManagedObject?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let managedObjectContext = coreDataStack.managedObjectContext
         
+        let managedObjectContext = coreDataStack.managedObjectContext
 //        // Helpers
 //        var list: NSManagedObject? = nil
 //        
@@ -73,17 +73,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newUserViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserVC") as! UIViewController
+        let newUserViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserVC")
         
-        let listViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ListNavVC") as! UIViewController
+        let listViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ListNavVC")
         
         
         let user = fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
+        print(user)
         
         if let userInfo = user.first {
+            print("user exists")
             currentUser = userInfo
             self.window?.rootViewController = listViewController
         } else {
+            print("user dne")
             self.window?.rootViewController = newUserViewController
         }
         
@@ -134,9 +137,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return result
     }
     
-    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil) -> [NSManagedObject] {
         // Create Fetch Request
         let fetchRequest = NSFetchRequest(entityName: entity)
+        if (predicate != nil) {
+            fetchRequest.predicate = predicate
+        }
         
         // Helpers
         var result = [NSManagedObject]()

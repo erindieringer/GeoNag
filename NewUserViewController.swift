@@ -22,14 +22,7 @@ class NewUserViewController: UIViewController {
             return false
         }
     }
-    
-    // Source: http://stackoverflow.com/questions/27998409/email-phone-validation-in-swift
-    func validate(value: String) -> Bool {
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        let result =  phoneTest.evaluateWithObject(value)
-        return result
-    }
+
     
     @IBAction func saveUser(sender: AnyObject) {
         
@@ -43,21 +36,29 @@ class NewUserViewController: UIViewController {
             
             let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
             
-            let phone = phoneNumber.text!
-            if (validate(phone) == false) {
+            var phone = phoneNumber.text!
+            let phoneArray = phone.componentsSeparatedByCharactersInSet(
+                NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+            phone = NSArray(array: phoneArray).componentsJoinedByString("")
+            
+            if (phone.characters.count != 10) {
                 let alert = UIAlertController(title: "Invalid Phone Number", message: "Phone number has invalid characters.", preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
                 // Create new User Entity
                 let newUser = appDelegate.createRecordForEntity("User", inManagedObjectContext: managedObjectContext)!
+                print("createdUser")
+                print(newUser)
+                
                 // Set values for new user
                 newUser.setValue(firstName.text!, forKey: "firstName")
                 newUser.setValue(lastName.text!, forKey: "lastName")
-                let phoneArray = phone.componentsSeparatedByCharactersInSet(
-                    NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-                let fixedPhoneNumber = NSArray(array: phoneArray).componentsJoinedByString("")
-                newUser.setValue(fixedPhoneNumber, forKey: "phoneNumber")
+                newUser.setValue(phone, forKey: "phoneNumber")
+                appDelegate.coreDataStack.saveContext()
+                print("fetchingUser")
+                let user = appDelegate.fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
+                print(user)
                 
                 // Get permission for contacts @Erin
                 
