@@ -35,6 +35,7 @@
 		59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */; };
 		59B430411DEDF677009F615E /* reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 59B430401DEDF677009F615E /* reminder.png */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
+		80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E643F11DF0FA0C00F39267 /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListsTableViewCell.xib; sourceTree = "<group>"; };
 		59B430401DEDF677009F615E /* reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder.png; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
+		80E643F11DF0FA0C00F39267 /* PostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				59B430061DECC764009F615E /* User.swift */,
 				59B430081DECC764009F615E /* Location.swift */,
 				59B430041DECC764009F615E /* List.swift */,
+				80E643F11DF0FA0C00F39267 /* PostManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
+				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
 				59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
