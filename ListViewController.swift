@@ -62,12 +62,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
 //        //let listEntity = NSEntityDescription.entityForName("List", inManagedObjectContext: managedContext)
 //        let newList = NSEntityDescription.insertNewObjectForEntityForName("List", inManagedObjectContext: managedContext) as! List
-//        
+//
 //      
         print("current user:")
         print(currentUser)
         
         // set values of new list entity
+//      // set values of new list entity
         listEntity.setValue(name, forKey: "name")
         listEntity.setValue(NSDate(), forKey: "dateCreated" )
         listEntity.setValue(NSDate(), forKey: "dateModified")
@@ -79,7 +80,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // save entity
         appDelegate.coreDataStack.saveContext()
 //        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
-        viewModel.lists.append(listEntity!)
+        viewModel.lists.append(listEntity)
         
     }
     
@@ -124,7 +125,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("list", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
         //cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
