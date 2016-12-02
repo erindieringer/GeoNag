@@ -23,7 +23,6 @@ class NewUserViewController: UIViewController {
         }
     }
     
-    // Source: http://stackoverflow.com/questions/27998409/email-phone-validation-in-swift
     func validate(value: String) -> Bool {
         let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
