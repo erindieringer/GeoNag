@@ -36,6 +36,7 @@
 		59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430441DF0A135009F615E /* User+CoreDataProperties.swift */; };
 		59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430461DF0FE30009F615E /* NewUserViewController.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
+		80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E643F11DF0FA0C00F39267 /* PostManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		59B430441DF0A135009F615E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B430461DF0FE30009F615E /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
+		80E643F11DF0FA0C00F39267 /* PostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				59B430061DECC764009F615E /* User.swift */,
 				59B430081DECC764009F615E /* Location.swift */,
 				59B430041DECC764009F615E /* List.swift */,
+				80E643F11DF0FA0C00F39267 /* PostManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -394,6 +397,11 @@
 				59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
+<<<<<<< HEAD
+=======
+				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
+				59B430321DECF501009F615E /* User+CoreDataProperties.swift in Sources */,
+>>>>>>> 922c644cd7c029ed7b30d8f019d9e39b6d2d56a8
 				599088D11DDF82D20090A137 /* ListDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
