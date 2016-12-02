@@ -13,7 +13,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let viewModel = ListViewModel()
     
-    var currentUser:User?
+    var currentUser:NSManagedObject?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -106,10 +106,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let user = appDelegate.fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
         
         if let userInfo = user.first {
-            let fname = String(userInfo.valueForKey("firstName"))
-            let lname = String(userInfo.valueForKey("lastName"))
-            let phone = String(userInfo.valueForKey("phoneNumber"))
-            currentUser = User(fname, lastName: lname, phoneNumber: phone)
+            currentUser = userInfo
         } else {
             performSegueWithIdentifier("toUserLogin", sender: nil)
         }
