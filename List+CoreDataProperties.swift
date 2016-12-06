@@ -2,7 +2,7 @@
 //  List+CoreDataProperties.swift
 //  iOSApp
 //
-//  Created by Katie Williams on 11/28/16.
+//  Created by Katie Williams on 12/6/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,13 +14,14 @@ import CoreData
 
 extension List {
 
-    @NSManaged var name: String?
     @NSManaged var dateCreated: NSDate?
     @NSManaged var dateModified: NSDate?
-    @NSManaged var shared: NSNumber?
+    @NSManaged var name: String?
     @NSManaged var notifications: NSNumber?
-    @NSManaged var user: User?
-    @NSManaged var items: NSOrderedSet?
+    @NSManaged var shared: NSNumber?
     @NSManaged var friends: NSOrderedSet?
+    @NSManaged var items: NSOrderedSet?
+    @NSManaged var user: User?
+    @NSManaged var tags: NSSet?
 
 }

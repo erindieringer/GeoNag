@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //            print("Unable to save managed object context.")
         //        }
         
+        // Only open up the login page if the user has never used the app before
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newUserViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserVC")
@@ -96,6 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
         
         self.window?.makeKeyAndVisible()
+        
+        // Start up Plist for storing current user location data
+        PlistManager.sharedInstance.startPlistManager()
         
         return true
         
