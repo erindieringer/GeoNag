@@ -13,9 +13,10 @@ import CoreLocation
 
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
     
-    var detailViewModel:ListDetailViewModel?
-    var list:NSManagedObject?
+    var detailViewModel:ListDetailView?
+    var list:List?
     
+    // Set up location details
     let locationManager = CLLocationManager()
     var location = CurrentLocation()
     
@@ -55,23 +56,36 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func saveItem(text: String) {
         
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new item entity
         let itemEntity = (appDelegate.createRecordForEntity("Item", inManagedObjectContext: managedContext))!
-        
         // set values of new list entity
         itemEntity.setValue(text, forKey: "text")
-        itemEntity.setValue(NSOrderedSet(), forKey: "tags" )
-        itemEntity.setValue(list, forKey: "list")
+        itemEntity.setValue((list! as NSManagedObject), forKey: "list")
+        
+//        let itemPredicate = NSPredicate(format:"list == %@", list!)
+//        let items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedContext, predicate: itemPredicate)
+        detailViewModel!.items.append( itemEntity as! Item )
+        print("items after append")
+        print(detailViewModel!.items)
+        
         // save entity
         appDelegate.coreDataStack.saveContext()
+    }
+    
+    func updateItem(index: Int, text: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        print("items")
+        print(detailViewModel!.items)
+        print("index")
+        print(index)
         
-        let itemPredicate = NSPredicate(format:"list == %@", list!)
-        let items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedContext, predicate: itemPredicate)
-        detailViewModel!.items = items
+        detailViewModel!.items[index].text = text
+        list!.dateModified = NSDate()
+        
+        appDelegate.coreDataStack.saveContext()
     }
     
     
@@ -120,10 +134,52 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("item", forIndexPath: indexPath)
-        print("showing table view......")
         cell.textLabel?.text =  detailViewModel!.textForRowAtIndexPath(indexPath)
         return cell
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.coreDataStack.managedObjectContext
+            
+            context.deleteObject(detailViewModel!.items[indexPath.row])
+            appDelegate.coreDataStack.saveContext()
+            
+            detailViewModel!.items.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("now: ")
+        print(indexPath.row)
+        print("items")
+        print(detailViewModel!.items)
+        
+        // deselect row clicked
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let alert = UIAlertController(title: "Update", message: "Please enter the new text for the item.", preferredStyle: .Alert)
+        
+        let updateAction = UIAlertAction(title: "Update", style: .Default){(_) in
+            let newText = alert.textFields![0]
+            print("adter: ")
+            print(indexPath.row)
+            self.updateItem(indexPath.row, text: newText.text!)
+            self.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        alert.addTextFieldWithConfigurationHandler(nil)
+        
+        alert.addAction(updateAction)
+        alert.addAction(cancelAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     
     //location notification
     func locationNotification() {

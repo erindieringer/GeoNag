@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-class ListDetailViewModel {
-    var items = [NSManagedObject]()
+class ListDetailView {
+    var items = [Item]()
     var reminderList: List
     
     init(list: List) {

@@ -11,7 +11,7 @@ import CoreData
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    let viewModel = ListViewModel()
+    let viewModel = ListView()
     
     var currentUser:NSManagedObject?
     
@@ -68,12 +68,21 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(1, forKey: "notifications")
         listEntity.setValue(currentUser, forKey: "user")
         listEntity.setValue(NSOrderedSet(), forKey: "items")
+        listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
+        viewModel.lists.append(listEntity as! List)
         // save entity
         appDelegate.coreDataStack.saveContext()
-//        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
-        viewModel.lists.append(listEntity)
         
+    }
+    
+    func updateList(index: Int, name: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        viewModel.lists[index].name = name
+        viewModel.lists[index].dateModified = NSDate()
+
+        appDelegate.coreDataStack.saveContext()
     }
     
     override func viewDidLoad() {
@@ -107,7 +116,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         let listPredicate = NSPredicate(format:"user == %@", currentUser!)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate)
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate) as! [List]
 
     }
     
@@ -119,7 +128,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("list", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
-        //cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
     }
     
@@ -127,14 +135,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegueWithIdentifier("toDetailVC", sender: indexPath)
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.coreDataStack.managedObjectContext
+
+            context.deleteObject(viewModel.lists[indexPath.row])
+            appDelegate.coreDataStack.saveContext()
+            
+            viewModel.lists.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("will it happen?")
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
-            print("it is happening")
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
-            detailVC.list = viewModel.getListForIndexPath(indexPath)
-            print("list")
+            detailVC.list = viewModel.getListForIndexPath(indexPath) as? List
             print(detailVC.list)
         }
     }

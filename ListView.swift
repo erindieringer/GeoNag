@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-class ListViewModel {
-    var lists = [NSManagedObject]()
+class ListView {
+    var lists = [List]()
     
     func numberOfRows() -> Int {
         return lists.count
@@ -21,7 +21,7 @@ class ListViewModel {
         if index < 0 || index >= numberOfRows() {
             return ""
         }
-        let returnList = lists[index] as! List
+        let returnList = lists[index]
         let listName = returnList.name!
         return listName
     }
@@ -32,7 +32,7 @@ class ListViewModel {
         guard index >= 0 && index < lists.count else {
             return ""
         }
-        let returnList = lists[index] as! List
+        let returnList = lists[index]
         if let listItems = returnList.items {
             let listItemsArray = listItems.array as! [Item]
             for i in 0..<listItems.count {
@@ -44,9 +44,9 @@ class ListViewModel {
         }
     }
     
-    func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailViewModel {
-        let list = lists[indexPath.item] as! List
-        let detailVM = ListDetailViewModel(list: list)
+    func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailView {
+        let list = lists[indexPath.item]
+        let detailVM = ListDetailView(list: list)
         return detailVM
     }
     
