@@ -111,6 +111,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         print("showing table view......")
         cell.textLabel?.text =  detailViewModel!.textForRowAtIndexPath(indexPath)
         return cell
+        //adding test comment
     }
     
 }
