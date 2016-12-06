@@ -98,10 +98,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+//        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -140,12 +140,12 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse {
-            //print("Ready to go!")
-            print("Ready to go!")
-        }
-    }
+//    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+//        if status == .AuthorizedWhenInUse {
+//            //print("Ready to go!")
+//            print("Ready to go!")
+//        }
+//    }
     
     
 }

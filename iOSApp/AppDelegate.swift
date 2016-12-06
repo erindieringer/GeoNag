@@ -101,6 +101,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
+        //location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        //locationManager.startMonitoringSignificantLocationChanges()
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         return true
         
     }
@@ -114,13 +126,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
+//        locationManager = CLLocationManager()
+//        locationManager.delegate = self
+//        locationManager.distanceFilter = kCLDistanceFilterNone
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startMonitoringSignificantLocationChanges()
+//        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        print("background")
+        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -196,6 +212,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         print("\(notification)")
         if notification.region != nil {
             print("It's a location notification!")
+        }
+    }
+    //from view controller
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            //print("Ready to go!")
+            print("Ready to go!")
         }
     }
     
