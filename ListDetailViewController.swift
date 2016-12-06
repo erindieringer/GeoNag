@@ -8,12 +8,16 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 
-class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
     
     var detailViewModel:ListDetailViewModel?
     var list:NSManagedObject?
+    
+    let locationManager = CLLocationManager()
+    var location = CurrentLocation()
     
     @IBAction func addItem(sender: AnyObject) {
         
@@ -69,18 +73,22 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         let items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedContext, predicate: itemPredicate)
         detailViewModel!.items = items
     }
-
+    
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         //TO DO: delete from API
     }
     
     @IBAction func notificationSwitch(sender: AnyObject) {
+        //on
         if detailViewModel!.reminderList.notifications == false {
             detailViewModel!.reminderList.notifications = true
+            location.getCurrentLocation()
+            locationNotification()
         }
+            //off
         else {
-             detailViewModel!.reminderList.notifications = false
+            detailViewModel!.reminderList.notifications = false
         }
     }
     
@@ -90,6 +98,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,8 +123,30 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         print("showing table view......")
         cell.textLabel?.text =  detailViewModel!.textForRowAtIndexPath(indexPath)
         return cell
-        //adding test comment
     }
+    
+    //location notification
+    func locationNotification() {
+        print("notif here")
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        let locattionnotification = UILocalNotification()
+        locattionnotification.alertBody = "You have entered a high risk zone (Crown Range Road) , proceed with caution"
+        locattionnotification.regionTriggersOnce = false
+        let center = CLLocationCoordinate2DMake(37.33233141, -122.03121860)
+        //CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.03121860)
+        locattionnotification.region = CLCircularRegion(center: center, radius: 200.0, identifier: "Location1")
+        locattionnotification.alertAction = "View List"
+        print(locattionnotification)
+        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            //print("Ready to go!")
+            print("Ready to go!")
+        }
+    }
+    
     
 }
 

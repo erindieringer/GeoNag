@@ -8,68 +8,73 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegate {
+    
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     
     var currentUser:NSManagedObject?
+    var isExecutingInBackground = false
+    
+    //location variables
+    var locationManager: CLLocationManager! = nil
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let managedObjectContext = coreDataStack.managedObjectContext
-//        // Helpers
-//        var list: NSManagedObject? = nil
-//        
-//        // Fetch List Records
-//        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
-//        
-//        // Fetch Item Records
-//        let items = fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext)
-//        
-//        if let listRecord = lists.first {
-//            list = listRecord
-//        } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
-//            list = listRecord
-//        }
-//        
-//        if let list = list {
-//            if list.valueForKey("name") == nil {
-//                list.setValue("Shopping List", forKey: "name")
-//            }
-//            
-//            if list.valueForKey("dateCreated") == nil {
-//                list.setValue(NSDate(), forKey: "dateCreated")
-//            }
-//            
-//            let items = list.mutableOrderedSetValueForKey("items")
-//            
-//            // Create Item Record
-//            if let item = createRecordForEntity("Item", inManagedObjectContext: managedObjectContext) {
-//                // Set Attributes
-//                item.setValue("Item \(items.count + 1)", forKey: "text")
-//                
-//                // Set Relationship
-//                item.setValue(list, forKey: "list")
-//                
-//                // Add Item to Items
-//                items.addObject(item)
-//            }
-//            
-//        }
-//
-//
-//        
-//        do {
-//            // Save Managed Object Context
-//            try managedObjectContext.save()
-//            
-//        } catch {
-//            print ("\(error)")
-//            print("Unable to save managed object context.")
-//        }
+        //        // Helpers
+        //        var list: NSManagedObject? = nil
+        //
+        //        // Fetch List Records
+        //        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
+        //
+        //        // Fetch Item Records
+        //        let items = fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext)
+        //
+        //        if let listRecord = lists.first {
+        //            list = listRecord
+        //        } else if let listRecord = createRecordForEntity("List", inManagedObjectContext: managedObjectContext) {
+        //            list = listRecord
+        //        }
+        //
+        //        if let list = list {
+        //            if list.valueForKey("name") == nil {
+        //                list.setValue("Shopping List", forKey: "name")
+        //            }
+        //
+        //            if list.valueForKey("dateCreated") == nil {
+        //                list.setValue(NSDate(), forKey: "dateCreated")
+        //            }
+        //
+        //            let items = list.mutableOrderedSetValueForKey("items")
+        //
+        //            // Create Item Record
+        //            if let item = createRecordForEntity("Item", inManagedObjectContext: managedObjectContext) {
+        //                // Set Attributes
+        //                item.setValue("Item \(items.count + 1)", forKey: "text")
+        //
+        //                // Set Relationship
+        //                item.setValue(list, forKey: "list")
+        //
+        //                // Add Item to Items
+        //                items.addObject(item)
+        //            }
+        //
+        //        }
+        //
+        //
+        //
+        //        do {
+        //            // Save Managed Object Context
+        //            try managedObjectContext.save()
+        //
+        //        } catch {
+        //            print ("\(error)")
+        //            print("Unable to save managed object context.")
+        //        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -93,33 +98,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         return true
-
+        
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        isExecutingInBackground = true
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        isExecutingInBackground = false
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         coreDataStack.saveContext()
     }
-
+    
     // MARK: - Core Data Method for Creating Records
     
     func createRecordForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
@@ -162,6 +169,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return result
     }
-
+    
+    func locationManager(manager: CLLocationManager,
+                         didUpdateToLocation newLocation: CLLocation,
+                                             fromLocation oldLocation: CLLocation){
+        if isExecutingInBackground{
+            print("new", newLocation)
+            print("old", newLocation)
+        } else {
+            
+        }
+    }
+    //handels notifications
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        print("\(notification)")
+        if notification.region != nil {
+            print("It's a location notification!")
+        }
+    }
+    
 }
 
