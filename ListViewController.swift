@@ -69,11 +69,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(currentUser, forKey: "user")
         listEntity.setValue(NSOrderedSet(), forKey: "items")
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
+        viewModel.lists.append(listEntity as! List)
         // save entity
         appDelegate.coreDataStack.saveContext()
-//        newList.assignAttributes(appDelegate, name: name, currentUser: 2)
-        viewModel.lists.append(listEntity)
         
+    }
+    
+    func updateList(index: Int, name: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        viewModel.lists[index].name = name
+        viewModel.lists[index].dateModified = NSDate()
+
+        appDelegate.coreDataStack.saveContext()
     }
     
     override func viewDidLoad() {
@@ -107,7 +115,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         let listPredicate = NSPredicate(format:"user == %@", currentUser!)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate)
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate) as! [List]
 
     }
     
@@ -127,14 +135,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegueWithIdentifier("toDetailVC", sender: indexPath)
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.coreDataStack.managedObjectContext
+
+            context.deleteObject(viewModel.lists[indexPath.row])
+            appDelegate.coreDataStack.saveContext()
+            
+            viewModel.lists.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("will it happen?")
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
-            print("it is happening")
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
             detailVC.list = viewModel.getListForIndexPath(indexPath)
-            print("list")
             print(detailVC.list)
         }
     }
