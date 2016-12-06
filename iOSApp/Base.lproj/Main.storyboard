@@ -18,31 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="FIRST NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlf-qe-HHk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FIRST NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlf-qe-HHk">
                                 <rect key="frame" x="60" y="270" width="144" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.89048018949645902" green="0.89682943416657512" blue="0.91587716817692311" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="LAST NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-0G-flF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LAST NAME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOD-0G-flF">
                                 <rect key="frame" x="60" y="356" width="144" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.89048018949999996" green="0.89682943420000005" blue="0.91587716819999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="PHONE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-2X-JNY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PHONE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-2X-JNY">
                                 <rect key="frame" x="60" y="452" width="144" height="42"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.89048018949999996" green="0.89682943420000005" blue="0.91587716819999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="yHt-MT-o3c">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="yHt-MT-o3c">
                                 <rect key="frame" x="259" y="276" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.91648140905333109" green="0.92301604594961373" blue="0.94261995663846154" alpha="0.85808189655172418" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-kw-oOn">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-kw-oOn">
                                 <rect key="frame" x="259" y="362" width="203" height="30"/>
                                 <color key="backgroundColor" red="0.91648140909999998" green="0.92301604589999997" blue="0.94261995659999998" alpha="0.8580818966" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -65,30 +65,11 @@
                                     <action selector="saveUser:" destination="vNH-Vd-CHd" eventType="touchUpInside" id="VBE-nm-jLy"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reminder.png" translatesAutoresizingMaskIntoConstraints="NO" id="c5K-iJ-AbS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reminder.png" translatesAutoresizingMaskIntoConstraints="NO" id="c5K-iJ-AbS">
                                 <rect key="frame" x="267" y="70" width="66" height="89"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="aJo-2X-JNY" firstAttribute="top" secondItem="WOD-0G-flF" secondAttribute="bottom" constant="54" id="4a7-YF-b4L"/>
-                            <constraint firstItem="yHt-MT-o3c" firstAttribute="leading" secondItem="Gm7-9f-Dnv" secondAttribute="leading" constant="259" id="7MG-Q8-Lm0"/>
-                            <constraint firstItem="ryb-kw-oOn" firstAttribute="centerY" secondItem="WOD-0G-flF" secondAttribute="centerY" id="7XP-ne-dnI"/>
-                            <constraint firstItem="WOD-0G-flF" firstAttribute="trailing" secondItem="Zlf-qe-HHk" secondAttribute="trailing" id="889-KK-dHP"/>
-                            <constraint firstItem="WOD-0G-flF" firstAttribute="leading" secondItem="Zlf-qe-HHk" secondAttribute="leading" id="U98-jW-Fmd"/>
-                            <constraint firstItem="c5K-iJ-AbS" firstAttribute="top" secondItem="ntq-y2-rhF" secondAttribute="bottom" constant="50" id="dX4-Zr-Sty"/>
-                            <constraint firstItem="yHt-MT-o3c" firstAttribute="centerY" secondItem="Gm7-9f-Dnv" secondAttribute="centerY" id="fXb-Me-oIb"/>
-                            <constraint firstItem="c5K-iJ-AbS" firstAttribute="centerX" secondItem="Gm7-9f-Dnv" secondAttribute="centerX" id="ilm-YQ-6zm"/>
-                            <constraint firstItem="aJo-2X-JNY" firstAttribute="leading" secondItem="WOD-0G-flF" secondAttribute="leading" id="stn-rL-5Fg"/>
-                            <constraint firstItem="aJo-2X-JNY" firstAttribute="trailing" secondItem="WOD-0G-flF" secondAttribute="trailing" id="yO7-yY-9St"/>
-                            <constraint firstItem="WOD-0G-flF" firstAttribute="top" secondItem="Zlf-qe-HHk" secondAttribute="bottom" constant="44" id="yzQ-fc-ZHo"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="fXb-Me-oIb"/>
-                                <exclude reference="4a7-YF-b4L"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="firstName" destination="yHt-MT-o3c" id="2IQ-Dt-cDp"/>
@@ -117,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="-1130" y="207"/>
         </scene>
-        <!--ListViewController-->
+        <!--List View Controller-->
         <scene sceneID="7pS-Fn-dLm">
             <objects>
                 <viewController id="n7b-nS-j9o" customClass="ListViewController" customModule="iOSApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,7 +152,8 @@
                             <constraint firstItem="wpf-Pn-pxT" firstAttribute="leading" secondItem="aeF-2b-M5M" secondAttribute="leadingMargin" constant="-20" id="tOY-re-s0Y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ListViewController" id="X2q-ab-Gxh">
+                    <navigationItem key="navigationItem" id="X2q-ab-Gxh">
+                        <barButtonItem key="backBarButtonItem" title="All Reminders" id="3HQ-ME-txo"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qu8-cv-YeW">
                             <connections>
                                 <action selector="addItem:" destination="n7b-nS-j9o" id="R45-QF-89L"/>
