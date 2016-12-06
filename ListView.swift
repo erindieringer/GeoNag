@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class ListViewModel {
+class ListView {
     var lists = [List]()
     
     func numberOfRows() -> Int {
@@ -44,9 +44,9 @@ class ListViewModel {
         }
     }
     
-    func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailViewModel {
+    func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailView {
         let list = lists[indexPath.item]
-        let detailVM = ListDetailViewModel(list: list)
+        let detailVM = ListDetailView(list: list)
         return detailVM
     }
     

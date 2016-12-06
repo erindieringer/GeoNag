@@ -11,7 +11,7 @@ import CoreData
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    let viewModel = ListViewModel()
+    let viewModel = ListView()
     
     var currentUser:NSManagedObject?
     
@@ -68,6 +68,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(1, forKey: "notifications")
         listEntity.setValue(currentUser, forKey: "user")
         listEntity.setValue(NSOrderedSet(), forKey: "items")
+        listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
         viewModel.lists.append(listEntity as! List)
         // save entity
@@ -127,7 +128,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("list", forIndexPath: indexPath) as! ListsTableViewCell
         cell.textLabel?.text =  viewModel.titleForRowAtIndexPath(indexPath)
-        //cell.summary?.text = viewModel.summaryForRowAtIndexPath(indexPath)
         return cell
     }
     
@@ -152,7 +152,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
-            detailVC.list = viewModel.getListForIndexPath(indexPath)
+            detailVC.list = viewModel.getListForIndexPath(indexPath) as? List
             print(detailVC.list)
         }
     }

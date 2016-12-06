@@ -22,6 +22,6 @@ extension List {
     @NSManaged var friends: NSOrderedSet?
     @NSManaged var items: NSOrderedSet?
     @NSManaged var user: User?
-    @NSManaged var tags: NSSet?
+    @NSManaged var tags: NSOrderedSet?
 
 }
