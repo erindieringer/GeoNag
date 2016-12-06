@@ -56,7 +56,7 @@ class CurrentLocation {
             }
         }
         
-        return matchingItems
+        return self.matchingItems
     }
     
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
