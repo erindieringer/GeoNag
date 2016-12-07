@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        //locationManager.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
         //To use for real tests
         //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
@@ -203,9 +203,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let new  = newLocation
         let distanceInMeters = old.distanceFromLocation(new)
         //print(distanceInMeters)
-        if distanceInMeters > 0.0 {
-            newNotification()
-        }
+//        if distanceInMeters > 0.0 {
+//            newNotification()
+//        }
         // TO DO clear matching items in storage
         //To DO get new set of matching items based on tags in storage that allow notifications
         //newNotification()
