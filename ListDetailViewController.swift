@@ -20,9 +20,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     let locationManager = CLLocationManager()
     var location = CurrentLocation()
     
-    // For Popover view to show tags
-    let tagTransitionDelegate = TagTransitionDelegate()
-    
     @IBAction func addItem(sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Reminder",
@@ -87,10 +84,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @IBAction func addTag(sender: AnyObject) {
-        transitioningDelegate = TagTransitionDelegate()
-        let vc = AddTagViewController()
-        vc.transitioningDelegate = TagTransitionDelegate()
-        presentViewController(vc, animated: true, completion: nil)
+        print("woo")
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
