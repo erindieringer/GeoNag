@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegate {
@@ -114,6 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
        // locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+
         
         
         return true
@@ -130,6 +132,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
+        currentLocation.getCurrentLocation()
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        currentLocation.findMatchingItems("grocery", region: region)
+
+        
+        
         
     }
     
@@ -191,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
-    //does everytime the lcoation is update not changed
+    //does everytime the lcoation is update not changed DONT USE
 //    func locationManager(manager: CLLocationManager,
 //                         didUpdateToLocation newLocation: CLLocation,
 //                                             fromLocation oldLocation: CLLocation){
@@ -214,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("location change")
-        newNotification()
+        //newNotification()
     }
     
     //handels notifications

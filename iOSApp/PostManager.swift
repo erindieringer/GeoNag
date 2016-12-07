@@ -230,6 +230,55 @@ class PostManager {
         
     }
     
+    func postLocationItem(name: String, latitude: Double, longitude: Double) {
+        let string = "https://reminderappapi.herokuapp.com/locations"
+        let url = NSURL(string: string)!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        let params = [ "location":["name":name, "latitude":latitude, "longitude":longitude]]
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "POST"
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+            print(request)
+        }
+        catch {
+            
+        }
+        let tache = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if let antwort = response as? NSHTTPURLResponse {
+                let code = antwort.statusCode
+                print(code)
+            }
+        }
+        tache.resume()
+
+    
+    }
+    
+    func getLocations() -> NSArray {
+        let string = "https://reminderappapi.herokuapp.com/locations"
+        let url = NSURL(string: string)!
+        let request = NSMutableURLRequest(URL: url)
+        var items: NSArray =  []
+        request.HTTPMethod = "GET"
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url) {(data, response, error) in
+            do{
+                items = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSArray
+               
+            }
+            catch {
+                print("json error: \(error)")
+            }
+        }
+        
+        task.resume()
+        return items
+    
+        
+    }
+    
+    
     
     
 }

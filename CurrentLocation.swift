@@ -16,6 +16,7 @@ class CurrentLocation {
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
     
+    
     //intitialize to zero before calling getCurrentLocation()
     init() {
         self.latitude = 0.0
@@ -36,7 +37,7 @@ class CurrentLocation {
         }
     }
     
-    func findMatchingItems(tag: String, region: MKCoordinateRegion) -> [MKMapItem] {
+    func findMatchingItems(tag: String, region: MKCoordinateRegion) {
         // region will have to be passed in (template below)
         //      let span = MKCoordinateSpanMake(0.05, 0.05)
         //      let region = MKCoordinateRegion(center: location.coordinate, span: span)
@@ -46,18 +47,26 @@ class CurrentLocation {
         
         let search = MKLocalSearch(request: request)
         search.startWithCompletionHandler { response, _ in
+        
             guard let response = response else {
                 return
             }
-            self.matchingItems = response.mapItems
-            for item in self.matchingItems {
+            let match = response.mapItems
+            for item in match {
                 print(item)
             
             }
+//            let item = response.mapItems[0]
+//            print(item.placemark)
+
+            
+
+
         }
         
-        return self.matchingItems
     }
+    
+   
     
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     
