@@ -112,11 +112,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         //To use for real tests
-       // locationManager.startMonitoringSignificantLocationChanges()
+        //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-
-        
         return true
         
     }
@@ -131,6 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
+        locationManager.startUpdatingLocation()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -199,7 +198,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //For all tags setsearch items
             //setSearchItems()
         
-        //let maprequests = getSearchItems()
+        let maprequests = getSearchItems()
+        newNotification(maprequests as! String)
     }
     
     func setSearchItems() {
