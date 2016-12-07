@@ -192,14 +192,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
-        print("location change")
+        print("update location")
         currentLocation.getCurrentLocation()
         //deleteSearchItems()
         //For all tags setsearch items
             //setSearchItems()
         
-        let maprequests = getSearchItems()
-        newNotification(maprequests as! String)
+//        let maprequests = getSearchItems()
+//        newNotification(maprequests as! String)
+   
     }
     
     func setSearchItems() {
