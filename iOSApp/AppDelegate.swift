@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     //location variables
     var locationManager: CLLocationManager! = nil
+    var currentLocation = CurrentLocation()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -101,6 +102,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
+        //LOCATION INIT
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        //To use for real tests
+        //locationManager.startMonitoringSignificantLocationChanges()
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        
         return true
         
     }
@@ -114,6 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
+        print("background")
+        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -174,23 +191,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
+    //does everytime the lcoation is update not changed
     func locationManager(manager: CLLocationManager,
                          didUpdateToLocation newLocation: CLLocation,
                                              fromLocation oldLocation: CLLocation){
-        if isExecutingInBackground{
-            print("new", newLocation)
-            print("old", newLocation)
-        } else {
-            
-        }
+        print("location change")
+        currentLocation.getCurrentLocation()
+        //print(locationManager.location)
+        ///check to see if you've move significantly
+        let old = oldLocation
+        let new  = newLocation
+        let distanceInMeters = old.distanceFromLocation(new)
+        //print(distanceInMeters)
+//        if distanceInMeters > 0.0 {
+//            newNotification()
+//        }
+        // TO DO clear matching items in storage
+        //To DO get new set of matching items based on tags in storage that allow notifications
+        //newNotification()
     }
+    
+//    //
+//    func locationManager(manager: CLLocationManager, didUpdateTo: CLLocation, from: CLLocation) {
+//        print("location change")
+//        currentLocation.getCurrentLocation()
+//        print(locationManager.location!.coordinate)
+//        //        // TO DO clear matching items in storage
+//        //        //To DO get new set of matching items based on tags in storage that allow notifications
+//        newNotification()
+//        
+//    }
+    
     //handels notifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("\(notification)")
-        if notification.region != nil {
-            print("It's a location notification!")
+        print("notification sent")
+    }
+    //from view controller
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            print("Ready to go!")
         }
     }
+    
+    func newNotification () {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        cancelNotifications()
+        print("notif here")
+        let locattionnotification = UILocalNotification()
+        locattionnotification.alertBody = "You have changed location to \(currentLocation.latitude), \(currentLocation.longitude)"
+        locattionnotification.alertAction = "View List"
+        //print(locattionnotification)
+        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
+    }
+    
+    //cancels all notificaitons so that new ones can be stored
+    func cancelNotifications () {
+        let app:UIApplication = UIApplication.sharedApplication()
+        for oneEvent in app.scheduledLocalNotifications! {
+            let notification = oneEvent as UILocalNotification
+            app.cancelLocalNotification(notification)
+            }
+    }
+    
     
 }
 

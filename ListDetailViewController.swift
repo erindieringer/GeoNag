@@ -97,8 +97,8 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         //on
         if detailViewModel!.reminderList.notifications == false {
             detailViewModel!.reminderList.notifications = true
-            location.getCurrentLocation()
-            locationNotification()
+//            location.getCurrentLocation()
+//            locationNotification()
         }
             //off
         else {
@@ -112,10 +112,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+//        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -196,12 +196,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedWhenInUse {
-            //print("Ready to go!")
-            print("Ready to go!")
-        }
-    }
     
     
 }
