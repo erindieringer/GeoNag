@@ -12,6 +12,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     var tagView = TagView()
     var tags:[Tag]?
+    var listModel:ListDetailView?
     
 //    var selectedPhotos = [FlickrPhoto]()
 //    let shareTextLabel = UILabel()
@@ -61,9 +62,19 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         // handle tap events
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == true {
-            cell?.backgroundColor = UIColor.orangeColor()
+            let tag = tags![indexPath.item]
+            let currTagsForList = listModel?.getTags()
+            if (currTagsForList?.contains(tag) == true) {
+                cell?.backgroundColor = UIColor.magentaColor()
+                listModel?.deleteTag(tag)
+            } else {
+                cell?.backgroundColor = UIColor.orangeColor()
+                listModel?.addTag(tag)
+            }
+            print("listmoelthing")
+            print(listModel?.getTags())
         } else {
-            cell?.backgroundColor = UIColor.clearColor()
+            cell?.backgroundColor = UIColor.blueColor()
         }
     }
     
