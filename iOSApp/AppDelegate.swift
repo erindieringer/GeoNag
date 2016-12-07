@@ -132,12 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
-        currentLocation.getCurrentLocation()
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
-        ///use tags usually, will want to go through tags and then search for all tags
-        currentLocation.findMatchingItems("grocery", region: region)
-        
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -198,30 +192,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
-    //does everytime the lcoation is update not changed DONT USE
-//    func locationManager(manager: CLLocationManager,
-//                         didUpdateToLocation newLocation: CLLocation,
-//                                             fromLocation oldLocation: CLLocation){
-//        print("location change")
-//        currentLocation.getCurrentLocation()
-//        //print(locationManager.location)
-//        ///check to see if you've move significantly
-//        let old = oldLocation
-//        let new  = newLocation
-//        let distanceInMeters = old.distanceFromLocation(new)
-//        //print(distanceInMeters)
-////        if distanceInMeters > 0.0 {
-////            newNotification()
-////        }
-//        // TO DO clear matching items in storage
-//        //To DO get new set of matching items based on tags in storage that allow notifications
-//        //newNotification()
-//    }
-    
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("location change")
-        //newNotification()
+        currentLocation.getCurrentLocation()
+        //setSearchItems()
+        //let maprequests = getSearchItems()
+    }
+    
+    func setSearchItems() {
+        print("set search")
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        //TO DO: get all tags and loop through based on this
+        //use tags usually, will want to go through tags and then search for all tags
+        currentLocation.findMatchingItems("apparel", region: region)
+    }
+    
+    // Will return list
+    func getSearchItems() -> AnyObject {
+        let managedObjectContext = coreDataStack.managedObjectContext
+        let item = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        return item.first!.valueForKey("name")!
+    }
+    
+    //Delete all search items from coredata to prepare for setting new ones
+    func deleteSearchItems() {
+        let fetchRequest = NSFetchRequest(entityName: "SearchItem")
+        let managedObjectContext = coreDataStack.managedObjectContext
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.executeRequest(batchDeleteRequest)
+            
+        } catch {
+            print("error batch delete")
+        }
+        
     }
     
     //handels notifications
@@ -235,12 +243,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
-    func newNotification () {
+    func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         cancelNotifications()
         print("notif here")
         let locattionnotification = UILocalNotification()
-        locattionnotification.alertBody = "You have changed location to \(locationManager.location)"
+        locattionnotification.alertBody = " \(name) is nearby!"
         locattionnotification.alertAction = "View List"
         //print(locattionnotification)
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
@@ -254,6 +262,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             app.cancelLocalNotification(notification)
             }
     }
+
     
     
 }

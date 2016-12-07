@@ -52,22 +52,27 @@ class CurrentLocation {
                 return
             }
             let match = response.mapItems
-            for item in match {
-                print(item)
             
-            }
-//            let item = response.mapItems[0]
-//            print(item.placemark)
+            let item = match[0]
 
-            
-
-
-        }
+           //set item to coreData searchItem
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+            let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
         
+            // Set values for new SearchItem
+        
+            newItem.setValue(item.name, forKey: "name")
+            newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
+            newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
+            appDelegate.coreDataStack.saveContext()
+        
+        }
+    
     }
-    
-   
-    
+
+
+
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     
     func getPlistUserLocation () {
