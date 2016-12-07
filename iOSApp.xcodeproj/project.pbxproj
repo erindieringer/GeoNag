@@ -30,6 +30,7 @@
 		599088D11DDF82D20090A137 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D01DDF82D20090A137 /* ListDetailView.swift */; };
 		59AE8D761DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */; };
 		59AE8D771DF7D38100EB8B76 /* SearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE8D751DF7D38100EB8B76 /* SearchItem.swift */; };
+		59AE8D7C1DF7D68400EB8B76 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE8D7B1DF7D68400EB8B76 /* TagView.swift */; };
 		59B4300A1DECC764009F615E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B42FFE1DECC764009F615E /* Tag.swift */; };
 		59B4300C1DECC764009F615E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430001DECC764009F615E /* Item.swift */; };
 		59B4300E1DECC764009F615E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430021DECC764009F615E /* Friend.swift */; };
@@ -95,6 +96,7 @@
 		599088D01DDF82D20090A137 /* ListDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SearchItem+CoreDataProperties.swift"; path = "../SearchItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59AE8D751DF7D38100EB8B76 /* SearchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItem.swift; path = ../SearchItem.swift; sourceTree = "<group>"; };
+		59AE8D7B1DF7D68400EB8B76 /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		59B42FFE1DECC764009F615E /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = ../Tag.swift; sourceTree = "<group>"; };
 		59B430001DECC764009F615E /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		59B430021DECC764009F615E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = ../Friend.swift; sourceTree = "<group>"; };
@@ -193,35 +195,44 @@
 			path = iOSAppUITests;
 			sourceTree = "<group>";
 		};
-		599088C81DDF820B0090A137 /* ViewModels */ = {
+		59AE8D781DF7D5D900EB8B76 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
-				599088CE1DDF82C10090A137 /* ListView.swift */,
-				599088D01DDF82D20090A137 /* ListDetailView.swift */,
+				59826B6E1DF7CCEE002CE785 /* TagViewController.swift */,
+				59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */,
+				59AE8D7B1DF7D68400EB8B76 /* TagView.swift */,
 			);
-			name = ViewModels;
+			name = Tags;
 			sourceTree = "<group>";
 		};
-		599088C91DDF82120090A137 /* ViewControllers */ = {
+		59AE8D791DF7D5F000EB8B76 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
+				59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */,
+				59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */,
 				599088CA1DDF82460090A137 /* ListViewController.swift */,
-				599088CC1DDF82580090A137 /* ListDetailViewController.swift */,
-				59B430461DF0FE30009F615E /* NewUserViewController.swift */,
-				59826B6E1DF7CCEE002CE785 /* TagViewController.swift */,
+				599088CE1DDF82C10090A137 /* ListView.swift */,
 			);
-			name = ViewControllers;
+			name = Lists;
+			sourceTree = "<group>";
+		};
+		59AE8D7A1DF7D61A00EB8B76 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */,
+				599088CC1DDF82580090A137 /* ListDetailViewController.swift */,
+				599088D01DDF82D20090A137 /* ListDetailView.swift */,
+			);
+			name = Items;
 			sourceTree = "<group>";
 		};
 		59B42FE41DECC63A009F615E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				59B4303B1DED3CAC009F615E /* ListsTableViewCell.swift */,
-				59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */,
-				599088C81DDF820B0090A137 /* ViewModels */,
-				599088C91DDF82120090A137 /* ViewControllers */,
-				596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */,
-				59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */,
+				59B430461DF0FE30009F615E /* NewUserViewController.swift */,
+				59AE8D791DF7D5F000EB8B76 /* Lists */,
+				59AE8D7A1DF7D61A00EB8B76 /* Items */,
+				59AE8D781DF7D5D900EB8B76 /* Tags */,
 			);
 			name = Views;
 			path = ..;
@@ -417,6 +428,7 @@
 				59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */,
 				595A0F481DDF7F1F00A68502 /* iOSApp.xcdatamodeld in Sources */,
 				59B430101DECC764009F615E /* List.swift in Sources */,
+				59AE8D7C1DF7D68400EB8B76 /* TagView.swift in Sources */,
 				59B4300C1DECC764009F615E /* Item.swift in Sources */,
 				59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */,
 				59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */,

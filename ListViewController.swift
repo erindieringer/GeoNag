@@ -152,8 +152,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
-            detailVC.list = viewModel.getListForIndexPath(indexPath) as? List
-            print(detailVC.list)
+            detailVC.detailViewModel!.reminderList = (viewModel.getListForIndexPath(indexPath) as? List)!
         }
     }
     

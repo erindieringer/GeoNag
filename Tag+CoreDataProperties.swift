@@ -16,6 +16,6 @@ extension Tag {
 
     @NSManaged var name: String?
     @NSManaged var locations: NSOrderedSet?
-    @NSManaged var lists: List?
+    @NSManaged var lists: NSOrderedSet?
 
 }

@@ -27,6 +27,22 @@ class ListDetailView {
         return ["KW", "ED"]
     }
     
+    func getTags() -> [Tag] {
+        return reminderList.tags!.array as! [Tag]
+    }
+    
+    func addTag(tag:Tag) {
+        let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
+        mutableList.addObject(tag)
+        reminderList.tags = mutableList.copy() as? NSOrderedSet
+    }
+    
+    func deleteTag(tag:Tag) {
+        let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
+        mutableList.removeObject(tag)
+        reminderList.tags = mutableList.copy() as? NSOrderedSet
+    }
+    
     func getReminderItems() -> [Item] {
         // if there is a problem with this, loop through the NSOrdered Set and recreate Item Objects
         return reminderList.items!.array as! [Item]

@@ -14,7 +14,6 @@ import CoreLocation
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
     
     var detailViewModel:ListDetailView?
-    var list:List?
     
     // Set up location details
     let locationManager = CLLocationManager()
@@ -63,7 +62,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         let itemEntity = (appDelegate.createRecordForEntity("Item", inManagedObjectContext: managedContext))!
         // set values of new list entity
         itemEntity.setValue(text, forKey: "text")
-        itemEntity.setValue((list! as NSManagedObject), forKey: "list")
+        itemEntity.setValue((detailViewModel!.reminderList as NSManagedObject), forKey: "list")
         
         detailViewModel!.items.append( itemEntity as! Item )
         print("items after append")
@@ -77,7 +76,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         detailViewModel!.items[index].text = text
-        list!.dateModified = NSDate()
+        detailViewModel!.reminderList.dateModified = NSDate()
         
         appDelegate.coreDataStack.saveContext()
     }
@@ -184,6 +183,12 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let tagVC = segue.destinationViewController as? TagViewController {
+            tagVC.listModel = detailViewModel
+        }
+    }
     
     
 }
