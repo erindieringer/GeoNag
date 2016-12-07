@@ -16,6 +16,7 @@ class CurrentLocation {
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
     
+    
     //intitialize to zero before calling getCurrentLocation()
     init() {
         self.latitude = 0.0
@@ -36,7 +37,7 @@ class CurrentLocation {
         }
     }
     
-    func findMatchingItems(tag: String, region: MKCoordinateRegion) -> [MKMapItem] {
+    func findMatchingItems(tag: String, region: MKCoordinateRegion) {
         // region will have to be passed in (template below)
         //      let span = MKCoordinateSpanMake(0.05, 0.05)
         //      let region = MKCoordinateRegion(center: location.coordinate, span: span)
@@ -46,19 +47,32 @@ class CurrentLocation {
         
         let search = MKLocalSearch(request: request)
         search.startWithCompletionHandler { response, _ in
+        
             guard let response = response else {
                 return
             }
-            self.matchingItems = response.mapItems
-            for item in self.matchingItems {
-                print(item)
+            let match = response.mapItems
             
-            }
-        }
+            let item = match[0]
+
+           //set item to coreData searchItem
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+            let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
         
-        return matchingItems
-    }
+            // Set values for new SearchItem
+        
+            newItem.setValue(item.name, forKey: "name")
+            newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
+            newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
+            appDelegate.coreDataStack.saveContext()
+        
+        }
     
+    }
+
+
+
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     
     func getPlistUserLocation () {

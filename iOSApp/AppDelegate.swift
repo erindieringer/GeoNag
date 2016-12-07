@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     //location variables
     var locationManager: CLLocationManager! = nil
+    var currentLocation = CurrentLocation()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -51,6 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
+        //LOCATION INIT
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        //To use for real tests
+       // locationManager.startMonitoringSignificantLocationChanges()
+        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+
+
         
         return true
         
@@ -65,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
+        print("background")
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -125,23 +142,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
-    func locationManager(manager: CLLocationManager,
-                         didUpdateToLocation newLocation: CLLocation,
-                                             fromLocation oldLocation: CLLocation){
-        if isExecutingInBackground{
-            print("new", newLocation)
-            print("old", newLocation)
-        } else {
-            
-        }
+    func locationManager( manager: CLLocationManager,
+                                    didUpdateLocations locations: [CLLocation]){
+        print("location change")
+        currentLocation.getCurrentLocation()
+        //deleteSearchItems()
+        //For all tags setsearch items
+            //setSearchItems()
+        
+        //let maprequests = getSearchItems()
     }
+    
+    func setSearchItems() {
+        print("set search")
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        
+        //TO DO: get all tags and loop through based on this
+        //use tags usually, will want to go through tags and then search for all tags
+        currentLocation.findMatchingItems("apparel", region: region)
+    }
+    
+    // Will return list
+    func getSearchItems() -> AnyObject {
+        let managedObjectContext = coreDataStack.managedObjectContext
+        let item = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        return item.first!.valueForKey("name")!
+    }
+    
+    //Delete all search items from coredata to prepare for setting new ones
+    func deleteSearchItems() {
+        let fetchRequest = NSFetchRequest(entityName: "SearchItem")
+        let managedObjectContext = coreDataStack.managedObjectContext
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.executeRequest(batchDeleteRequest)
+            
+        } catch {
+            print("error batch delete")
+        }
+        
+    }
+    
     //handels notifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("\(notification)")
-        if notification.region != nil {
-            print("It's a location notification!")
+        print("notification sent")
+    }
+    //from view controller
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            print("Ready to go!")
         }
     }
+    
+    func newNotification (name: String) {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        cancelNotifications()
+        print("notif here")
+        let locattionnotification = UILocalNotification()
+        locattionnotification.alertBody = " \(name) is nearby!"
+        locattionnotification.alertAction = "View List"
+        //print(locattionnotification)
+        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
+    }
+    
+    //cancels all notificaitons so that new ones can be stored
+    func cancelNotifications () {
+        let app:UIApplication = UIApplication.sharedApplication()
+        for oneEvent in app.scheduledLocalNotifications! {
+            let notification = oneEvent as UILocalNotification
+            app.cancelLocalNotification(notification)
+            }
+    }
+
+    
     
 }
 
