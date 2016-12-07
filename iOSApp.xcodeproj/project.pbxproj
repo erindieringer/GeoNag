@@ -15,7 +15,6 @@
 		595A0F581DDF7F2000A68502 /* iOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F571DDF7F2000A68502 /* iOSAppTests.swift */; };
 		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
 		59674FB11DF6833500172F97 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59674FB01DF6833500172F97 /* ContactManager.swift */; };
-		596D2E5D1DF1441F00089476 /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */; };
 		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
 		59826B571DF72F1F002CE785 /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B561DF72F1F002CE785 /* PListManager.swift */; };
@@ -23,14 +22,14 @@
 		59826B5C1DF72F8C002CE785 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */; };
 		59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */; };
 		59826B5F1DF77841002CE785 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = 59826B5E1DF77841002CE785 /* card.png */; };
-		59826B611DF790A1002CE785 /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B601DF790A1002CE785 /* AddTagViewController.swift */; };
-		59826B631DF7917D002CE785 /* TagPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B621DF7917D002CE785 /* TagPresentationController.swift */; };
-		59826B651DF79224002CE785 /* TagAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B641DF79224002CE785 /* TagAnimatedTransition.swift */; };
-		59826B671DF79263002CE785 /* TagTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B661DF79263002CE785 /* TagTransitionDelegate.swift */; };
+		59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */; };
+		59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B6E1DF7CCEE002CE785 /* TagViewController.swift */; };
 		599088CB1DDF82460090A137 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CA1DDF82460090A137 /* ListViewController.swift */; };
 		599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CC1DDF82580090A137 /* ListDetailViewController.swift */; };
 		599088CF1DDF82C10090A137 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CE1DDF82C10090A137 /* ListView.swift */; };
 		599088D11DDF82D20090A137 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088D01DDF82D20090A137 /* ListDetailView.swift */; };
+		59AE8D761DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */; };
+		59AE8D771DF7D38100EB8B76 /* SearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE8D751DF7D38100EB8B76 /* SearchItem.swift */; };
 		59B4300A1DECC764009F615E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B42FFE1DECC764009F615E /* Tag.swift */; };
 		59B4300C1DECC764009F615E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430001DECC764009F615E /* Item.swift */; };
 		59B4300E1DECC764009F615E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430021DECC764009F615E /* Friend.swift */; };
@@ -81,7 +80,6 @@
 		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59674FB01DF6833500172F97 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
-		596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
 		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
 		59826B561DF72F1F002CE785 /* PListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
@@ -89,14 +87,14 @@
 		59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "../Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "List+CoreDataProperties.swift"; path = "../List+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59826B5E1DF77841002CE785 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
-		59826B601DF790A1002CE785 /* AddTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
-		59826B621DF7917D002CE785 /* TagPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPresentationController.swift; sourceTree = "<group>"; };
-		59826B641DF79224002CE785 /* TagAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAnimatedTransition.swift; sourceTree = "<group>"; };
-		59826B661DF79263002CE785 /* TagTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTransitionDelegate.swift; sourceTree = "<group>"; };
+		59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		59826B6E1DF7CCEE002CE785 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		599088CA1DDF82460090A137 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		599088CC1DDF82580090A137 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		599088CE1DDF82C10090A137 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		599088D01DDF82D20090A137 /* ListDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
+		59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SearchItem+CoreDataProperties.swift"; path = "../SearchItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		59AE8D751DF7D38100EB8B76 /* SearchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchItem.swift; path = ../SearchItem.swift; sourceTree = "<group>"; };
 		59B42FFE1DECC764009F615E /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = ../Tag.swift; sourceTree = "<group>"; };
 		59B430001DECC764009F615E /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		59B430021DECC764009F615E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = ../Friend.swift; sourceTree = "<group>"; };
@@ -210,10 +208,7 @@
 				599088CA1DDF82460090A137 /* ListViewController.swift */,
 				599088CC1DDF82580090A137 /* ListDetailViewController.swift */,
 				59B430461DF0FE30009F615E /* NewUserViewController.swift */,
-				59826B601DF790A1002CE785 /* AddTagViewController.swift */,
-				59826B621DF7917D002CE785 /* TagPresentationController.swift */,
-				59826B641DF79224002CE785 /* TagAnimatedTransition.swift */,
-				59826B661DF79263002CE785 /* TagTransitionDelegate.swift */,
+				59826B6E1DF7CCEE002CE785 /* TagViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -225,8 +220,8 @@
 				59B4303C1DED3CAC009F615E /* ListsTableViewCell.xib */,
 				599088C81DDF820B0090A137 /* ViewModels */,
 				599088C91DDF82120090A137 /* ViewControllers */,
-				596D2E5B1DF1441F00089476 /* DetailListTableViewCell.swift */,
 				596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */,
+				59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */,
 			);
 			name = Views;
 			path = ..;
@@ -235,6 +230,7 @@
 		59B430151DECC769009F615E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				59AE8D751DF7D38100EB8B76 /* SearchItem.swift */,
 				59674FB01DF6833500172F97 /* ContactManager.swift */,
 				59B42FFE1DECC764009F615E /* Tag.swift */,
 				59B430001DECC764009F615E /* Item.swift */,
@@ -251,6 +247,7 @@
 		59B430161DECC783009F615E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */,
 				59826B581DF72F8C002CE785 /* Item+CoreDataProperties.swift */,
 				59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */,
 				59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */,
@@ -414,15 +411,15 @@
 				595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */,
 				8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */,
 				599088CB1DDF82460090A137 /* ListViewController.swift in Sources */,
-				59826B651DF79224002CE785 /* TagAnimatedTransition.swift in Sources */,
-				59826B611DF790A1002CE785 /* AddTagViewController.swift in Sources */,
 				59B430121DECC764009F615E /* User.swift in Sources */,
+				59AE8D761DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift in Sources */,
 				59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */,
 				59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */,
 				595A0F481DDF7F1F00A68502 /* iOSApp.xcdatamodeld in Sources */,
-				596D2E5D1DF1441F00089476 /* DetailListTableViewCell.swift in Sources */,
 				59B430101DECC764009F615E /* List.swift in Sources */,
 				59B4300C1DECC764009F615E /* Item.swift in Sources */,
+				59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */,
+				59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */,
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
 				59826B5B1DF72F8C002CE785 /* Item+CoreDataProperties.swift in Sources */,
 				59B4300A1DECC764009F615E /* Tag.swift in Sources */,
@@ -431,13 +428,12 @@
 				59B4302F1DECF501009F615E /* Location+CoreDataProperties.swift in Sources */,
 				59826B571DF72F1F002CE785 /* PListManager.swift in Sources */,
 				59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */,
+				59AE8D771DF7D38100EB8B76 /* SearchItem.swift in Sources */,
 				59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */,
 				59674FB11DF6833500172F97 /* ContactManager.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
-				59826B671DF79263002CE785 /* TagTransitionDelegate.swift in Sources */,
 				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
-				59826B631DF7917D002CE785 /* TagPresentationController.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
