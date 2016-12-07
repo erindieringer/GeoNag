@@ -135,10 +135,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         currentLocation.getCurrentLocation()
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        ///use tags usually, will want to go through tags and then search for all tags
         currentLocation.findMatchingItems("grocery", region: region)
-
-        
-        
         
     }
     
