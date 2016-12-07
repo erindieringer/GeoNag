@@ -117,7 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
 
         
-        
         return true
         
     }
@@ -196,7 +195,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                                     didUpdateLocations locations: [CLLocation]){
         print("location change")
         currentLocation.getCurrentLocation()
-        //setSearchItems()
+        //deleteSearchItems()
+        //For all tags setsearch items
+            //setSearchItems()
+        
         //let maprequests = getSearchItems()
     }
     
@@ -204,6 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         print("set search")
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
+        
         //TO DO: get all tags and loop through based on this
         //use tags usually, will want to go through tags and then search for all tags
         currentLocation.findMatchingItems("apparel", region: region)
