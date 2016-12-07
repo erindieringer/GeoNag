@@ -20,6 +20,9 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     let locationManager = CLLocationManager()
     var location = CurrentLocation()
     
+    // For Popover view to show tags
+    let tagTransitionDelegate = TagTransitionDelegate()
+    
     @IBAction func addItem(sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Reminder",
@@ -65,8 +68,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         itemEntity.setValue(text, forKey: "text")
         itemEntity.setValue((list! as NSManagedObject), forKey: "list")
         
-//        let itemPredicate = NSPredicate(format:"list == %@", list!)
-//        let items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedContext, predicate: itemPredicate)
         detailViewModel!.items.append( itemEntity as! Item )
         print("items after append")
         print(detailViewModel!.items)
@@ -77,10 +78,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func updateItem(index: Int, text: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        print("items")
-        print(detailViewModel!.items)
-        print("index")
-        print(index)
         
         detailViewModel!.items[index].text = text
         list!.dateModified = NSDate()
@@ -88,6 +85,13 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         appDelegate.coreDataStack.saveContext()
     }
     
+    
+    @IBAction func addTag(sender: AnyObject) {
+        transitioningDelegate = TagTransitionDelegate()
+        let vc = AddTagViewController()
+        vc.transitioningDelegate = TagTransitionDelegate()
+        presentViewController(vc, animated: true, completion: nil)
+    }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         //TO DO: delete from API
@@ -152,10 +156,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("now: ")
-        print(indexPath.row)
-        print("items")
-        print(detailViewModel!.items)
         
         // deselect row clicked
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

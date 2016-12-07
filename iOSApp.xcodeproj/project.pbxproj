@@ -22,6 +22,11 @@
 		59826B5B1DF72F8C002CE785 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B581DF72F8C002CE785 /* Item+CoreDataProperties.swift */; };
 		59826B5C1DF72F8C002CE785 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */; };
 		59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */; };
+		59826B5F1DF77841002CE785 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = 59826B5E1DF77841002CE785 /* card.png */; };
+		59826B611DF790A1002CE785 /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B601DF790A1002CE785 /* AddTagViewController.swift */; };
+		59826B631DF7917D002CE785 /* TagPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B621DF7917D002CE785 /* TagPresentationController.swift */; };
+		59826B651DF79224002CE785 /* TagAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B641DF79224002CE785 /* TagAnimatedTransition.swift */; };
+		59826B671DF79263002CE785 /* TagTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B661DF79263002CE785 /* TagTransitionDelegate.swift */; };
 		599088CB1DDF82460090A137 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CA1DDF82460090A137 /* ListViewController.swift */; };
 		599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CC1DDF82580090A137 /* ListDetailViewController.swift */; };
 		599088CF1DDF82C10090A137 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599088CE1DDF82C10090A137 /* ListView.swift */; };
@@ -83,6 +88,11 @@
 		59826B581DF72F8C002CE785 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "../Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "List+CoreDataProperties.swift"; path = "../List+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		59826B5E1DF77841002CE785 /* card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card.png; sourceTree = "<group>"; };
+		59826B601DF790A1002CE785 /* AddTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
+		59826B621DF7917D002CE785 /* TagPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagPresentationController.swift; sourceTree = "<group>"; };
+		59826B641DF79224002CE785 /* TagAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagAnimatedTransition.swift; sourceTree = "<group>"; };
+		59826B661DF79263002CE785 /* TagTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTransitionDelegate.swift; sourceTree = "<group>"; };
 		599088CA1DDF82460090A137 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		599088CC1DDF82580090A137 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		599088CE1DDF82C10090A137 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -200,6 +210,10 @@
 				599088CA1DDF82460090A137 /* ListViewController.swift */,
 				599088CC1DDF82580090A137 /* ListDetailViewController.swift */,
 				59B430461DF0FE30009F615E /* NewUserViewController.swift */,
+				59826B601DF790A1002CE785 /* AddTagViewController.swift */,
+				59826B621DF7917D002CE785 /* TagPresentationController.swift */,
+				59826B641DF79224002CE785 /* TagAnimatedTransition.swift */,
+				59826B661DF79263002CE785 /* TagTransitionDelegate.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -253,6 +267,7 @@
 		59B4303F1DEDF664009F615E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				59826B5E1DF77841002CE785 /* card.png */,
 				59B430401DEDF677009F615E /* reminder.png */,
 			);
 			name = Images;
@@ -367,6 +382,7 @@
 				595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */,
 				59B4303E1DED3CAC009F615E /* ListsTableViewCell.xib in Resources */,
 				595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */,
+				59826B5F1DF77841002CE785 /* card.png in Resources */,
 				59B430411DEDF677009F615E /* reminder.png in Resources */,
 				595A0F451DDF7F1F00A68502 /* Main.storyboard in Resources */,
 			);
@@ -398,6 +414,8 @@
 				595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */,
 				8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */,
 				599088CB1DDF82460090A137 /* ListViewController.swift in Sources */,
+				59826B651DF79224002CE785 /* TagAnimatedTransition.swift in Sources */,
+				59826B611DF790A1002CE785 /* AddTagViewController.swift in Sources */,
 				59B430121DECC764009F615E /* User.swift in Sources */,
 				59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */,
 				59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */,
@@ -417,7 +435,9 @@
 				59674FB11DF6833500172F97 /* ContactManager.swift in Sources */,
 				59B4302E1DECF501009F615E /* Friend+CoreDataProperties.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
+				59826B671DF79263002CE785 /* TagTransitionDelegate.swift in Sources */,
 				80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */,
+				59826B631DF7917D002CE785 /* TagPresentationController.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
