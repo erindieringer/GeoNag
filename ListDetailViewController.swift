@@ -97,8 +97,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         //on
         if detailViewModel!.reminderList.notifications == false {
             detailViewModel!.reminderList.notifications = true
-//            location.getCurrentLocation()
-//            locationNotification()
         }
             //off
         else {
@@ -111,11 +109,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
+
     }
     
     override func viewWillAppear(animated: Bool) {
