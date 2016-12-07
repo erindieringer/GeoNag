@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         //To use for real tests
-        //locationManager.startMonitoringSignificantLocationChanges()
+       // locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
@@ -192,35 +192,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     }
     
     //does everytime the lcoation is update not changed
-    func locationManager(manager: CLLocationManager,
-                         didUpdateToLocation newLocation: CLLocation,
-                                             fromLocation oldLocation: CLLocation){
-        print("location change")
-        currentLocation.getCurrentLocation()
-        //print(locationManager.location)
-        ///check to see if you've move significantly
-        let old = oldLocation
-        let new  = newLocation
-        let distanceInMeters = old.distanceFromLocation(new)
-        //print(distanceInMeters)
-//        if distanceInMeters > 0.0 {
-//            newNotification()
-//        }
-        // TO DO clear matching items in storage
-        //To DO get new set of matching items based on tags in storage that allow notifications
-        //newNotification()
-    }
-    
-//    //
-//    func locationManager(manager: CLLocationManager, didUpdateTo: CLLocation, from: CLLocation) {
+//    func locationManager(manager: CLLocationManager,
+//                         didUpdateToLocation newLocation: CLLocation,
+//                                             fromLocation oldLocation: CLLocation){
 //        print("location change")
 //        currentLocation.getCurrentLocation()
-//        print(locationManager.location!.coordinate)
-//        //        // TO DO clear matching items in storage
-//        //        //To DO get new set of matching items based on tags in storage that allow notifications
-//        newNotification()
-//        
+//        //print(locationManager.location)
+//        ///check to see if you've move significantly
+//        let old = oldLocation
+//        let new  = newLocation
+//        let distanceInMeters = old.distanceFromLocation(new)
+//        //print(distanceInMeters)
+////        if distanceInMeters > 0.0 {
+////            newNotification()
+////        }
+//        // TO DO clear matching items in storage
+//        //To DO get new set of matching items based on tags in storage that allow notifications
+//        //newNotification()
 //    }
+    
+    func locationManager( manager: CLLocationManager,
+                                    didUpdateLocations locations: [CLLocation]){
+        print("location change")
+        newNotification()
+    }
     
     //handels notifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -238,7 +233,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         cancelNotifications()
         print("notif here")
         let locattionnotification = UILocalNotification()
-        locattionnotification.alertBody = "You have changed location to \(currentLocation.latitude), \(currentLocation.longitude)"
+        locattionnotification.alertBody = "You have changed location to \(locationManager.location)"
         locattionnotification.alertAction = "View List"
         //print(locattionnotification)
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
