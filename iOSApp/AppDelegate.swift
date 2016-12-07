@@ -129,7 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
-        locationManager.startUpdatingLocation()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -199,11 +198,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             //setSearchItems()
         
 //        let maprequests = getSearchItems()
+//         cancelNotifications ()
 //        newNotification(maprequests as! String)
    
     }
     
-    func setSearchItems() {
+    func setSearchItems(tag: String) {
         print("set search")
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
