@@ -75,16 +75,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //LOCATION INIT
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        locationManager.distanceFilter = kCLDistanceFilterNone
+        //locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.distanceFilter = 1000
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = true
         //To use for real tests
         //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         currentLocation.getCurrentLocation()
+        currentLocation.savePlistUserLocation()
         return true
         
     }
@@ -100,12 +103,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
-        currentLocation.getCurrentLocation()
+
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         isExecutingInBackground = false
+
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -214,24 +218,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("update location")
-        print(currentLocation.longitude, currentLocation.latitude)
-//        deleteSearchItems()
-        //Get all tag names in use
-//        let tags = getListTags()
-//        //get mapkit search for tag string name
-//        for tag in tags {
-//            setSearchItems(tag)
-//        }
-//   
-//       let tagSearchItems = getSearchItems()
-//        mapSearchItems = tagSearchItems
-//        print(tagSearchItems.count)
-//        if (tagSearchItems.count > 0){
-//        // put logic to find closest.. for now do top
-//            //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-//            let closest = findClosestItem(tagSearchItems)
-//            newNotification(closest)
-//        }
+        //currentLocation.getPlistUserLocation()
+        //print(currentLocation.longitude, currentLocation.latitude)
+        let loc = locations.last!
+        let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
+        if (distance > 1000.0){
+            print("update SIGNIFICANT location")
+            deleteSearchItems()
+            //Get all tag names in use
+            let tags = getListTags()
+            //get mapkit search for tag string name
+            for tag in tags {
+                setSearchItems(tag)
+            }
+   
+            let tagSearchItems = getSearchItems()
+            mapSearchItems = tagSearchItems
+            print(tagSearchItems.count)
+            if (tagSearchItems.count > 0){
+                // put logic to find closest.. for now do top
+                //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+                let closest = findClosestItem(tagSearchItems)
+                newNotification(closest)
+            }
+            //now reset currentLocatoin and save
+            currentLocation.latitude = loc.coordinate.latitude
+            currentLocation.longitude = loc.coordinate.longitude
+            currentLocation.savePlistUserLocation()
+        }
    
     }
     
