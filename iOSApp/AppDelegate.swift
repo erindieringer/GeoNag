@@ -51,6 +51,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
         self.window?.makeKeyAndVisible()
         
+        // Initialize default list of tags
+        if tagView.tagsExist() == false {
+            let tags = tagView.createAllTags()
+            tagView.tags = tags
+        } else {
+            
+            let tagPredicate = NSPredicate(format:"lists.@count > 0")
+            print("predicate")
+            let tags = tagView.fetchAllTags(tagPredicate)!
+            tagView.tags = tags
+        }
+        print("TAGS")
+        print(tagView.tags)
+        
+        
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
@@ -66,12 +81,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-
         
         getListTags()
         return true
         
     }
+    
+//    func getTagsSize() {
+//        let tags = tagView.fetchAllTags()
+//        for tag in tags! {
+//            print(tag.valueForKey("lists")?count)
+//        }
+//    }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

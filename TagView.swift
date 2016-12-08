@@ -41,14 +41,23 @@ class TagView {
         return tags
     }
     
-    func fetchAllTags() -> [Tag]?{
+    func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
-        let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext) as! [Tag]
+        let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext, predicate: predicate) as! [Tag]
         
         return allTags
+    }
+    
+    func tagsExist() -> Bool {
+        let tags = fetchAllTags()
+        if tags?.count > 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
