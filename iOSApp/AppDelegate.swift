@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
+    lazy var tagView = TagView()
     
     var currentUser:NSManagedObject?
     var isExecutingInBackground = false
@@ -66,6 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
 
+        
+        getListTags()
         return true
         
     }
@@ -142,33 +145,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
-        print("update location")
+        //print("update location")
         currentLocation.getCurrentLocation()
+        //newNotification("GEAGLE")
         //deleteSearchItems()
         //For all tags setsearch items
-            //setSearchItems()
+//       getListTags()
         
-//        let maprequests = getSearchItems()
-//         cancelNotifications ()
-//        newNotification(maprequests as! String)
+        //for each tag set serach item
+        //send this to view controller
+       //let tagSearchItems = getSearchItems()
+       // print(tagSearchItems)
+        // put logic to find closest.. for now do top
+        //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+        //newNotification(topItem)
    
     }
     
     func setSearchItems(tag: String) {
         print("set search")
-        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         
         //TO DO: get all tags and loop through based on this
         //use tags usually, will want to go through tags and then search for all tags
-        currentLocation.findMatchingItems("apparel", region: region)
+        currentLocation.findMatchingItems(tag, region: region)
     }
     
     // Will return list
-    func getSearchItems() -> AnyObject {
+    func getSearchItems() -> [NSManagedObject] {
         let managedObjectContext = coreDataStack.managedObjectContext
-        let item = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
-        return item.first!.valueForKey("name")!
+        let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        return items
     }
     
     //Delete all search items from coredata to prepare for setting new ones
@@ -186,6 +194,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
         
     }
+    
+    func getListTags() {
+//        var results: [AnyObject] = []
+        //let managedObjectContext = coreDataStack.managedObjectContext
+//        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
+//        for list in lists {
+//            if let tag = list.valueForKey("tags") as! Tag{
+//                print("tag", tag)
+//                results.append(tag.name)
+//            }
+//        }
+//        return results
+        let tags = tagView.fetchAllTags()
+        for tag in tags! {
+            print(tag.valueForKey("lists")?.count)
+        }
+    }
+    
     
     //handels notifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

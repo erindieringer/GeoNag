@@ -53,19 +53,21 @@ class CurrentLocation {
             }
             let match = response.mapItems
             
-            let item = match[0]
-
+            if (match.count > 0){
+                for item in match {
            //set item to coreData searchItem
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
-            let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+                    let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
         
             // Set values for new SearchItem
         
-            newItem.setValue(item.name, forKey: "name")
-            newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
-            newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
-            appDelegate.coreDataStack.saveContext()
+                    newItem.setValue(item.name, forKey: "name")
+                    newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
+                    newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
+                    appDelegate.coreDataStack.saveContext()
+            }
+            }
         
         }
     
