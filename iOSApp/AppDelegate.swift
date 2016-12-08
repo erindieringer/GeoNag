@@ -197,9 +197,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                     // put logic to find closest.. for now do top
                     //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
                     var closest = findClosestItem(tagSearchItems)
-//                    if (closest == ""){
-//                        closest = tagSearchItems.last!.valueForKey("name")! as! String
-//                    }
+                    if ((closest == "") || (closest.characters.count == 0)){
+                        closest = tagSearchItems.last!.valueForKey("name")! as! String
+                    }
                     newNotification(closest)
                 }
                 //now reset currentLocatoin and save
@@ -216,6 +216,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 currentLocation.longitude = loc.coordinate.longitude
                 saveData()
             }
+        }
+        else {
+            print("not far enough")
         }
         //print("after delete count", mapSearchItems.count)
         print(currentLocation.longitude, currentLocation.latitude)
