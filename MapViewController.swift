@@ -33,23 +33,40 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // get current location
-        currentLocation.getCurrentLocation()
-        //let userCoords = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        //centerMapOnLocation(userCoords)
-        centerMapOnLocation(initialLocation)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
+        centerMapOnLocation(userCoords)
         // drop a pin at current location
         dropPins()
         mapView.delegate = self
         // show artwork on map
-        let artwork = Artwork(title: "King David Kalakaua",
-                              locationName: "Waikiki Gateway Park",
-                              discipline: "Sculpture",
-                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+//        let artwork = Artwork(title: "King David Kalakaua",
+//                              locationName: "Waikiki Gateway Park",
+//                              discipline: "Sculpture",
+//                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
         
-        mapView.addAnnotation(artwork)
+        let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        
+        if let mapSearchItems = ADmapSearchItems as? [SearchItem] {
+            var mapAnnotationsArray:[MKAnnotation] = []
+            for item in mapSearchItems {
+                let title = item.valueForKey("name") as! String
+                let latitude = item.valueForKey("latitude") as! CLLocationDegrees
+                let longitude = item.valueForKey("longitude") as! CLLocationDegrees
+                let mapAnnotation = MapAnnotation(title:title, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                mapAnnotationsArray.append(mapAnnotation)
+            }
+            print("search items")
+            print(mapSearchItems)
+            mapView.addAnnotations(mapAnnotationsArray)
+        } else {
+            print("Map Search Items is Nil")
+        }
+        
     }
     
-    let regionRadius: CLLocationDistance = 750
+    let regionRadius: CLLocationDistance = 300
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 3.0, regionRadius * 3.0)
