@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         } else {
             //sets tagView tags to the tags in use
             let tagPredicate = NSPredicate(format:"lists.@count > 0")
-
             usedTags = tagView.fetchAllTags(tagPredicate)!
             tagView.tags = tagView.fetchAllTags()!
 
@@ -161,29 +160,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         //print("update location")
+        deleteSearchItems()
         currentLocation.getCurrentLocation()
-        //newNotification("GEAGLE")
-        //deleteSearchItems()
-        //For all tags setsearch items
-//       getListTags()
-        
-        //for each tag set serach item
-        //send this to view controller
-       //let tagSearchItems = getSearchItems()
-       // print(tagSearchItems)
+        //Get all tag names in use
+        let tags = getListTags()
+        //get mapkit search for tag string name
+        for tag in tags {
+            setSearchItems(tag)
+        }
+   
+       let tagSearchItems = getSearchItems()
+        print(tagSearchItems)
+        if (tagSearchItems.count > 0){
         // put logic to find closest.. for now do top
-        //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-        //newNotification(topItem)
+            let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+            newNotification(topItem)
+        }
    
     }
     
     func setSearchItems(tag: String) {
-        print("set search")
+        //print("set search")
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
-        
-        //TO DO: get all tags and loop through based on this
-        //use tags usually, will want to go through tags and then search for all tags
         currentLocation.findMatchingItems(tag, region: region)
     }
     
@@ -210,21 +209,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
     }
     
-    func getListTags() {
-//        var results: [AnyObject] = []
-        //let managedObjectContext = coreDataStack.managedObjectContext
-//        let lists = fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext)
-//        for list in lists {
-//            if let tag = list.valueForKey("tags") as! Tag{
-//                print("tag", tag)
-//                results.append(tag.name)
-//            }
-//        }
-//        return results
-        let tags = tagView.fetchAllTags()
-        for tag in tags! {
-            print(tag.valueForKey("lists")?.count)
+    func getListTags() -> [String] {
+        var tagNames: [String] = []
+        for tag in usedTags! {
+            tagNames.append(tag.valueForKey("name") as! String)
         }
+        return tagNames
     }
     
     
