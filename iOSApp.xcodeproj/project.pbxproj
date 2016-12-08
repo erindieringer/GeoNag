@@ -21,7 +21,7 @@
 		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
 		59617D0F1DF90B5C009BDFB7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */; };
 		59617D111DF92F29009BDFB7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D101DF92F29009BDFB7 /* MapView.swift */; };
-		59617D131DF93CBF009BDFB7 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D121DF93CBF009BDFB7 /* Artwork.swift */; };
+		59617D131DF93CBF009BDFB7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D121DF93CBF009BDFB7 /* Article.swift */; };
 		59674FB11DF6833500172F97 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59674FB01DF6833500172F97 /* ContactManager.swift */; };
 		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
@@ -95,7 +95,7 @@
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		59617D101DF92F29009BDFB7 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		59617D121DF93CBF009BDFB7 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		59617D121DF93CBF009BDFB7 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		59674FB01DF6833500172F97 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 				59160E5A1DF9064F00BFD6C6 /* DismissMenuAnimator.swift */,
 				59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */,
 				59617D101DF92F29009BDFB7 /* MapView.swift */,
-				59617D121DF93CBF009BDFB7 /* Artwork.swift */,
+				59617D121DF93CBF009BDFB7 /* Article.swift */,
 			);
 			name = Views;
 			path = ..;
@@ -472,7 +472,7 @@
 				59617D0F1DF90B5C009BDFB7 /* MapViewController.swift in Sources */,
 				59826B571DF72F1F002CE785 /* PListManager.swift in Sources */,
 				59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */,
-				59617D131DF93CBF009BDFB7 /* Artwork.swift in Sources */,
+				59617D131DF93CBF009BDFB7 /* Article.swift in Sources */,
 				59AE8D771DF7D38100EB8B76 /* SearchItem.swift in Sources */,
 				59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */,
 				59674FB11DF6833500172F97 /* ContactManager.swift in Sources */,

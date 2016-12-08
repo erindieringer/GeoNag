@@ -382,7 +382,7 @@
         <!--Map View Controller-->
         <scene sceneID="vOX-vF-NsB">
             <objects>
-                <viewController id="47l-3C-4GL" customClass="MapViewController" customModule="iOSApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapVC" id="47l-3C-4GL" customClass="MapViewController" customModule="iOSApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DBa-eG-dDl"/>
                         <viewControllerLayoutGuide type="bottom" id="fLB-mD-8Ld"/>
