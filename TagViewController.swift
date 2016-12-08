@@ -10,7 +10,7 @@ import UIKit
 
 class TagViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var tagView = TagView()
+    var tagView:TagView?
     var tags:[Tag]?
     var listModel:ListDetailView?
     
@@ -24,26 +24,19 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagView.numberOfTags
+        return tagView!.numberOfTags
     }
     
     // make a cell for each cell index path
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        // get tags
-        if let tagsStored = tagView.fetchAllTags() {
-            if tagsStored.first != nil {
-                tags = tagsStored
-            }
-        } else {
-            tags = tagView.createAllTags()
-        }
+        //let tags = tagView!.fetchAllTags()
         
         // get a reference to our storyboard cell
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cellRef.label.text = tags![indexPath.item].name
+        cellRef.label.text = tagView!.tags[indexPath.item].name
         
         // use cell for actual cell styles
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
@@ -62,7 +55,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         // handle tap events
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == true {
-            let tag = tags![indexPath.item]
+            let tag = tagView!.tags[indexPath.item]
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {
                 cell?.backgroundColor = UIColor.magentaColor()
@@ -71,8 +64,6 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
                 cell?.backgroundColor = UIColor.orangeColor()
                 listModel?.addTag(tag)
             }
-            print("listmoelthing")
-            print(listModel?.getTags())
         } else {
             cell?.backgroundColor = UIColor.blueColor()
         }
@@ -81,10 +72,8 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if tagView.tags.count < 8 {
-            tagView.createAllTags()
-        }
-        tags = tagView.tags
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        tagView = appDelegate.tagView
     }
     
     override func didReceiveMemoryWarning() {
