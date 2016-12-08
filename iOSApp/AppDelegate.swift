@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var locationManager: CLLocationManager! = nil
     var currentLocation = CurrentLocation()
     
+    var dataManager = DataManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let managedObjectContext = coreDataStack.managedObjectContext
@@ -87,7 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         currentLocation.getCurrentLocation()
-        currentLocation.savePlistUserLocation()
         
         // change navigation bar color
         let navigationBarAppearance = UINavigationBar.appearance()
@@ -99,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         navigationBarAppearance.frame.origin.y = -20
         navigationBarAppearance.translucent = false;
         
+        saveData()
         return true
         
     }
@@ -189,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("update location")
-        //currentLocation.getPlistUserLocation()
+        //restoreData()
         let loc = locations.last!
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
         if (distance > 2000.0){
@@ -210,23 +212,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 if (tagSearchItems.count > 0){
                     // put logic to find closest.. for now do top
                     //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-                    let closest = findClosestItem(tagSearchItems)
+                    var closest = findClosestItem(tagSearchItems)
+//                    if (closest == ""){
+//                        closest = tagSearchItems.last!.valueForKey("name")! as! String
+//                    }
                     newNotification(closest)
                 }
                 //now reset currentLocatoin and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
-                currentLocation.savePlistUserLocation()
-//                deleteSearchItems()
-//                print("after delete count", mapSearchItems.count)
+                saveData()
+                deleteSearchItems()
+
             
             }
             else {
                 print("speed too fast")
+                currentLocation.latitude = loc.coordinate.latitude
+                currentLocation.longitude = loc.coordinate.longitude
+                saveData()
             }
         }
-        deleteSearchItems()
-        print("after delete count", mapSearchItems.count)
+        //print("after delete count", mapSearchItems.count)
+        print(currentLocation.longitude, currentLocation.latitude)
    
     }
     
@@ -285,9 +293,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //print("notif here")
         let locattionnotification = UILocalNotification()
         locattionnotification.category = "locationReminderCategory"
-        locattionnotification.alertBody = " \(name) is nearby!"
+        locattionnotification.alertBody = " \(name) is nearby! Click for more locations"
         locattionnotification.alertAction = "View List"
-        locattionnotification.userInfo = ["TYPE":"Page1"]
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
@@ -307,7 +314,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let currenLat = locationManager.location?.coordinate.latitude
         let currenLong = locationManager.location?.coordinate.longitude
         let currentLoc = CLLocation(latitude: currenLat!, longitude: currenLong!)
-        var min = 2000.0
+        var min = 5000.0
         for item in itemList{
             let mapItem = item
             let lat = mapItem.valueForKey("latitude") as! Double
@@ -320,6 +327,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             }
         }
         return closest
+    }
+    
+    //saving plist
+    func saveData() {
+        dataManager.location = currentLocation
+        dataManager.saveLocation()
+    }
+    
+    func restoreData() {
+        dataManager.loadLocation()
+        currentLocation = dataManager.location
     }
 
     
