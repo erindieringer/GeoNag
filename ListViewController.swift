@@ -9,16 +9,38 @@
 import UIKit
 import CoreData
 
+protocol MenuActionDelegate {
+    func openSegue(segueName: String, sender: AnyObject?)
+    func reopenMenu()
+}
+
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     let viewModel = ListView()
     
+    // For Pan View
+    let interactor = Interactor()
+    
     var currentUser:NSManagedObject?
     
-    var screenEdgeRecognizer: UIScreenEdgePanGestureRecognizer!
-    var currentRadius:CGFloat = 0.0
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func openMenu(sender: AnyObject) {
+        performSegueWithIdentifier("openMenu", sender: nil)
+    }
+    
+    @IBAction func edgePanGesture(sender: UIScreenEdgePanGestureRecognizer) {
+        let translation = sender.translationInView(view)
+        
+        let progress = MenuHelper.calculateProgress(translation, viewBounds: view.bounds, direction: .Right)
+        
+        MenuHelper.mapGestureStateToInteractor(
+            sender.state,
+            progress: progress,
+            interactor: interactor){
+                self.performSegueWithIdentifier("openMenu", sender: nil)
+        }
+    }
     
     @IBAction func addItem(sender: AnyObject) {
         
@@ -157,6 +179,40 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
             detailVC.detailViewModel!.reminderList = (viewModel.getListForIndexPath(indexPath) as? List)!
         }
+        if let destinationViewController = segue.destinationViewController as? MenuViewController {
+            destinationViewController.transitioningDelegate = self
+            destinationViewController.interactor = interactor
+            destinationViewController.menuActionDelegate = self
+        }
     }
     
+}
+
+extension ListViewController: UIViewControllerTransitioningDelegate {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentMenuAnimator()
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissMenuAnimator()
+    }
+    
+    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
+    
+    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
+}
+
+extension ListViewController: MenuActionDelegate {
+    func openSegue(segueName: String, sender: AnyObject?) {
+        dismissViewControllerAnimated(true){
+            self.performSegueWithIdentifier(segueName, sender: sender)
+        }
+    }
+    func reopenMenu(){
+        performSegueWithIdentifier("openMenu", sender: nil)
+    }
 }

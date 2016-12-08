@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--NewUserViewController-->
@@ -82,17 +83,6 @@
             </objects>
             <point key="canvasLocation" x="-1142" y="-713"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="uh5-8q-2lA">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="pageSheet" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="mid" doubleSided="YES" id="B2g-4x-qOO" sceneMemberID="viewController">
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vAB-N4-gU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2126" y="110"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="qfl-Cn-Iih">
             <objects>
@@ -155,6 +145,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.22341359881479553" green="0.24897787656246009" blue="0.30928426659125174" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hfW-5t-wPP" firstAttribute="centerX" secondItem="aeF-2b-M5M" secondAttribute="centerX" id="2gN-lB-0zU"/>
                             <constraint firstItem="ZxY-dA-NRm" firstAttribute="top" secondItem="wpf-Pn-pxT" secondAttribute="bottom" id="CJG-z1-LXY"/>
@@ -163,9 +154,22 @@
                             <constraint firstItem="hfW-5t-wPP" firstAttribute="top" secondItem="mX4-g8-AUO" secondAttribute="bottom" constant="29" id="Xjn-Ki-ZLP"/>
                             <constraint firstItem="wpf-Pn-pxT" firstAttribute="leading" secondItem="aeF-2b-M5M" secondAttribute="leadingMargin" constant="-20" id="tOY-re-s0Y"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="w1e-uc-uZx" appends="YES" id="5J1-QK-sRK"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="X2q-ab-Gxh">
                         <barButtonItem key="backBarButtonItem" title="All Reminders" id="3HQ-ME-txo"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="dTa-w7-fRI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yuf-tM-2vw">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map!"/>
+                                <connections>
+                                    <action selector="openMenu:" destination="n7b-nS-j9o" eventType="touchUpInside" id="STl-ia-Fn4"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qu8-cv-YeW">
                             <connections>
                                 <action selector="addItem:" destination="n7b-nS-j9o" id="R45-QF-89L"/>
@@ -174,9 +178,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="wpf-Pn-pxT" id="3r0-6X-GFO"/>
+                        <segue destination="47l-3C-4GL" kind="modal" identifier="openMenu" id="nes-46-TaJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7r-cL-fia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="w1e-uc-uZx">
+                    <connections>
+                        <action selector="edgePanGesture:" destination="n7b-nS-j9o" id="Gza-tZ-edU"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-430" y="207"/>
         </scene>
@@ -368,6 +378,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8o-HO-cmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1035" y="7.5"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="vOX-vF-NsB">
+            <objects>
+                <viewController id="47l-3C-4GL" customClass="MenuViewController" customModule="iOSApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DBa-eG-dDl"/>
+                        <viewControllerLayoutGuide type="bottom" id="fLB-mD-8Ld"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZxL-H4-72B">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-zi-5wy">
+                                <rect key="frame" x="480" y="20" width="120" height="580"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <action selector="closeMenu:" destination="47l-3C-4GL" eventType="touchUpInside" id="yk2-d5-Y7C"/>
+                                    <outletCollection property="gestureRecognizers" destination="D8D-Ar-V1R" appends="YES" id="mHK-17-Mrr"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sup-GD-Iai">
+                                <rect key="frame" x="0.0" y="20" width="480" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="6oc-Kk-A75">
+                                        <rect key="frame" x="0.0" y="28" width="480" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6oc-Kk-A75" id="gbX-80-2C6">
+                                            <rect key="frame" x="0.0" y="0.0" width="480" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="47l-3C-4GL" id="Eyt-Ep-Xoc"/>
+                                    <outlet property="delegate" destination="47l-3C-4GL" id="Ctv-IT-EEw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Sup-GD-Iai" firstAttribute="top" secondItem="DBa-eG-dDl" secondAttribute="bottom" id="6Gl-8s-Pzh"/>
+                            <constraint firstItem="Sup-GD-Iai" firstAttribute="width" secondItem="ZxL-H4-72B" secondAttribute="width" multiplier="0.8" id="Ufe-Rg-Lq8"/>
+                            <constraint firstItem="Sup-GD-Iai" firstAttribute="leading" secondItem="ZxL-H4-72B" secondAttribute="leading" id="WOz-kX-NR2"/>
+                            <constraint firstItem="dH6-zi-5wy" firstAttribute="top" secondItem="DBa-eG-dDl" secondAttribute="bottom" id="Y0V-24-jCw"/>
+                            <constraint firstItem="fLB-mD-8Ld" firstAttribute="top" secondItem="Sup-GD-Iai" secondAttribute="bottom" id="dOL-5b-cnf"/>
+                            <constraint firstItem="dH6-zi-5wy" firstAttribute="leading" secondItem="Sup-GD-Iai" secondAttribute="trailing" id="eX8-yJ-mYd"/>
+                            <constraint firstAttribute="trailing" secondItem="dH6-zi-5wy" secondAttribute="trailing" id="vMT-Pu-fwh"/>
+                            <constraint firstItem="fLB-mD-8Ld" firstAttribute="top" secondItem="dH6-zi-5wy" secondAttribute="bottom" id="zyj-6k-gLv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Sup-GD-Iai" id="v3Y-q1-UfA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cns-4b-vZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="D8D-Ar-V1R">
+                    <connections>
+                        <action selector="handleGesture:" destination="47l-3C-4GL" id="RvZ-0d-gSz"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-416" y="1015"/>
         </scene>
     </scenes>
     <resources>
