@@ -56,9 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             let tags = tagView.createAllTags()
             tagView.tags = tags
         } else {
-            
+            //sets tagView tags to the tags in use
             let tagPredicate = NSPredicate(format:"lists.@count > 0")
-            print("predicate")
             let tags = tagView.fetchAllTags(tagPredicate)!
             tagView.tags = tags
         }
