@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var currentUser:NSManagedObject?
     var isExecutingInBackground = false
     
+    //to use in mapView
+    var mapSearchItems: [NSManagedObject] = []
+    
     //location variables
     var locationManager: CLLocationManager! = nil
     var currentLocation = CurrentLocation()
@@ -219,6 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
    
        let tagSearchItems = getSearchItems()
+        mapSearchItems = tagSearchItems
         print(tagSearchItems.count)
         if (tagSearchItems.count > 0){
         // put logic to find closest.. for now do top
