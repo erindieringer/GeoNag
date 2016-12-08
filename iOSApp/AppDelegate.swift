@@ -200,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 //now reset currentLocatoin and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
-                currentLocation.savePlistUserLocation()
+                //currentLocation.savePlistUserLocation()
 //                deleteSearchItems()
 //                print("after delete count", mapSearchItems.count)
             
@@ -211,6 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
         deleteSearchItems()
         print("after delete count", mapSearchItems.count)
+        currentLocation.savePlistUserLocation()
    
     }
     
