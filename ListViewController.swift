@@ -95,10 +95,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSOrderedSet(), forKey: "items")
         listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
-        viewModel.lists.append(listEntity as! List)
+        viewModel.lists.insert(listEntity as! List, atIndex:0)
         // save entity
         appDelegate.coreDataStack.saveContext()
-        
     }
     
     func updateList(index: Int, name: String) {
@@ -110,20 +109,21 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         appDelegate.coreDataStack.saveContext()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // register the nib
         let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "list")
-//        NSNotificationCenter.defaultCenter().addObserver(self,
-//                                                         selector: #selector(ListViewController.SomeNotificationAct(_:)),
-//                                                         name: "SomeNotification",
-//                                                         object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(ListViewController.SomeNotificationAct(_:)),
+                                                         name: "SomeNotification",
+                                                         object: nil)
     }
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("NewUserVC", sender: self)
+            self.performSegueWithIdentifier("openMenu", sender: self)
         }
     }
     
@@ -150,7 +150,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         let listPredicate = NSPredicate(format:"user == %@", currentUser!)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate) as! [List]
+        let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate, sortDescriptor: sortDescriptor) as! [List]
 
     }
     

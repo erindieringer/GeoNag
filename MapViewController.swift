@@ -37,18 +37,15 @@ class MapViewController: UIViewController {
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
         centerMapOnLocation(userCoords)
+
         // drop a pin at current location
         dropPins()
         mapView.delegate = self
-        // show artwork on map
-//        let artwork = Artwork(title: "King David Kalakaua",
-//                              locationName: "Waikiki Gateway Park",
-//                              discipline: "Sculpture",
-//                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
         
         let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
         
         if let mapSearchItems = ADmapSearchItems as? [SearchItem] {
+            //let closestSearchItemName = appDelegate.findClosestItem(ADmapSearchItems)
             var mapAnnotationsArray:[MKAnnotation] = []
             for item in mapSearchItems {
                 let title = item.valueForKey("name") as! String
@@ -56,6 +53,11 @@ class MapViewController: UIViewController {
                 let longitude = item.valueForKey("longitude") as! CLLocationDegrees
                 let mapAnnotation = MapAnnotation(title:title, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 mapAnnotationsArray.append(mapAnnotation)
+                
+//                // find closest item 
+//                if title == closestSearchItemName {
+//                    mapView.selectAnnotation(mapAnnotation, animated: true)
+//                }
             }
             print("search items")
             print(mapSearchItems)
