@@ -114,6 +114,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         coreDataStack.saveContext()
     }
     
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
+        print("notification sent")
+        if ( application.applicationState == UIApplicationState.Active)
+        {
+            print("Active")
+        }
+        else if( application.applicationState == UIApplicationState.Background)
+        {
+            print("Background")
+        }
+        else if( application.applicationState == UIApplicationState.Inactive)
+        {
+            print("Inactive")
+            self.redirectToPage(notification.userInfo)
+        }
+    }
+    
+    func redirectToPage(userInfo:[NSObject : AnyObject]!)
+    {
+        var viewControllerToBrRedirectedTo:UIViewController!
+        if userInfo != nil
+        {
+            if let pageType = userInfo["TYPE"]
+            {
+                if pageType as! String == "Page1"
+                {
+                    viewControllerToBrRedirectedTo = UIViewController() // creater specific view controller
+                }
+            }
+        }
+        if viewControllerToBrRedirectedTo != nil
+        {
+            if self.window != nil && self.window?.rootViewController != nil
+            {
+                let rootVC = self.window?.rootViewController!
+                if rootVC is UINavigationController
+                {
+                    (rootVC as! UINavigationController).pushViewController(viewControllerToBrRedirectedTo, animated: true)
+                }
+                else
+                {
+                    rootVC?.presentViewController(viewControllerToBrRedirectedTo, animated: true, completion: { () -> Void in
+                        
+                    })
+                }
+            }
+        }
+    }
+    
     // MARK: - Core Data Method for Creating Records
     
     func createRecordForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
@@ -212,17 +261,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func getListTags() -> [String] {
         var tagNames: [String] = []
-        for tag in usedTags! {
-            tagNames.append(tag.valueForKey("name") as! String)
+        if let used = usedTags {
+            for tag in used {
+                tagNames.append(tag.valueForKey("name") as! String)
+            }
         }
         return tagNames
     }
     
     
-    //handels notifications
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("notification sent")
-    }
     //from view controller
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
@@ -237,6 +284,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let locattionnotification = UILocalNotification()
         locattionnotification.alertBody = " \(name) is nearby!"
         locattionnotification.alertAction = "View List"
+        locattionnotification.userInfo = ["TYPE":"Page1"]
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
