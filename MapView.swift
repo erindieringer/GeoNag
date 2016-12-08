@@ -6,75 +6,36 @@
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 
-import Foundation
-import CoreData
-import UIKit
+import MapKit
 
-class MapView {
-    var mapItems = [SearchItem]()
+extension MapViewController: MKMapViewDelegate {
     
-    var numberOfTags = 8
     
-    // only run once! Adds all programmed tags to coredata
-    func createAllTags() ->[Tag] {
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
-        let tagNames = ["Groceries", "Convenience", "Drug Stores", "Post", "Banks & ATMs", "Beverage Stores", "Home & Office", "Sporting Goods"]
-        
-        for i in 0..<numberOfTags {
-            if let tagEntity = appDelegate.createRecordForEntity("Tag", inManagedObjectContext: managedContext) {
-                
-                // set values of new tag entity
-                tagEntity.setValue(tagNames[i], forKey: "name")
-                tagEntity.setValue(NSOrderedSet(), forKey: "lists" )
-                tagEntity.setValue(NSOrderedSet(), forKey: "locations")
-                
-                let tag = tagEntity
-                tags.append(tag as! Tag)
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? Artwork {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+                as? MKPinAnnotationView { // 2
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                // 3
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             }
+            return view
         }
-        
-        appDelegate.coreDataStack.saveContext()
-        
-        return tags
+        return nil
     }
     
-    func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
-        let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext, predicate: predicate) as! [Tag]
-        
-        return allTags
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation as! Artwork
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        location.mapItem().openInMapsWithLaunchOptions(launchOptions)
     }
-    
-    func tagsExist() -> Bool {
-        let tags = fetchAllTags()
-        if tags?.count > 0 {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        let index = indexPath.row
-        if index < 0 || index >= numberOfTags {
-            return ""
-        }
-        let returnTag = tags[index]
-        let returnName = returnTag.name!
-        return returnName
-    }
-    
-    func iconForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        print("iconNames[0]")
-        return ""
-    }
-    
-    
 }
 

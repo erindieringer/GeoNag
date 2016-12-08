@@ -14,6 +14,8 @@ import UIKit
 
 class MapViewController: UIViewController {
     
+    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+    
     @IBOutlet weak var mapView: MKMapView!
     let currentLocation = CurrentLocation()
     
@@ -32,10 +34,19 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         // get current location
         currentLocation.getCurrentLocation()
-        let userCoords = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        centerMapOnLocation(userCoords)
+        //let userCoords = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        //centerMapOnLocation(userCoords)
+        centerMapOnLocation(initialLocation)
         // drop a pin at current location
         dropPins()
+        mapView.delegate = self
+        // show artwork on map
+        let artwork = Artwork(title: "King David Kalakaua",
+                              locationName: "Waikiki Gateway Park",
+                              discipline: "Sculpture",
+                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+        
+        mapView.addAnnotation(artwork)
     }
     
     let regionRadius: CLLocationDistance = 750
