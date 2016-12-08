@@ -52,8 +52,8 @@ class CurrentLocation {
                 return
             }
             let match = response.mapItems
-            
             if (match.count > 0){
+                print("count > 0")
                 for item in match {
            //set item to coreData searchItem
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -65,7 +65,7 @@ class CurrentLocation {
                     newItem.setValue(item.name, forKey: "name")
                     newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
                     newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
-                    appDelegate.coreDataStack.saveContext()
+//                    appDelegate.coreDataStack.saveContext()
             }
             }
         
