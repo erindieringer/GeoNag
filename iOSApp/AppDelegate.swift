@@ -170,7 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
    
        let tagSearchItems = getSearchItems()
-        print(tagSearchItems)
+        print(tagSearchItems.count)
         if (tagSearchItems.count > 0){
         // put logic to find closest.. for now do top
             let topItem = tagSearchItems.first!.valueForKey("name")! as! String
@@ -195,6 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     //Delete all search items from coredata to prepare for setting new ones
     func deleteSearchItems() {
+        print("delete")
         let fetchRequest = NSFetchRequest(entityName: "SearchItem")
         let managedObjectContext = coreDataStack.managedObjectContext
         // Create Batch Delete Request
@@ -232,11 +233,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         cancelNotifications()
-        print("notif here")
+        //print("notif here")
         let locattionnotification = UILocalNotification()
         locattionnotification.alertBody = " \(name) is nearby!"
         locattionnotification.alertAction = "View List"
-        //print(locattionnotification)
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
