@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager = CLLocationManager()
         locationManager.delegate = self
         //locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.distanceFilter = 1000
+        locationManager.distanceFilter = 2000
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -219,32 +219,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                                     didUpdateLocations locations: [CLLocation]){
         print("update location")
         //currentLocation.getPlistUserLocation()
-        //print(currentLocation.longitude, currentLocation.latitude)
         let loc = locations.last!
+        print("speed", loc.speed)
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
-        if (distance > 1000.0){
-            print("update SIGNIFICANT location")
-            deleteSearchItems()
-            //Get all tag names in use
-            let tags = getListTags()
-            //get mapkit search for tag string name
-            for tag in tags {
-                setSearchItems(tag)
-            }
+        if (distance > 2000.0){
+            if loc.speed < 2.0 {
+                print("update SIGNIFICANT location")
+                deleteSearchItems()
+                //Get all tag names in use
+                let tags = getListTags()
+                //get mapkit search for tag string name
+                for tag in tags {
+                    setSearchItems(tag)
+                }
    
-            let tagSearchItems = getSearchItems()
-            mapSearchItems = tagSearchItems
-            print(tagSearchItems.count)
-            if (tagSearchItems.count > 0){
-                // put logic to find closest.. for now do top
-                //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-                let closest = findClosestItem(tagSearchItems)
-                newNotification(closest)
+                let tagSearchItems = getSearchItems()
+                mapSearchItems = tagSearchItems
+                print(tagSearchItems.count)
+                if (tagSearchItems.count > 0){
+                    // put logic to find closest.. for now do top
+                    //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+                    let closest = findClosestItem(tagSearchItems)
+                    newNotification(closest)
+                }
+                //now reset currentLocatoin and save
+                currentLocation.latitude = loc.coordinate.latitude
+                currentLocation.longitude = loc.coordinate.longitude
+                currentLocation.savePlistUserLocation()
+                deleteSearchItems()
+                print("after delete count", mapSearchItems.count)
+            
             }
-            //now reset currentLocatoin and save
-            currentLocation.latitude = loc.coordinate.latitude
-            currentLocation.longitude = loc.coordinate.longitude
-            currentLocation.savePlistUserLocation()
+            else {
+                print("speed too fast")
+            }
         }
    
     }

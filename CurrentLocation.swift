@@ -53,7 +53,6 @@ class CurrentLocation {
             }
             let match = response.mapItems
             if (match.count > 0){
-                print("count > 0")
                 for item in match {
            //set item to coreData searchItem
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
