@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  MapViewController.swift
 //  iOSApp
 //
 //  Created by Katie Williams on 12/7/16.
@@ -7,16 +7,54 @@
 //
 
 import UIKit
+import MapKit
 
-class MenuViewController : UIViewController {
+import UIKit
+
+
+class MapViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
+    //let location = Location()
+    
+    @IBAction func close() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dropPin() {
+        let droppedPin = MKPointAnnotation()
+        //droppedPin.coordinate = CLLocationCoordinate2D(latitude: carLocation.latitude, longitude: carLocation.longitude)
+        //let carCoords = CLLocation(latitude: carLocation.latitude, longitude: carLocation.longitude)
+        //centerMapOnLocation(carCoords)
+        droppedPin.title = "Your Car"
+        mapView.addAnnotation(droppedPin)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // get current location
+        //location.getCurrentLocation()
+        // drop a pin at current location
+        dropPin()
+    }
+    
+    let regionRadius: CLLocationDistance = 400
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 3.0, regionRadius * 3.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     var interactor:Interactor? = nil
     
     var menuActionDelegate:MenuActionDelegate? = nil
     
-    let menuItems = ["First", "Second"]
     
     @IBAction func handleGesture(sender: UIPanGestureRecognizer) {
         let translation = sender.translationInView(view)
@@ -32,6 +70,7 @@ class MenuViewController : UIViewController {
     }
     
     @IBAction func closeMenu(sender: AnyObject) {
+        print("hellooo")
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -49,31 +88,7 @@ class MenuViewController : UIViewController {
             }
         }
     }
-    
-}
 
-extension MenuViewController : UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItems.count
-    }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel?.text = menuItems[indexPath.row]
-        return cell
-    }
-}
-
-extension MenuViewController : UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.row {
-        case 0:
-            menuActionDelegate?.openSegue("openFirst", sender: nil)
-        case 1:
-            menuActionDelegate?.openSegue("openSecond", sender: nil)
-        default:
-            break
-        }
-    }
+    
 }

@@ -179,7 +179,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
             detailVC.detailViewModel!.reminderList = (viewModel.getListForIndexPath(indexPath) as? List)!
         }
-        if let destinationViewController = segue.destinationViewController as? MenuViewController {
+        if let destinationViewController = segue.destinationViewController as? MapViewController {
             destinationViewController.transitioningDelegate = self
             destinationViewController.interactor = interactor
             destinationViewController.menuActionDelegate = self
