@@ -89,6 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         currentLocation.getCurrentLocation()
+        
+        // change navigation bar color
+        let navigationBarAppearance = UINavigationBar.appearance()
+        
+        navigationBarAppearance.tintColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha: 1)
+        navigationBarAppearance.barTintColor = UIColor(red:40.0/255.0, green:40.0/255.0, blue:40.0/255.0, alpha: 1.0)
+        
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        navigationBarAppearance.frame.origin.y = -20
+        navigationBarAppearance.translucent = false;
+        
         saveData()
         return true
         
@@ -146,11 +157,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
-    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil) -> [NSManagedObject] {
+    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil, sortDescriptor: NSSortDescriptor?=nil) -> [NSManagedObject] {
         // Create Fetch Request
         let fetchRequest = NSFetchRequest(entityName: entity)
+        
         if (predicate != nil) {
             fetchRequest.predicate = predicate
+        }
+        
+        if (sortDescriptor != nil) {
+            fetchRequest.sortDescriptors = [sortDescriptor!]
         }
         
         // Helpers

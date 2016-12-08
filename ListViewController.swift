@@ -95,10 +95,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSOrderedSet(), forKey: "items")
         listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
-        viewModel.lists.append(listEntity as! List)
+        viewModel.lists.insert(listEntity as! List, atIndex:0)
         // save entity
         appDelegate.coreDataStack.saveContext()
-        
     }
     
     func updateList(index: Int, name: String) {
@@ -109,6 +108,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         appDelegate.coreDataStack.saveContext()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +150,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         let listPredicate = NSPredicate(format:"user == %@", currentUser!)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate) as! [List]
+        let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate, sortDescriptor: sortDescriptor) as! [List]
 
     }
     
