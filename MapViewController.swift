@@ -37,6 +37,7 @@ class MapViewController: UIViewController {
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
         centerMapOnLocation(userCoords)
+
         // drop a pin at current location
         dropPins()
         mapView.delegate = self
