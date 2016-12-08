@@ -76,9 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        //locationManager.startUpdatingLocation()
         //To use for real tests
-        //locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
@@ -208,7 +208,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
-        //print("update location")
+        print("update location")
         deleteSearchItems()
         currentLocation.getCurrentLocation()
         //Get all tag names in use
@@ -278,11 +278,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
+//    func setUpNotificationSettings() {
+//        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound]
+//        
+//        let showMapAction = UIMutableUserNotificationAction()
+//        showMapAction.identifier = "justInform"
+//        showMapAction.title = "OK, got it"
+//        //showMapAction.activationMode = UIUserNotificationActivationMode.Background
+//        showMapAction.destructive = false
+//        showMapAction.authenticationRequired = false
+//        
+//        
+//        let trashAction = UIMutableUserNotificationAction()
+//        trashAction.identifier = "trashAction"
+//        trashAction.title = "Delete list"
+//        //trashAction.activationMode = UIUserNotificationActivationMode.Background
+//        trashAction.destructive = true
+//        trashAction.authenticationRequired = true
+//        
+//        let actionsArray = NSArray(objects: trashAction, showMapAction)
+//        
+//        let locationReminderCategory = UIMutableUserNotificationCategory()
+//        locationReminderCategory.identifier = "locationReminderCategory"
+//        locationReminderCategory.setActions(actionsArray as! [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+//        
+//         let categoriesForSettings = NSSet(objects: locationReminderCategory)
+//        
+//        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as! Set<UIUserNotificationCategory>)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
+//    }
+    
     func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         cancelNotifications()
         //print("notif here")
         let locattionnotification = UILocalNotification()
+        locattionnotification.category = "locationReminderCategory"
         locattionnotification.alertBody = " \(name) is nearby!"
         locattionnotification.alertAction = "View List"
         locattionnotification.userInfo = ["TYPE":"Page1"]
