@@ -15,6 +15,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var currentUser:NSManagedObject?
     
+    var screenEdgeRecognizer: UIScreenEdgePanGestureRecognizer!
+    var currentRadius:CGFloat = 0.0
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func addItem(sender: AnyObject) {

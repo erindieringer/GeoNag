@@ -82,6 +82,17 @@
             </objects>
             <point key="canvasLocation" x="-1142" y="-713"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="uh5-8q-2lA">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="pageSheet" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="mid" doubleSided="YES" id="B2g-4x-qOO" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAB-N4-gU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2126" y="110"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="qfl-Cn-Iih">
             <objects>
