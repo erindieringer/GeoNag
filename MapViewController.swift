@@ -33,7 +33,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // get current location
-        currentLocation.getCurrentLocation()
+        //currentLocation.getCurrentLocation()
         //let userCoords = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         //centerMapOnLocation(userCoords)
         centerMapOnLocation(initialLocation)

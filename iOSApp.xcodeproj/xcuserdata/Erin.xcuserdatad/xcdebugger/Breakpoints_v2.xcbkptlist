@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "locationManager(_:didChangeAuthorizationStatus:)"
+            landmarkName = "findClosestItem(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "301"
             endingLineNumber = "301"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            landmarkName = "findClosestItem(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "createRecordForEntity(_:inManagedObjectContext:)"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
