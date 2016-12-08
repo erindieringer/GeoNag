@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var locationManager: CLLocationManager! = nil
     var currentLocation = CurrentLocation()
     
+    var dataManager = DataManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let managedObjectContext = coreDataStack.managedObjectContext
@@ -87,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         currentLocation.getCurrentLocation()
-        currentLocation.savePlistUserLocation()
+        saveData()
         return true
         
     }
@@ -173,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("update location")
-        //currentLocation.getPlistUserLocation()
+        restoreData()
         let loc = locations.last!
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
         if (distance > 2000.0){
@@ -200,9 +202,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 //now reset currentLocatoin and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
-                //currentLocation.savePlistUserLocation()
+                saveData()
 //                deleteSearchItems()
-//                print("after delete count", mapSearchItems.count)
+
             
             }
             else {
@@ -211,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
         deleteSearchItems()
         print("after delete count", mapSearchItems.count)
-        currentLocation.savePlistUserLocation()
+        print(currentLocation.longitude, currentLocation.latitude)
    
     }
     
@@ -305,6 +307,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             }
         }
         return closest
+    }
+    
+    //saving plist
+    func saveData() {
+        dataManager.location = currentLocation
+        dataManager.saveLocation()
+    }
+    
+    func restoreData() {
+        dataManager.loadLocation()
+        currentLocation = dataManager.location
     }
 
     
