@@ -116,14 +116,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // register the nib
         let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "list")
-//        NSNotificationCenter.defaultCenter().addObserver(self,
-//                                                         selector: #selector(ListViewController.SomeNotificationAct(_:)),
-//                                                         name: "SomeNotification",
-//                                                         object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(ListViewController.SomeNotificationAct(_:)),
+                                                         name: "SomeNotification",
+                                                         object: nil)
     }
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("NewUserVC", sender: self)
+            self.performSegueWithIdentifier("openMenu", sender: self)
         }
     }
     

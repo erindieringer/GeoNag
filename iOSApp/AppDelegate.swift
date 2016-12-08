@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager = CLLocationManager()
         locationManager.delegate = self
         //locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.distanceFilter = 2000
+        locationManager.distanceFilter = 1500
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -123,53 +123,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
-//        print("notification sent")
-//        if ( application.applicationState == UIApplicationState.Active)
-//        {
-//            print("Active")
-//        }
-//        else if( application.applicationState == UIApplicationState.Background)
-//        {
-//            print("Background")
-//        }
-//        else if( application.applicationState == UIApplicationState.Inactive)
-//        {
-//            print("Inactive")
-//            self.redirectToPage(notification.userInfo)
-//       }
-//        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
-    }
-    
-    func redirectToPage(userInfo:[NSObject : AnyObject]!)
-    {
-        var viewControllerToBrRedirectedTo:NewUserViewController!
-        if userInfo != nil
-        {
-            if let pageType = userInfo["TYPE"]
-            {
-                if pageType as! String == "Page1"
-                {
-                    viewControllerToBrRedirectedTo = NewUserViewController() // creater specific view controller
-                }
-            }
-        }
-        if viewControllerToBrRedirectedTo != nil
-        {
-            if self.window != nil && self.window?.rootViewController != nil
-            {
-                let rootVC = self.window?.rootViewController!
-                if rootVC is UINavigationController
-                {
-                    (rootVC as! UINavigationController).pushViewController(viewControllerToBrRedirectedTo, animated: true)
-                }
-                else
-                {
-                    rootVC?.presentViewController(viewControllerToBrRedirectedTo, animated: true, completion: { () -> Void in
-                        
-                    })
-                }
-            }
-        }
+
+        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
     }
     
     // MARK: - Core Data Method for Creating Records
@@ -220,10 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         print("update location")
         //currentLocation.getPlistUserLocation()
         let loc = locations.last!
-        print("speed", loc.speed)
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
         if (distance > 2000.0){
-            if loc.speed < 2.0 {
+            /// if less than 5 meters per second which is average running speed
+            if loc.speed < 5.0 {
                 print("update SIGNIFICANT location")
                 deleteSearchItems()
                 //Get all tag names in use
@@ -246,14 +201,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
                 currentLocation.savePlistUserLocation()
-                deleteSearchItems()
-                print("after delete count", mapSearchItems.count)
+//                deleteSearchItems()
+//                print("after delete count", mapSearchItems.count)
             
             }
             else {
                 print("speed too fast")
             }
         }
+        deleteSearchItems()
+        print("after delete count", mapSearchItems.count)
    
     }
     
@@ -305,36 +262,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             print("Ready to go!")
         }
     }
-    
-//    func setUpNotificationSettings() {
-//        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound]
-//        
-//        let showMapAction = UIMutableUserNotificationAction()
-//        showMapAction.identifier = "justInform"
-//        showMapAction.title = "OK, got it"
-//        //showMapAction.activationMode = UIUserNotificationActivationMode.Background
-//        showMapAction.destructive = false
-//        showMapAction.authenticationRequired = false
-//        
-//        
-//        let trashAction = UIMutableUserNotificationAction()
-//        trashAction.identifier = "trashAction"
-//        trashAction.title = "Delete list"
-//        //trashAction.activationMode = UIUserNotificationActivationMode.Background
-//        trashAction.destructive = true
-//        trashAction.authenticationRequired = true
-//        
-//        let actionsArray = NSArray(objects: trashAction, showMapAction)
-//        
-//        let locationReminderCategory = UIMutableUserNotificationCategory()
-//        locationReminderCategory.identifier = "locationReminderCategory"
-//        locationReminderCategory.setActions(actionsArray as! [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
-//        
-//         let categoriesForSettings = NSSet(objects: locationReminderCategory)
-//        
-//        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as! Set<UIUserNotificationCategory>)
-//        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
-//    }
     
     func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
