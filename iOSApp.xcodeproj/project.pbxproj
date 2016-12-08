@@ -20,6 +20,7 @@
 		595A0F581DDF7F2000A68502 /* iOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F571DDF7F2000A68502 /* iOSAppTests.swift */; };
 		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
 		59617D0F1DF90B5C009BDFB7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */; };
+		59617D111DF92F29009BDFB7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D101DF92F29009BDFB7 /* MapView.swift */; };
 		59674FB11DF6833500172F97 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59674FB01DF6833500172F97 /* ContactManager.swift */; };
 		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
@@ -92,6 +93,7 @@
 		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		59617D101DF92F29009BDFB7 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		59674FB01DF6833500172F97 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				59160E581DF9063800BFD6C6 /* PresentMenuAnimator.swift */,
 				59160E5A1DF9064F00BFD6C6 /* DismissMenuAnimator.swift */,
 				59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */,
+				59617D101DF92F29009BDFB7 /* MapView.swift */,
 			);
 			name = Views;
 			path = ..;
@@ -443,6 +446,7 @@
 				59B430121DECC764009F615E /* User.swift in Sources */,
 				59AE8D761DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift in Sources */,
 				59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */,
+				59617D111DF92F29009BDFB7 /* MapView.swift in Sources */,
 				59160E591DF9063800BFD6C6 /* PresentMenuAnimator.swift in Sources */,
 				59826B5D1DF72F8C002CE785 /* List+CoreDataProperties.swift in Sources */,
 				594360C71DF8FE3800549D0F /* LeftMenu.swift in Sources */,
