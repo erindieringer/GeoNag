@@ -15,30 +15,30 @@ import UIKit
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    //let location = Location()
+    let currentLocation = CurrentLocation()
     
     @IBAction func close() {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func dropPin() {
-        let droppedPin = MKPointAnnotation()
-        //droppedPin.coordinate = CLLocationCoordinate2D(latitude: carLocation.latitude, longitude: carLocation.longitude)
-        //let carCoords = CLLocation(latitude: carLocation.latitude, longitude: carLocation.longitude)
-        //centerMapOnLocation(carCoords)
-        droppedPin.title = "Your Car"
-        mapView.addAnnotation(droppedPin)
+    func dropPins() {
+//        let droppedPin = MKPointAnnotation()
+//        //droppedPin.coordinate = CLLocationCoordinate2D(latitude: carLocation.latitude, longitude: carLocation.longitude)
+//        droppedPin.title = "Your Car"
+//        mapView.addAnnotation(droppedPin)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // get current location
-        //location.getCurrentLocation()
+        currentLocation.getCurrentLocation()
+        let userCoords = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        centerMapOnLocation(userCoords)
         // drop a pin at current location
-        dropPin()
+        dropPins()
     }
     
-    let regionRadius: CLLocationDistance = 400
+    let regionRadius: CLLocationDistance = 750
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 3.0, regionRadius * 3.0)
@@ -70,7 +70,6 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func closeMenu(sender: AnyObject) {
-        print("hellooo")
         dismissViewControllerAnimated(true, completion: nil)
     }
     
