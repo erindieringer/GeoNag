@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     lazy var tagView = TagView()
+    var usedTags:[Tag]?
     
     var currentUser:NSManagedObject?
     var isExecutingInBackground = false
@@ -58,11 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         } else {
             //sets tagView tags to the tags in use
             let tagPredicate = NSPredicate(format:"lists.@count > 0")
-            let tags = tagView.fetchAllTags(tagPredicate)!
-            tagView.tags = tags
+
+            usedTags = tagView.fetchAllTags(tagPredicate)!
+            tagView.tags = tagView.fetchAllTags()!
+
         }
-        print("TAGS")
-        print(tagView.tags)
+
         
         
         // Start up Plist for storing current user location data
