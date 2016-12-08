@@ -35,6 +35,8 @@ class MapViewController: UIViewController {
         // get current location
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        appDelegate.restoreData()
+        //let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
         let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
         centerMapOnLocation(userCoords)
 
@@ -58,8 +60,8 @@ class MapViewController: UIViewController {
                 let mapAnnotation = MapAnnotation(title:title, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 mapAnnotationsArray.append(mapAnnotation)
             }
-            print("search items")
-            print(mapSearchItems)
+            //print("search items")
+            //print(mapSearchItems)
             mapView.addAnnotations(mapAnnotationsArray)
         } else {
             print("Map Search Items is Nil")
