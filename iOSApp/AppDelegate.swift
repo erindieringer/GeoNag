@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
+        currentLocation.getCurrentLocation()
         return true
         
     }
@@ -100,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
         print("background")
+        currentLocation.getCurrentLocation()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -118,32 +119,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
-        print("notification sent")
-        if ( application.applicationState == UIApplicationState.Active)
-        {
-            print("Active")
-        }
-        else if( application.applicationState == UIApplicationState.Background)
-        {
-            print("Background")
-        }
-        else if( application.applicationState == UIApplicationState.Inactive)
-        {
-            print("Inactive")
-            self.redirectToPage(notification.userInfo)
-        }
+//        print("notification sent")
+//        if ( application.applicationState == UIApplicationState.Active)
+//        {
+//            print("Active")
+//        }
+//        else if( application.applicationState == UIApplicationState.Background)
+//        {
+//            print("Background")
+//        }
+//        else if( application.applicationState == UIApplicationState.Inactive)
+//        {
+//            print("Inactive")
+//            self.redirectToPage(notification.userInfo)
+//       }
+//        NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
     }
     
     func redirectToPage(userInfo:[NSObject : AnyObject]!)
     {
-        var viewControllerToBrRedirectedTo:UIViewController!
+        var viewControllerToBrRedirectedTo:NewUserViewController!
         if userInfo != nil
         {
             if let pageType = userInfo["TYPE"]
             {
                 if pageType as! String == "Page1"
                 {
-                    viewControllerToBrRedirectedTo = UIViewController() // creater specific view controller
+                    viewControllerToBrRedirectedTo = NewUserViewController() // creater specific view controller
                 }
             }
         }
@@ -212,24 +214,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         print("update location")
-        deleteSearchItems()
-        currentLocation.getCurrentLocation()
+        print(currentLocation.longitude, currentLocation.latitude)
+//        deleteSearchItems()
         //Get all tag names in use
-        let tags = getListTags()
-        //get mapkit search for tag string name
-        for tag in tags {
-            setSearchItems(tag)
-        }
-   
-       let tagSearchItems = getSearchItems()
-        mapSearchItems = tagSearchItems
-        print(tagSearchItems.count)
-        if (tagSearchItems.count > 0){
-        // put logic to find closest.. for now do top
-            //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-            let closest = findClosestItem(tagSearchItems)
-            newNotification(closest)
-        }
+//        let tags = getListTags()
+//        //get mapkit search for tag string name
+//        for tag in tags {
+//            setSearchItems(tag)
+//        }
+//   
+//       let tagSearchItems = getSearchItems()
+//        mapSearchItems = tagSearchItems
+//        print(tagSearchItems.count)
+//        if (tagSearchItems.count > 0){
+//        // put logic to find closest.. for now do top
+//            //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+//            let closest = findClosestItem(tagSearchItems)
+//            newNotification(closest)
+//        }
    
     }
     
