@@ -222,8 +222,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         print(tagSearchItems.count)
         if (tagSearchItems.count > 0){
         // put logic to find closest.. for now do top
-            let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-            newNotification(topItem)
+            //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+            let closest = findClosestItem(tagSearchItems)
+            newNotification(closest)
         }
    
     }
@@ -295,6 +296,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             let notification = oneEvent as UILocalNotification
             app.cancelLocalNotification(notification)
             }
+    }
+    
+    //find closest item to the current location
+    func findClosestItem(itemList: [NSManagedObject]) -> String {
+        var closest = ""
+        //Hard coding sorry (we know it'll never be greater than 800 becuase radius)
+        let currenLat = locationManager.location?.coordinate.latitude
+        let currenLong = locationManager.location?.coordinate.longitude
+        let currentLoc = CLLocation(latitude: currenLat!, longitude: currenLong!)
+        var min = 2000.0
+        for item in itemList{
+            let mapItem = item
+            let lat = mapItem.valueForKey("latitude") as! Double
+            let long = mapItem.valueForKey("longitude") as! Double
+            let itemLoc = CLLocation(latitude: lat, longitude: long)
+            let distance = currentLoc.distanceFromLocation(itemLoc)
+            if (distance < min){
+                min = distance
+                closest = mapItem.valueForKey("name") as! String
+            }
+        }
+        return closest
     }
 
     
