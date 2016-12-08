@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var currentUser:NSManagedObject?
     var isExecutingInBackground = false
     
+    //to use in mapView
+    var mapSearchItems: [NSManagedObject] = []
+    
     //location variables
     var locationManager: CLLocationManager! = nil
     var currentLocation = CurrentLocation()
@@ -57,10 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             let tags = tagView.createAllTags()
             tagView.tags = tags
         } else {
-            
+            //sets tagView tags to the tags in use
             let tagPredicate = NSPredicate(format:"lists.@count > 0")
             usedTags = tagView.fetchAllTags(tagPredicate)!
             tagView.tags = tagView.fetchAllTags()!
+
         }
 
         
@@ -77,22 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         //To use for real tests
-       // locationManager.startMonitoringSignificantLocationChanges()
+        //locationManager.startMonitoringSignificantLocationChanges()
         let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-
-//        getTagsSize()
         
         return true
         
     }
     
-//    func getTagsSize() {
-//        let tags = tagView.fetchAllTags()
-//        for tag in tags! {
-//            print(tag.valueForKey("lists")?count)
-//        }
-//    }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -119,6 +115,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         coreDataStack.saveContext()
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
+        print("notification sent")
+        if ( application.applicationState == UIApplicationState.Active)
+        {
+            print("Active")
+        }
+        else if( application.applicationState == UIApplicationState.Background)
+        {
+            print("Background")
+        }
+        else if( application.applicationState == UIApplicationState.Inactive)
+        {
+            print("Inactive")
+            self.redirectToPage(notification.userInfo)
+        }
+    }
+    
+    func redirectToPage(userInfo:[NSObject : AnyObject]!)
+    {
+        var viewControllerToBrRedirectedTo:UIViewController!
+        if userInfo != nil
+        {
+            if let pageType = userInfo["TYPE"]
+            {
+                if pageType as! String == "Page1"
+                {
+                    viewControllerToBrRedirectedTo = UIViewController() // creater specific view controller
+                }
+            }
+        }
+        if viewControllerToBrRedirectedTo != nil
+        {
+            if self.window != nil && self.window?.rootViewController != nil
+            {
+                let rootVC = self.window?.rootViewController!
+                if rootVC is UINavigationController
+                {
+                    (rootVC as! UINavigationController).pushViewController(viewControllerToBrRedirectedTo, animated: true)
+                }
+                else
+                {
+                    rootVC?.presentViewController(viewControllerToBrRedirectedTo, animated: true, completion: { () -> Void in
+                        
+                    })
+                }
+            }
+        }
     }
     
     // MARK: - Core Data Method for Creating Records
@@ -166,34 +211,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
-        print("location change")
+        print("update location")
+        deleteSearchItems()
         currentLocation.getCurrentLocation()
-        //deleteSearchItems()
-        //For all tags setsearch items
-            //setSearchItems()
-        
-        //let maprequests = getSearchItems()
+        //Get all tag names in use
+        let tags = getListTags()
+        //get mapkit search for tag string name
+        for tag in tags {
+            setSearchItems(tag)
+        }
+   
+       let tagSearchItems = getSearchItems()
+        mapSearchItems = tagSearchItems
+        print(tagSearchItems.count)
+        if (tagSearchItems.count > 0){
+        // put logic to find closest.. for now do top
+            //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
+            let closest = findClosestItem(tagSearchItems)
+            newNotification(closest)
+        }
+   
     }
     
-    func setSearchItems() {
-        print("set search")
-        let span = MKCoordinateSpanMake(0.01, 0.01)
+    func setSearchItems(tag: String) {
+        //print("set search")
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
-        
-        //TO DO: get all tags and loop through based on this
-        //use tags usually, will want to go through tags and then search for all tags
-        currentLocation.findMatchingItems("apparel", region: region)
+        currentLocation.findMatchingItems(tag, region: region)
     }
     
     // Will return list
-    func getSearchItems() -> AnyObject {
+    func getSearchItems() -> [NSManagedObject] {
         let managedObjectContext = coreDataStack.managedObjectContext
-        let item = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
-        return item.first!.valueForKey("name")!
+        let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        return items
     }
     
     //Delete all search items from coredata to prepare for setting new ones
     func deleteSearchItems() {
+        print("delete")
         let fetchRequest = NSFetchRequest(entityName: "SearchItem")
         let managedObjectContext = coreDataStack.managedObjectContext
         // Create Batch Delete Request
@@ -208,10 +264,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
     }
     
-    //handels notifications
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("notification sent")
+    func getListTags() -> [String] {
+        var tagNames: [String] = []
+        if let used = usedTags {
+            for tag in used {
+                tagNames.append(tag.valueForKey("name") as! String)
+            }
+        }
+        return tagNames
     }
+    
+    
     //from view controller
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
@@ -219,14 +282,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
+//    func setUpNotificationSettings() {
+//        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Sound]
+//        
+//        let showMapAction = UIMutableUserNotificationAction()
+//        showMapAction.identifier = "justInform"
+//        showMapAction.title = "OK, got it"
+//        //showMapAction.activationMode = UIUserNotificationActivationMode.Background
+//        showMapAction.destructive = false
+//        showMapAction.authenticationRequired = false
+//        
+//        
+//        let trashAction = UIMutableUserNotificationAction()
+//        trashAction.identifier = "trashAction"
+//        trashAction.title = "Delete list"
+//        //trashAction.activationMode = UIUserNotificationActivationMode.Background
+//        trashAction.destructive = true
+//        trashAction.authenticationRequired = true
+//        
+//        let actionsArray = NSArray(objects: trashAction, showMapAction)
+//        
+//        let locationReminderCategory = UIMutableUserNotificationCategory()
+//        locationReminderCategory.identifier = "locationReminderCategory"
+//        locationReminderCategory.setActions(actionsArray as! [UIUserNotificationAction], forContext: UIUserNotificationActionContext.Default)
+//        
+//         let categoriesForSettings = NSSet(objects: locationReminderCategory)
+//        
+//        let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as! Set<UIUserNotificationCategory>)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
+//    }
+    
     func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         cancelNotifications()
-        print("notif here")
+        //print("notif here")
         let locattionnotification = UILocalNotification()
+        locattionnotification.category = "locationReminderCategory"
         locattionnotification.alertBody = " \(name) is nearby!"
         locattionnotification.alertAction = "View List"
-        //print(locattionnotification)
+        locattionnotification.userInfo = ["TYPE":"Page1"]
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
@@ -237,6 +331,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             let notification = oneEvent as UILocalNotification
             app.cancelLocalNotification(notification)
             }
+    }
+    
+    //find closest item to the current location
+    func findClosestItem(itemList: [NSManagedObject]) -> String {
+        var closest = ""
+        //Hard coding sorry (we know it'll never be greater than 800 becuase radius)
+        let currenLat = locationManager.location?.coordinate.latitude
+        let currenLong = locationManager.location?.coordinate.longitude
+        let currentLoc = CLLocation(latitude: currenLat!, longitude: currenLong!)
+        var min = 2000.0
+        for item in itemList{
+            let mapItem = item
+            let lat = mapItem.valueForKey("latitude") as! Double
+            let long = mapItem.valueForKey("longitude") as! Double
+            let itemLoc = CLLocation(latitude: lat, longitude: long)
+            let distance = currentLoc.distanceFromLocation(itemLoc)
+            if (distance < min){
+                min = distance
+                closest = mapItem.valueForKey("name") as! String
+            }
+        }
+        return closest
     }
 
     
