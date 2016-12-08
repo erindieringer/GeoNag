@@ -283,10 +283,10 @@
 			isa = PBXGroup;
 			children = (
 				59AE8D741DF7D38100EB8B76 /* SearchItem+CoreDataProperties.swift */,
+				59826B561DF72F1F002CE785 /* PListManager.swift */,
 				59826B581DF72F8C002CE785 /* Item+CoreDataProperties.swift */,
 				59826B591DF72F8C002CE785 /* Tag+CoreDataProperties.swift */,
 				59826B5A1DF72F8C002CE785 /* List+CoreDataProperties.swift */,
-				59826B561DF72F1F002CE785 /* PListManager.swift */,
 				59826B541DF72F15002CE785 /* PlistData.plist */,
 				59B430441DF0A135009F615E /* User+CoreDataProperties.swift */,
 				59B430281DECF501009F615E /* Friend+CoreDataProperties.swift */,
@@ -374,6 +374,11 @@
 					595A0F3B1DDF7F1F00A68502 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = SDY2D2FLQT;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					595A0F521DDF7F2000A68502 = {
 						CreatedOnToolsVersion = 7.3.1;

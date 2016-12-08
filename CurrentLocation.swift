@@ -78,8 +78,8 @@ class CurrentLocation {
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     
     func getPlistUserLocation () {
-        let plistLong = PlistManager.sharedInstance.getValueForKey("UserCurrentLocationLongitude")
-        let plistLat = PlistManager.sharedInstance.getValueForKey("UserCurrentLocationLatitude")
+        let plistLong = PlistManager.sharedInstance.getValueForKey("userCurrentLocationLongitude")
+        let plistLat = PlistManager.sharedInstance.getValueForKey("userCurrentLocationLatitude")
         self.longitude = CLLocationDegrees(plistLong as! NSNumber)
         self.latitude = CLLocationDegrees(plistLat as! NSNumber)
     }
