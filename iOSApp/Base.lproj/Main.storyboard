@@ -241,6 +241,7 @@
                             <constraint firstItem="p9C-Mk-9Jw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="zMh-Cu-Lhl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vJH-RI-rcj"/>
                     <connections>
                         <outlet property="tableView" destination="rXp-S2-TiK" id="7dd-kI-Yvt"/>
                     </connections>

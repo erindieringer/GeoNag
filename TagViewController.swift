@@ -22,6 +22,35 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // MARK: - UICollectionViewDataSource protocol
     
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.coreDataStack.managedObjectContext
+        
+        let listPredicate = NSPredicate(format:"name == %@", listModel!.title())
+        let reminderListObect = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedContext, predicate: listPredicate)
+        print(reminderListObect[0])
+        // get all selected items and change their image
+        let tagPredicate = NSPredicate(format:"lists contains[c] %@", reminderListObect[0])
+        let selectedCells = tagView!.fetchAllTags(tagPredicate)
+        let allTags = tagView!.fetchAllTags()
+        if selectedCells!.contains(allTags![indexPath.row]) {
+            print("woo")
+            let cell = collectionView.cellForItemAtIndexPath(indexPath)
+            let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
+            tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
+        }
+        //print(tags!)
+//        let cell = tags![indexPath.row]
+//        if selectedCells?.contains(cell) == true {
+//            print("cell was selected")
+//            let cell = collectionView.cellForItemAtIndexPath(indexPath)
+//            let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
+//            tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
+//            
+//        }
+    }
+    
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tagView!.numberOfTags
@@ -37,20 +66,20 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseID, forIndexPath: indexPath) as! TagCollectionViewCell
         
         // use cell for actual cell styles
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true {
-            let tag = tagView!.tags[indexPath.item]
-            let currTagsForList = listModel?.getTags()
-            if (currTagsForList?.contains(tag) == true) {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
-                listModel?.deleteTag(tag)
-            } else {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: oTagImages![indexPath.row] as! String)
-                listModel?.addTag(tag)
-            }
-        }
+//        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+//        if cell?.selected == true {
+//            let tag = tagView!.tags[indexPath.item]
+//            let currTagsForList = listModel?.getTags()
+//            if (currTagsForList?.contains(tag) == true) {
+//                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
+//                tagImageView.image = UIImage(named: oTagImages![indexPath.row] as! String)
+//                listModel?.deleteTag(tag)
+//            } else {
+//                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
+//                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
+//                listModel?.addTag(tag)
+//            }
+//        }
         
         return cellRef
     }

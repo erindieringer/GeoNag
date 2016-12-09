@@ -59,7 +59,6 @@
 		59B336471DFA8A7400B71E1B /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336401DFA8A7400B71E1B /* List+CoreDataProperties.swift */; };
 		59B336481DFA8A7400B71E1B /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336411DFA8A7400B71E1B /* Item+CoreDataProperties.swift */; };
 		59B336491DFA8A7400B71E1B /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336421DFA8A7400B71E1B /* Tag+CoreDataProperties.swift */; };
-		59B3364A1DFA8A7400B71E1B /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336431DFA8A7400B71E1B /* User+CoreDataProperties.swift */; };
 		59B3364B1DFA8A7400B71E1B /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336441DFA8A7400B71E1B /* Friend+CoreDataProperties.swift */; };
 		59B3364C1DFA8A7400B71E1B /* SearchItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336451DFA8A7400B71E1B /* SearchItem+CoreDataProperties.swift */; };
 		59B3364D1DFA8A7400B71E1B /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B336461DFA8A7400B71E1B /* Location+CoreDataProperties.swift */; };
@@ -151,7 +150,6 @@
 		59B336401DFA8A7400B71E1B /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "List+CoreDataProperties.swift"; path = "../List+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B336411DFA8A7400B71E1B /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B336421DFA8A7400B71E1B /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "../Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		59B336431DFA8A7400B71E1B /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B336441DFA8A7400B71E1B /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Friend+CoreDataProperties.swift"; path = "../Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B336451DFA8A7400B71E1B /* SearchItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SearchItem+CoreDataProperties.swift"; path = "../SearchItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B336461DFA8A7400B71E1B /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				59B336401DFA8A7400B71E1B /* List+CoreDataProperties.swift */,
 				59B336411DFA8A7400B71E1B /* Item+CoreDataProperties.swift */,
 				59B336421DFA8A7400B71E1B /* Tag+CoreDataProperties.swift */,
-				59B336431DFA8A7400B71E1B /* User+CoreDataProperties.swift */,
 				59B336441DFA8A7400B71E1B /* Friend+CoreDataProperties.swift */,
 				59B336451DFA8A7400B71E1B /* SearchItem+CoreDataProperties.swift */,
 				59B336461DFA8A7400B71E1B /* Location+CoreDataProperties.swift */,
@@ -540,7 +537,6 @@
 				59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */,
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
 				59160E531DF905CB00BFD6C6 /* MenuHelper.swift in Sources */,
-				59B3364A1DFA8A7400B71E1B /* User+CoreDataProperties.swift in Sources */,
 				59B3364D1DFA8A7400B71E1B /* Location+CoreDataProperties.swift in Sources */,
 				59B4300A1DECC764009F615E /* Tag.swift in Sources */,
 				59B430141DECC764009F615E /* Location.swift in Sources */,
