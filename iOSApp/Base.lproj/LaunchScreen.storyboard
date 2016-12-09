@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="G e o N a g" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnE-ad-lTg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="G e o N a g" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnE-ad-lTg">
                                 <rect key="frame" x="82" y="162" width="436" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dnE-ad-lTg" secondAttribute="height" multiplier="436:101" id="U15-FG-Izs"/>
@@ -30,6 +30,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="dnE-ad-lTg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RIB-6A-ZWp"/>
                             <constraint firstItem="dnE-ad-lTg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oue-Yf-T0G"/>
                         </constraints>
                     </view>
