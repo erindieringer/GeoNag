@@ -31,8 +31,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "313"
             endingLineNumber = "313"
-            landmarkName = "findClosestItem(_:)"
-            landmarkType = "5">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkName = "fetchRecordsForEntity(_:inManagedObjectContext:predicate:sortDescriptor:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
