@@ -24,12 +24,6 @@ class ListDetailView {
         return reminderList.name!
     }
     
-    func getSharedUserInitials() -> [String] {
-        //let currentUser = reminderList.user
-        // TO DO: Call up to the API and get user's friends
-        return ["KW", "ED"]
-    }
-    
     func getTags() -> [Tag] {
         return reminderList.tags!.array as! [Tag]
     }

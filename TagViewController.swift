@@ -16,6 +16,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     var tagImages:NSArray?
     var oTagImages:NSArray?
     
+    @IBOutlet weak var cv: UICollectionView!
     
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     
@@ -35,10 +36,11 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         let reuseIDs = ["cellGroceries", "cellConvenience", "cellDrug", "cellPost", "cellBank", "cellBeverage", "cellHome", "cellSports"]
         let reuseID = reuseIDs[indexPath.row]
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseID, forIndexPath: indexPath) as! TagCollectionViewCell
-        
+   
         // use cell for actual cell styles
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == true {
+            print("selected")
             let tag = tagView!.tags[indexPath.item]
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {

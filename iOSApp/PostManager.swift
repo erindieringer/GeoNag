@@ -131,30 +131,30 @@ class PostManager {
         
     }
     
-    func postList(list: List) {
-        let string = "https://reminderappapi.herokuapp.com/reminder_lists"
-        let url = NSURL(string: string)!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        let params = [ "reminder_list":[ "name":list.name!, "date_created":list.dateCreated!, "date_modified":list.dateModified!, "shared":list.shared!, "user":list.user!.phoneNumber! ]]
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "POST"
-        do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
-            print(request)
-        }
-        catch {
-            
-        }
-        let tache = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let antwort = response as? NSHTTPURLResponse {
-                let code = antwort.statusCode
-                print(code)
-            }
-        }
-        tache.resume()
-        
-    }
+//    func postList(list: List) {
+//        let string = "https://reminderappapi.herokuapp.com/reminder_lists"
+//        let url = NSURL(string: string)!
+//        let session = NSURLSession.sharedSession()
+//        let request = NSMutableURLRequest(URL: url)
+////        let params = [ "reminder_list":[ "name":list.name!, "date_created":list.dateCreated!, "date_modified":list.dateModified!, "shared":list.shared!, "user":list.user!.phoneNumber! ]]
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.HTTPMethod = "POST"
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+//            print(request)
+//        }
+//        catch {
+//            
+//        }
+//        let tache = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+//            if let antwort = response as? NSHTTPURLResponse {
+//                let code = antwort.statusCode
+//                print(code)
+//            }
+//        }
+//        tache.resume()
+//        
+//    }
     
     func postReminderTag(tag: String, reminder_list: String) {
         let string = "https://reminderappapi.herokuapp.com/reminder_tags"
@@ -205,30 +205,30 @@ class PostManager {
         
     }
     
-    func postUser(user: User) {
-        let string = "https://reminderappapi.herokuapp.com/users"
-        let url = NSURL(string: string)!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        let params = [ "user":["first_name":user.firstName!, "last_name":user.lastName!, "phone_number":user.phoneNumber!]]
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "POST"
-        do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
-            print(request)
-        }
-        catch {
-            
-        }
-        let tache = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if let antwort = response as? NSHTTPURLResponse {
-                let code = antwort.statusCode
-                print(code)
-            }
-        }
-        tache.resume()
-        
-    }
+//    func postUser(user: User) {
+//        let string = "https://reminderappapi.herokuapp.com/users"
+//        let url = NSURL(string: string)!
+//        let session = NSURLSession.sharedSession()
+//        let request = NSMutableURLRequest(URL: url)
+//        let params = [ "user":["first_name":user.firstName!, "last_name":user.lastName!, "phone_number":user.phoneNumber!]]
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.HTTPMethod = "POST"
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+//            print(request)
+//        }
+//        catch {
+//            
+//        }
+//        let tache = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+//            if let antwort = response as? NSHTTPURLResponse {
+//                let code = antwort.statusCode
+//                print(code)
+//            }
+//        }
+//        tache.resume()
+//        
+//    }
     
     func postLocationItem(name: String, latitude: Double, longitude: Double) {
         let string = "https://reminderappapi.herokuapp.com/locations"
