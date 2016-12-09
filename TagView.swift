@@ -21,7 +21,7 @@ class TagView {
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
-        let tagNames = ["Groceries", "Convenience", "Drug Stores", "Post", "Banks & ATMs", "Beverage Stores", "Home & Office", "Sporting Goods"]
+        let tagNames = ["Groceries", "Convenience", "Drug", "Post", "Bank", "Beverage", "Home", "Sports"]
         
         for i in 0..<numberOfTags {
             if let tagEntity = appDelegate.createRecordForEntity("Tag", inManagedObjectContext: managedContext) {

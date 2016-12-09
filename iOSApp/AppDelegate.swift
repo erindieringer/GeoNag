@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager = CLLocationManager()
         locationManager.delegate = self
         //locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.distanceFilter = 1500
+        locationManager.distanceFilter = 400
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -194,13 +194,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //restoreData()
         let loc = locations.last!
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
-        if (distance > 2000.0){
+        if (distance > 1000.0){
             /// if less than 5 meters per second which is average running speed
-            if loc.speed < 5.0 {
+//            if loc.speed < 5.0 {
                 print("update SIGNIFICANT location")
                 deleteSearchItems()
                 //Get all tag names in use
                 let tags = getListTags()
+                
                 //get mapkit search for tag string name
                 for tag in tags {
                     setSearchItems(tag)
@@ -217,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                         closest = tagSearchItems.last!.valueForKey("name")! as! String
                     }
                     newNotification(closest)
-                }
+//                }
                 //now reset currentLocatoin and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
@@ -228,9 +229,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             }
             else {
                 print("speed too fast")
-                currentLocation.latitude = loc.coordinate.latitude
-                currentLocation.longitude = loc.coordinate.longitude
-                saveData()
+//                currentLocation.latitude = loc.coordinate.latitude
+//                currentLocation.longitude = loc.coordinate.longitude
+//                saveData()
             }
         }
         else {
