@@ -67,10 +67,13 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
             let tag = tagView!.tags[indexPath.item]
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {
-                cell?.backgroundColor = UIColor(red: 193.0/255.0, green: 206.0/255.0, blue: 202.0/255.0, alpha: 1.0)
+                //cell?.backgroundColor = UIColor(red: 193.0/255.0, green: 206.0/255.0, blue: 202.0/255.0, alpha: 1.0)
+                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
+                tagImageView.image = UIImage(named: "reminder.png")
+                self.view.addSubview(tagImageView)
                 listModel?.deleteTag(tag)
             } else {
-                cell?.backgroundColor = UIColor(red: 149.0/255.0, green: 158.0/255.0, blue: 156.0/255.0, alpha: 1.0)
+                //cell?.backgroundColor = UIColor(red: 149.0/255.0, green: 158.0/255.0, blue: 156.0/255.0, alpha: 1.0)
                 listModel?.addTag(tag)
             }
         } else {

@@ -614,15 +614,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bank.png" width="65" height="65"/>
-        <image name="beverage.png" width="65" height="65"/>
-        <image name="convenience.png" width="65" height="65"/>
+        <image name="bank.png" width="250" height="250"/>
+        <image name="beverage.png" width="250" height="250"/>
+        <image name="convenience.png" width="250" height="250"/>
         <image name="deleteButton.png" width="303" height="108"/>
-        <image name="drug.png" width="65" height="65"/>
-        <image name="groceries.png" width="65" height="65"/>
-        <image name="home.png" width="65" height="65"/>
+        <image name="drug.png" width="250" height="250"/>
+        <image name="groceries.png" width="250" height="250"/>
+        <image name="home.png" width="250" height="250"/>
         <image name="map.png" width="37" height="30"/>
-        <image name="post.png" width="65" height="65"/>
+        <image name="post.png" width="250" height="250"/>
         <image name="reminder.png" width="68" height="90"/>
         <image name="sports.png" width="250" height="250"/>
     </resources>
