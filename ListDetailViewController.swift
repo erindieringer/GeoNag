@@ -19,6 +19,8 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     let locationManager = CLLocationManager()
     var location = CurrentLocation()
     
+    @IBOutlet var label: UILabel!
+    
     @IBAction func addItem(sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Reminder",
@@ -88,7 +90,14 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
-        //TO DO: delete from API
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context = appDelegate.coreDataStack.managedObjectContext
+//        
+//        context.deleteObject(viewModel.lists[indexPath.row])
+//        appDelegate.coreDataStack.saveContext()
+//        
+//        viewModel.lists.removeAtIndex(indexPath.row)
+//        tableView.reloadData()
     }
     
     @IBAction func notificationSwitch(sender: AnyObject) {
@@ -119,6 +128,8 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
         detailViewModel!.items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext, predicate: itemPredicate) as! [Item]
+        
+        label.text = detailViewModel?.title()
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,6 +198,17 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let tagVC = segue.destinationViewController as? TagViewController {
             tagVC.listModel = detailViewModel
+        }
+        if segue.identifier == "DeleteItemList"
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.coreDataStack.managedObjectContext
+            
+            context.deleteObject(detailViewModel!.reminderList)
+            appDelegate.coreDataStack.saveContext()
+            
+//            viewModel.lists.removeAtIndex(indexPath.row)
+//            tableView.reloadData()
         }
     }
     
