@@ -1,8 +1,8 @@
 //
 //  Friend+CoreDataProperties.swift
-//  iOSApp
+//  GeoNag
 //
-//  Created by Katie Williams on 11/28/16.
+//  Created by Katie Williams on 12/9/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,9 +14,9 @@ import CoreData
 
 extension Friend {
 
-    @NSManaged var phoneNumber: String?
     @NSManaged var firstName: String?
     @NSManaged var lastName: String?
+    @NSManaged var phoneNumber: String?
     @NSManaged var lists: NSOrderedSet?
 
 }

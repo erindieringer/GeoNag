@@ -234,7 +234,7 @@
                                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" editingAccessoryType="disclosureIndicator" textLabel="aqf-7A-tLY" style="IBUITableViewCellStyleDefault" id="FB6-rJ-uKH" customClass="DetailListTableViewCell" customModule="GeoNag" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="item" editingAccessoryType="disclosureIndicator" textLabel="aqf-7A-tLY" style="IBUITableViewCellStyleDefault" id="FB6-rJ-uKH" customClass="ListsTableViewCell" customModule="GeoNag" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FB6-rJ-uKH" id="1Wg-Qs-roe">

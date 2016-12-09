@@ -74,7 +74,8 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func updateItem(index: Int, text: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        print("items:")
+        print(detailViewModel!.items)
         detailViewModel!.items[index].text = text
         detailViewModel!.reminderList.dateModified = NSDate()
         
@@ -111,6 +112,13 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        
+        let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
+        detailViewModel!.items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext, predicate: itemPredicate) as! [Item]
     }
     
     override func didReceiveMemoryWarning() {

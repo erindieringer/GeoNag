@@ -1,8 +1,8 @@
 //
 //  Tag+CoreDataProperties.swift
-//  iOSApp
+//  GeoNag
 //
-//  Created by Katie Williams on 12/6/16.
+//  Created by Katie Williams on 12/9/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,7 @@ import CoreData
 extension Tag {
 
     @NSManaged var name: String?
-    @NSManaged var locations: NSOrderedSet?
     @NSManaged var lists: NSOrderedSet?
+    @NSManaged var locations: NSOrderedSet?
 
 }
