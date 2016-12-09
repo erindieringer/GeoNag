@@ -1,8 +1,8 @@
 //
 //  List+CoreDataProperties.swift
-//  iOSApp
+//  GeoNag
 //
-//  Created by Katie Williams on 12/6/16.
+//  Created by Katie Williams on 12/9/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,7 +21,7 @@ extension List {
     @NSManaged var shared: NSNumber?
     @NSManaged var friends: NSOrderedSet?
     @NSManaged var items: NSOrderedSet?
-    @NSManaged var user: User?
     @NSManaged var tags: NSOrderedSet?
+    @NSManaged var user: User?
 
 }

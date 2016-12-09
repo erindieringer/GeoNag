@@ -1,8 +1,8 @@
 //
 //  SearchItem+CoreDataProperties.swift
-//  iOSApp
+//  GeoNag
 //
-//  Created by Katie Williams on 12/7/16.
+//  Created by Katie Williams on 12/9/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,8 +14,8 @@ import CoreData
 
 extension SearchItem {
 
-    @NSManaged var name: String?
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
+    @NSManaged var name: String?
 
 }

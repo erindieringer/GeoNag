@@ -1,8 +1,8 @@
 //
 //  User+CoreDataProperties.swift
-//  iOSApp
+//  GeoNag
 //
-//  Created by Katie Williams on 12/1/16.
+//  Created by Katie Williams on 12/9/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
