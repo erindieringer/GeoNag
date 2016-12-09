@@ -35,15 +35,17 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         //let tags = tagView!.fetchAllTags()
         
         // get a reference to our storyboard cell
-        let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
+        let reuseIDs = ["cellGroceries", "cellConvenience", "cellDrug", "cellPost", "cellBank", "cellBeverage", "cellHome", "cellSports"]
+        let reuseID = reuseIDs[indexPath.row]
+        let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseID, forIndexPath: indexPath) as! TagCollectionViewCell
         
 //        let tagImageView = (cellRef.viewWithTag(100)! as! UIImageView)
 //        print(tagImages)
 //        tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
-//        self.view.addSubview(recipeImageView)
+//        self.view.addSubview(tagImageView)
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cellRef.label.text = tagView!.tags[indexPath.item].name
+        //cellRef.label.text = tagView!.tags[indexPath.item].name
         
         // use cell for actual cell styles
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
