@@ -21,8 +21,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // For Pan View
     let interactor = Interactor()
     
-    var currentUser:NSManagedObject?
-    
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func openMenu(sender: AnyObject) {
@@ -91,7 +89,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSDate(), forKey: "dateModified")
         listEntity.setValue(0, forKey: "shared")
         listEntity.setValue(1, forKey: "notifications")
-        listEntity.setValue(currentUser, forKey: "user")
         listEntity.setValue(NSOrderedSet(), forKey: "items")
         listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
@@ -142,16 +139,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
-        
-        let user = appDelegate.fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
-        
-        if let userInfo = user.first {
-            currentUser = userInfo
-        }
-        
-        let listPredicate = NSPredicate(format:"user == %@", currentUser!)
-        let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, predicate: listPredicate, sortDescriptor: sortDescriptor) as! [List]
+                
+                let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
+        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, sortDescriptor: sortDescriptor) as! [List]
 
     }
     

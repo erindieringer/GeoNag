@@ -17,6 +17,4 @@ extension User {
     @NSManaged var firstName: String?
     @NSManaged var lastName: String?
     @NSManaged var phoneNumber: String?
-    @NSManaged var lists: NSOrderedSet?
-
 }

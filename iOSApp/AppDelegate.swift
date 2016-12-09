@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     lazy var tagView = TagView()
     var usedTags:[Tag]?
     
-    var currentUser:NSManagedObject?
     var isExecutingInBackground = false
     
     //to use in mapView
@@ -33,27 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let managedObjectContext = coreDataStack.managedObjectContext
-        
-        // Only open up the login page if the user has never used the app before
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newUserViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewUserVC")
         
         let listViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ListNavVC")
         
-        
-        let user = fetchRecordsForEntity("User", inManagedObjectContext: managedObjectContext)
-        print(user)
-        
-        if let userInfo = user.first {
-            print("user exists")
-            currentUser = userInfo
-            self.window?.rootViewController = listViewController
-        } else {
-            print("user dne")
-            self.window?.rootViewController = newUserViewController
-        }
+        self.window?.rootViewController = listViewController
         
         self.window?.makeKeyAndVisible()
         
