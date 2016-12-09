@@ -45,7 +45,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {
                 let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
+                tagImageView.image = UIImage(named: "reminder.png")//tagImages![indexPath.row] as! String)
                 listModel?.deleteTag(tag)
             } else {
                 let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
@@ -56,6 +56,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         
         return cellRef
     }
+    
     
     // MARK: - UICollectionViewDelegate protocol
     
