@@ -306,7 +306,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="BPo-ks-qre" secondAttribute="leading" id="HTy-xh-wb2"/>
                             <constraint firstItem="rXp-S2-TiK" firstAttribute="top" secondItem="p9C-Mk-9Jw" secondAttribute="bottom" id="Hrl-mP-fPI"/>
                             <constraint firstItem="5iD-g2-fje" firstAttribute="top" secondItem="tZw-H2-9sx" secondAttribute="top" id="Luv-1n-SQ2"/>
-                            <constraint firstItem="rXp-S2-TiK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NRQ-HQ-O5V"/>
+                            <constraint firstItem="rXp-S2-TiK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="5" id="NRQ-HQ-O5V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p9C-Mk-9Jw" secondAttribute="trailing" constant="5" id="Obg-e8-Kji"/>
                             <constraint firstItem="aFk-RT-9oQ" firstAttribute="leading" secondItem="BPo-ks-qre" secondAttribute="trailing" constant="13" id="Q6p-IW-rJL"/>
                             <constraint firstItem="BPo-ks-qre" firstAttribute="bottom" secondItem="UaG-ez-awL" secondAttribute="bottom" id="QFz-zC-Kd6"/>
@@ -325,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277" y="207"/>
+            <point key="canvasLocation" x="337" y="175"/>
         </scene>
         <!--Tag View Controller-->
         <scene sceneID="P6j-hl-ubM">
