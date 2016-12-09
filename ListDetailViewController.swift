@@ -199,6 +199,17 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         if let tagVC = segue.destinationViewController as? TagViewController {
             tagVC.listModel = detailViewModel
         }
+        if segue.identifier == "DeleteItemList"
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = appDelegate.coreDataStack.managedObjectContext
+            
+            context.deleteObject(detailViewModel!.reminderList)
+            appDelegate.coreDataStack.saveContext()
+            
+//            viewModel.lists.removeAtIndex(indexPath.row)
+//            tableView.reloadData()
+        }
     }
     
     

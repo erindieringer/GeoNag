@@ -223,6 +223,7 @@
                                 </state>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC4-Ff-2bK"/>
+                                    <segue destination="n7b-nS-j9o" kind="show" identifier="DeleteItemList" action="showDetailViewController:sender:" id="mfh-CE-Djq"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vD8-5f-WbD">
@@ -619,4 +620,7 @@
         <image name="osports.png" width="250" height="250"/>
         <image name="reminder.png" width="68" height="90"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mfh-CE-Djq"/>
+    </inferredMetricsTieBreakers>
 </document>
