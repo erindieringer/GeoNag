@@ -37,9 +37,10 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         // get a reference to our storyboard cell
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TagCollectionViewCell
         
-        let recipeImageView = (cellRef.viewWithTag(100)! as! UIImageView)
-        recipeImageView.image! = UIImage(named: tagImages![indexPath.row] as! String)!
-        self.view.addSubview(recipeImageView)
+//        let tagImageView = (cellRef.viewWithTag(100)! as! UIImageView)
+//        print(tagImages)
+//        tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
+//        self.view.addSubview(recipeImageView)
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         cellRef.label.text = tagView!.tags[indexPath.item].name
@@ -64,10 +65,10 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
             let tag = tagView!.tags[indexPath.item]
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {
-                cell?.backgroundColor = UIColor.magentaColor()
+                cell?.backgroundColor = UIColor(red: 193.0/255.0, green: 206.0/255.0, blue: 202.0/255.0, alpha: 1.0)
                 listModel?.deleteTag(tag)
             } else {
-                cell?.backgroundColor = UIColor.orangeColor()
+                cell?.backgroundColor = UIColor(red: 149.0/255.0, green: 158.0/255.0, blue: 156.0/255.0, alpha: 1.0)
                 listModel?.addTag(tag)
             }
         } else {
@@ -80,7 +81,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         // Do any additional setup after loading the view, typically from a nib.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         tagView = appDelegate.tagView
-        tagImages = NSArray(array:["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"])
+        tagImages = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
     }
     
     override func didReceiveMemoryWarning() {

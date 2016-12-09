@@ -27,14 +27,6 @@
 		596741341DFA11F600917E11 /* ListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596741331DFA11F600917E11 /* ListsTableViewCell.swift */; };
 		596741361DFA11FE00917E11 /* ListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596741351DFA11FE00917E11 /* ListsTableViewCell.xib */; };
 		5967413A1DFA1E4600917E11 /* deleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741391DFA1E4600917E11 /* deleteButton.png */; };
-		5967413C1DFA2C1E00917E11 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5967413B1DFA2C1E00917E11 /* home.png */; };
-		5967413E1DFA2C2600917E11 /* beverage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5967413D1DFA2C2600917E11 /* beverage.png */; };
-		596741401DFA2C2C00917E11 /* drug.png in Resources */ = {isa = PBXBuildFile; fileRef = 5967413F1DFA2C2C00917E11 /* drug.png */; };
-		596741421DFA2C3200917E11 /* convenience.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741411DFA2C3200917E11 /* convenience.png */; };
-		596741441DFA2C3800917E11 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741431DFA2C3800917E11 /* sports.png */; };
-		596741461DFA2C3F00917E11 /* bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741451DFA2C3F00917E11 /* bank.png */; };
-		596741481DFA2C4500917E11 /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741471DFA2C4500917E11 /* post.png */; };
-		5967414A1DFA2C4B00917E11 /* groceries.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741491DFA2C4B00917E11 /* groceries.png */; };
 		59674FB11DF6833500172F97 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59674FB01DF6833500172F97 /* ContactManager.swift */; };
 		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
@@ -65,6 +57,14 @@
 		59B430451DF0A135009F615E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430441DF0A135009F615E /* User+CoreDataProperties.swift */; };
 		59B430471DF0FE30009F615E /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430461DF0FE30009F615E /* NewUserViewController.swift */; };
 		805A4AD31DFA010800F95CE7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A4AD21DFA010800F95CE7 /* DataManager.swift */; };
+		805A4AD51DFA321A00F95CE7 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4AD41DFA321A00F95CE7 /* home.png */; };
+		805A4AD71DFA321D00F95CE7 /* beverage.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4AD61DFA321D00F95CE7 /* beverage.png */; };
+		805A4AD91DFA322300F95CE7 /* convenience.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4AD81DFA322300F95CE7 /* convenience.png */; };
+		805A4ADB1DFA322600F95CE7 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4ADA1DFA322600F95CE7 /* sports.png */; };
+		805A4ADD1DFA322800F95CE7 /* post.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4ADC1DFA322800F95CE7 /* post.png */; };
+		805A4ADF1DFA322A00F95CE7 /* drug.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4ADE1DFA322A00F95CE7 /* drug.png */; };
+		805A4AE11DFA322D00F95CE7 /* bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4AE01DFA322D00F95CE7 /* bank.png */; };
+		805A4AE31DFA323000F95CE7 /* groceries.png in Resources */ = {isa = PBXBuildFile; fileRef = 805A4AE21DFA323000F95CE7 /* groceries.png */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 		80E643F21DF0FA0C00F39267 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E643F11DF0FA0C00F39267 /* PostManager.swift */; };
 /* End PBXBuildFile section */
@@ -94,17 +94,17 @@
 		59316F0D1DFA094B00566387 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		59316F0F1DFA0C3200566387 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		594360C61DF8FE3800549D0F /* LeftMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenu.swift; sourceTree = "<group>"; };
-		595A0F3C1DDF7F1F00A68502 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F3C1DDF7F1F00A68502 /* GeoNag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoNag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F3F1DDF7F1F00A68502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		595A0F441DDF7F1F00A68502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		595A0F471DDF7F1F00A68502 /* iOSApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSApp.xcdatamodel; sourceTree = "<group>"; };
 		595A0F491DDF7F1F00A68502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		595A0F4C1DDF7F1F00A68502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		595A0F4E1DDF7F1F00A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F531DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F571DDF7F2000A68502 /* iOSAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppTests.swift; sourceTree = "<group>"; };
 		595A0F591DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -113,14 +113,6 @@
 		596741331DFA11F600917E11 /* ListsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsTableViewCell.swift; sourceTree = "<group>"; };
 		596741351DFA11FE00917E11 /* ListsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListsTableViewCell.xib; sourceTree = "<group>"; };
 		596741391DFA1E4600917E11 /* deleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteButton.png; sourceTree = "<group>"; };
-		5967413B1DFA2C1E00917E11 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
-		5967413D1DFA2C2600917E11 /* beverage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beverage.png; sourceTree = "<group>"; };
-		5967413F1DFA2C2C00917E11 /* drug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drug.png; sourceTree = "<group>"; };
-		596741411DFA2C3200917E11 /* convenience.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = convenience.png; sourceTree = "<group>"; };
-		596741431DFA2C3800917E11 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
-		596741451DFA2C3F00917E11 /* bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bank.png; sourceTree = "<group>"; };
-		596741471DFA2C4500917E11 /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
-		596741491DFA2C4B00917E11 /* groceries.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groceries.png; sourceTree = "<group>"; };
 		59674FB01DF6833500172F97 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
@@ -151,6 +143,14 @@
 		59B430441DF0A135009F615E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		59B430461DF0FE30009F615E /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		805A4AD21DFA010800F95CE7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		805A4AD41DFA321A00F95CE7 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		805A4AD61DFA321D00F95CE7 /* beverage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beverage.png; sourceTree = "<group>"; };
+		805A4AD81DFA322300F95CE7 /* convenience.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = convenience.png; sourceTree = "<group>"; };
+		805A4ADA1DFA322600F95CE7 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
+		805A4ADC1DFA322800F95CE7 /* post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post.png; sourceTree = "<group>"; };
+		805A4ADE1DFA322A00F95CE7 /* drug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drug.png; sourceTree = "<group>"; };
+		805A4AE01DFA322D00F95CE7 /* bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bank.png; sourceTree = "<group>"; };
+		805A4AE21DFA323000F95CE7 /* groceries.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groceries.png; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentLocation.swift; path = ../CurrentLocation.swift; sourceTree = "<group>"; };
 		80E643F11DF0FA0C00F39267 /* PostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,9 +193,9 @@
 		595A0F3D1DDF7F1F00A68502 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				595A0F3C1DDF7F1F00A68502 /* iOSApp.app */,
-				595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */,
-				595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */,
+				595A0F3C1DDF7F1F00A68502 /* GeoNag.app */,
+				595A0F531DDF7F2000A68502 /* GeoNag.xctest */,
+				595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,16 +324,16 @@
 		59B4303F1DEDF664009F615E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				5967413B1DFA2C1E00917E11 /* home.png */,
-				5967413F1DFA2C2C00917E11 /* drug.png */,
-				5967413D1DFA2C2600917E11 /* beverage.png */,
+				805A4AD41DFA321A00F95CE7 /* home.png */,
+				805A4AD61DFA321D00F95CE7 /* beverage.png */,
+				805A4ADA1DFA322600F95CE7 /* sports.png */,
 				59316F0F1DFA0C3200566387 /* add.png */,
-				596741491DFA2C4B00917E11 /* groceries.png */,
+				805A4AD81DFA322300F95CE7 /* convenience.png */,
+				805A4AE01DFA322D00F95CE7 /* bank.png */,
+				805A4ADE1DFA322A00F95CE7 /* drug.png */,
 				596741391DFA1E4600917E11 /* deleteButton.png */,
-				596741411DFA2C3200917E11 /* convenience.png */,
-				596741451DFA2C3F00917E11 /* bank.png */,
-				596741471DFA2C4500917E11 /* post.png */,
-				596741431DFA2C3800917E11 /* sports.png */,
+				805A4AE21DFA323000F95CE7 /* groceries.png */,
+				805A4ADC1DFA322800F95CE7 /* post.png */,
 				59316F0D1DFA094B00566387 /* map.png */,
 				59826B5E1DF77841002CE785 /* card.png */,
 				59B430401DEDF677009F615E /* reminder.png */,
@@ -344,9 +344,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		595A0F3B1DDF7F1F00A68502 /* iOSApp */ = {
+		595A0F3B1DDF7F1F00A68502 /* GeoNag */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSApp" */;
+			buildConfigurationList = 595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNag" */;
 			buildPhases = (
 				595A0F381DDF7F1F00A68502 /* Sources */,
 				595A0F391DDF7F1F00A68502 /* Frameworks */,
@@ -356,14 +356,14 @@
 			);
 			dependencies = (
 			);
-			name = iOSApp;
+			name = GeoNag;
 			productName = iOSApp;
-			productReference = 595A0F3C1DDF7F1F00A68502 /* iOSApp.app */;
+			productReference = 595A0F3C1DDF7F1F00A68502 /* GeoNag.app */;
 			productType = "com.apple.product-type.application";
 		};
-		595A0F521DDF7F2000A68502 /* iOSAppTests */ = {
+		595A0F521DDF7F2000A68502 /* GeoNagTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppTests" */;
+			buildConfigurationList = 595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagTests" */;
 			buildPhases = (
 				595A0F4F1DDF7F2000A68502 /* Sources */,
 				595A0F501DDF7F2000A68502 /* Frameworks */,
@@ -374,14 +374,14 @@
 			dependencies = (
 				595A0F551DDF7F2000A68502 /* PBXTargetDependency */,
 			);
-			name = iOSAppTests;
+			name = GeoNagTests;
 			productName = iOSAppTests;
-			productReference = 595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */;
+			productReference = 595A0F531DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		595A0F5D1DDF7F2000A68502 /* iOSAppUITests */ = {
+		595A0F5D1DDF7F2000A68502 /* GeoNagUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppUITests" */;
+			buildConfigurationList = 595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */;
 			buildPhases = (
 				595A0F5A1DDF7F2000A68502 /* Sources */,
 				595A0F5B1DDF7F2000A68502 /* Frameworks */,
@@ -392,9 +392,9 @@
 			dependencies = (
 				595A0F601DDF7F2000A68502 /* PBXTargetDependency */,
 			);
-			name = iOSAppUITests;
+			name = GeoNagUITests;
 			productName = iOSAppUITests;
-			productReference = 595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */;
+			productReference = 595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -426,7 +426,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "iOSApp" */;
+			buildConfigurationList = 595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "GeoNag" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -439,9 +439,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				595A0F3B1DDF7F1F00A68502 /* iOSApp */,
-				595A0F521DDF7F2000A68502 /* iOSAppTests */,
-				595A0F5D1DDF7F2000A68502 /* iOSAppUITests */,
+				595A0F3B1DDF7F1F00A68502 /* GeoNag */,
+				595A0F521DDF7F2000A68502 /* GeoNagTests */,
+				595A0F5D1DDF7F2000A68502 /* GeoNagUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,24 +452,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				59316F0E1DFA094B00566387 /* map.png in Resources */,
-				5967414A1DFA2C4B00917E11 /* groceries.png in Resources */,
-				596741421DFA2C3200917E11 /* convenience.png in Resources */,
+				805A4AE31DFA323000F95CE7 /* groceries.png in Resources */,
+				805A4ADD1DFA322800F95CE7 /* post.png in Resources */,
 				596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */,
 				59826B551DF72F15002CE785 /* PlistData.plist in Resources */,
-				596741401DFA2C2C00917E11 /* drug.png in Resources */,
-				5967413E1DFA2C2600917E11 /* beverage.png in Resources */,
+				805A4AD71DFA321D00F95CE7 /* beverage.png in Resources */,
 				59316F101DFA0C3200566387 /* add.png in Resources */,
 				595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */,
-				596741441DFA2C3800917E11 /* sports.png in Resources */,
 				596741361DFA11FE00917E11 /* ListsTableViewCell.xib in Resources */,
 				5967413A1DFA1E4600917E11 /* deleteButton.png in Resources */,
-				596741481DFA2C4500917E11 /* post.png in Resources */,
 				595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */,
-				5967413C1DFA2C1E00917E11 /* home.png in Resources */,
+				805A4ADB1DFA322600F95CE7 /* sports.png in Resources */,
+				805A4AE11DFA322D00F95CE7 /* bank.png in Resources */,
+				805A4AD51DFA321A00F95CE7 /* home.png in Resources */,
 				59826B5F1DF77841002CE785 /* card.png in Resources */,
+				805A4AD91DFA322300F95CE7 /* convenience.png in Resources */,
+				805A4ADF1DFA322A00F95CE7 /* drug.png in Resources */,
 				59B430411DEDF677009F615E /* reminder.png in Resources */,
 				595A0F451DDF7F1F00A68502 /* Main.storyboard in Resources */,
-				596741461DFA2C3F00917E11 /* bank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,12 +557,12 @@
 /* Begin PBXTargetDependency section */
 		595A0F551DDF7F2000A68502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 595A0F3B1DDF7F1F00A68502 /* iOSApp */;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F541DDF7F2000A68502 /* PBXContainerItemProxy */;
 		};
 		595A0F601DDF7F2000A68502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 595A0F3B1DDF7F1F00A68502 /* iOSApp */;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F5F1DDF7F2000A68502 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -681,7 +681,7 @@
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -695,7 +695,7 @@
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -707,8 +707,8 @@
 				INFOPLIST_FILE = iOSAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp";
+				PRODUCT_NAME = GeoNag;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Debug;
 		};
@@ -719,8 +719,8 @@
 				INFOPLIST_FILE = iOSAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp";
+				PRODUCT_NAME = GeoNag;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Release;
 		};
@@ -730,7 +730,7 @@
 				INFOPLIST_FILE = iOSAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				TEST_TARGET_NAME = iOSApp;
 			};
 			name = Debug;
@@ -741,7 +741,7 @@
 				INFOPLIST_FILE = iOSAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				TEST_TARGET_NAME = iOSApp;
 			};
 			name = Release;
@@ -749,7 +749,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "iOSApp" */ = {
+		595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "GeoNag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F651DDF7F2000A68502 /* Debug */,
@@ -758,7 +758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSApp" */ = {
+		595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F681DDF7F2000A68502 /* Debug */,
@@ -767,7 +767,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppTests" */ = {
+		595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F6B1DDF7F2000A68502 /* Debug */,
@@ -776,7 +776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppUITests" */ = {
+		595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F6E1DDF7F2000A68502 /* Debug */,

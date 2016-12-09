@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOSApp/AppDelegate.swift"
-            timestampString = "502928560.688728"
+            timestampString = "502940968.638731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "findClosestItem(_:)"
-            landmarkType = "5">
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOSApp/AppDelegate.swift"
-            timestampString = "502928560.688728"
+            timestampString = "502940968.638731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "findClosestItem(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
             endingLineNumber = "183"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkName = "fetchRecordsForEntity(_:inManagedObjectContext:predicate:sortDescriptor:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
