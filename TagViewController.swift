@@ -23,10 +23,25 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // MARK: - UICollectionViewDataSource protocol
     
+    // edit collection view
+    
+    func collectionView(collectionView: UICollectionView, didDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        print("woo")
+        print(cell)
+        if (cell.selected == true) {
+            print("IS SELECTED")
+        }
+        let c = cell.viewWithTag(100) as! UIImageView
+        c.image = UIImage(named: "reminder.png")
+        print(c.image)
+    }
+
+    
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tagView!.numberOfTags
     }
+    
     
     // make a cell for each cell index path
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -41,11 +56,11 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == true {
             print("selected")
-            let tag = tagView!.tags[indexPath.item]
+            let tag = tagView!.tags[indexPath.row]
             let currTagsForList = listModel?.getTags()
             if (currTagsForList?.contains(tag) == true) {
                 let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: "reminder.png")//tagImages![indexPath.row] as! String)
+                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
                 listModel?.deleteTag(tag)
             } else {
                 let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
