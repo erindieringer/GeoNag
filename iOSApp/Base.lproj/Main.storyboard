@@ -357,7 +357,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="groceries.png" translatesAutoresizingMaskIntoConstraints="NO" id="OuD-zf-NBz">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ogroceries.png" translatesAutoresizingMaskIntoConstraints="NO" id="OuD-zf-NBz">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="OuD-zf-NBz" secondAttribute="height" multiplier="1:1" id="XDl-dc-hGT"/>
@@ -366,7 +366,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509803919" green="0.80784313725490198" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="OuD-zf-NBz" firstAttribute="height" secondItem="jEf-gP-5Gv" secondAttribute="height" id="sEm-F2-Ie1"/>
                                                 </constraints>
@@ -379,7 +378,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="convenience.png" translatesAutoresizingMaskIntoConstraints="NO" id="DLk-Vh-g0B">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="oconvenience.png" translatesAutoresizingMaskIntoConstraints="NO" id="DLk-Vh-g0B">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="DLk-Vh-g0B" secondAttribute="height" multiplier="1:1" id="aOW-R6-IKk"/>
@@ -388,7 +387,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="DLk-Vh-g0B" firstAttribute="height" secondItem="K0O-bS-uAH" secondAttribute="height" id="15b-M1-TLn"/>
                                                 </constraints>
@@ -401,7 +399,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="drug.png" translatesAutoresizingMaskIntoConstraints="NO" id="SQs-To-pJh">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="odrug.png" translatesAutoresizingMaskIntoConstraints="NO" id="SQs-To-pJh">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="SQs-To-pJh" secondAttribute="height" multiplier="1:1" id="EoL-vc-YAC"/>
@@ -410,7 +408,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="SQs-To-pJh" firstAttribute="height" secondItem="bFe-H7-ZwG" secondAttribute="height" id="zNK-e9-Hu1"/>
                                                 </constraints>
@@ -423,7 +420,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="post.png" translatesAutoresizingMaskIntoConstraints="NO" id="36H-o3-nOz">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="opost.png" translatesAutoresizingMaskIntoConstraints="NO" id="36H-o3-nOz">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="36H-o3-nOz" secondAttribute="height" multiplier="1:1" id="tzC-ba-eG8"/>
@@ -432,7 +429,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="36H-o3-nOz" firstAttribute="height" secondItem="Hyq-Ko-tjM" secondAttribute="height" id="qWr-MC-GIX"/>
                                                 </constraints>
@@ -445,7 +441,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bank.png" translatesAutoresizingMaskIntoConstraints="NO" id="F9c-cD-TTV">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="obank.png" translatesAutoresizingMaskIntoConstraints="NO" id="F9c-cD-TTV">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="F9c-cD-TTV" secondAttribute="height" multiplier="1:1" id="gdB-U7-G1j"/>
@@ -454,7 +450,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="F9c-cD-TTV" firstAttribute="height" secondItem="nB8-fX-YaG" secondAttribute="height" id="ebH-Mc-r4B"/>
                                                 </constraints>
@@ -467,7 +462,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="beverage.png" translatesAutoresizingMaskIntoConstraints="NO" id="EnK-uv-NuZ">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="obeverage.png" translatesAutoresizingMaskIntoConstraints="NO" id="EnK-uv-NuZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="EnK-uv-NuZ" secondAttribute="height" multiplier="1:1" id="9e3-4i-WL0"/>
@@ -476,7 +471,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="EnK-uv-NuZ" firstAttribute="height" secondItem="rYZ-pj-1es" secondAttribute="height" id="eJX-KE-Yt0"/>
                                                 </constraints>
@@ -489,7 +483,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="home.png" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-ym-cL0">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ohome.png" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-ym-cL0">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="vd4-ym-cL0" secondAttribute="height" multiplier="1:1" id="ljH-T4-bZz"/>
@@ -498,7 +492,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="vd4-ym-cL0" firstAttribute="height" secondItem="wd2-oA-Q2z" secondAttribute="height" id="phq-v9-36q"/>
                                                 </constraints>
@@ -511,7 +504,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="sports.png" translatesAutoresizingMaskIntoConstraints="NO" id="NuO-hD-h9H">
+                                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="osports.png" translatesAutoresizingMaskIntoConstraints="NO" id="NuO-hD-h9H">
                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="NuO-hD-h9H" secondAttribute="height" multiplier="1:1" id="J7c-0E-Qs4"/>
@@ -520,7 +513,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.75686274509999996" green="0.80784313730000001" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="NuO-hD-h9H" firstAttribute="height" secondItem="p7y-5M-Uj4" secondAttribute="height" id="VYL-9v-uVl"/>
                                                 </constraints>
@@ -614,16 +606,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bank.png" width="250" height="250"/>
-        <image name="beverage.png" width="250" height="250"/>
-        <image name="convenience.png" width="250" height="250"/>
         <image name="deleteButton.png" width="303" height="108"/>
-        <image name="drug.png" width="250" height="250"/>
-        <image name="groceries.png" width="250" height="250"/>
-        <image name="home.png" width="250" height="250"/>
         <image name="map.png" width="37" height="30"/>
-        <image name="post.png" width="250" height="250"/>
+        <image name="obank.png" width="750" height="750"/>
+        <image name="obeverage.png" width="250" height="250"/>
+        <image name="oconvenience.png" width="250" height="250"/>
+        <image name="odrug.png" width="250" height="250"/>
+        <image name="ogroceries.png" width="750" height="750"/>
+        <image name="ohome.png" width="250" height="250"/>
+        <image name="opost.png" width="750" height="750"/>
+        <image name="osports.png" width="250" height="250"/>
         <image name="reminder.png" width="68" height="90"/>
-        <image name="sports.png" width="250" height="250"/>
     </resources>
 </document>
