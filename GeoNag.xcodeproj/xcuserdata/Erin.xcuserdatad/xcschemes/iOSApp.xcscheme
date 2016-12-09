@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "595A0F3B1DDF7F1F00A68502"
-               BuildableName = "iOSApp.app"
-               BlueprintName = "iOSApp"
-               ReferencedContainer = "container:iOSApp.xcodeproj">
+               BuildableName = "GeoNag.app"
+               BlueprintName = "GeoNag"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "595A0F521DDF7F2000A68502"
-               BuildableName = "iOSAppTests.xctest"
-               BlueprintName = "iOSAppTests"
-               ReferencedContainer = "container:iOSApp.xcodeproj">
+               BuildableName = "GeoNag.xctest"
+               BlueprintName = "GeoNagTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "595A0F5D1DDF7F2000A68502"
-               BuildableName = "iOSAppUITests.xctest"
-               BlueprintName = "iOSAppUITests"
-               ReferencedContainer = "container:iOSApp.xcodeproj">
+               BuildableName = "GeoNag.xctest"
+               BlueprintName = "GeoNagUITests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "595A0F3B1DDF7F1F00A68502"
-            BuildableName = "iOSApp.app"
-            BlueprintName = "iOSApp"
-            ReferencedContainer = "container:iOSApp.xcodeproj">
+            BuildableName = "GeoNag.app"
+            BlueprintName = "GeoNag"
+            ReferencedContainer = "container:GeoNag.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "595A0F3B1DDF7F1F00A68502"
-            BuildableName = "iOSApp.app"
-            BlueprintName = "iOSApp"
-            ReferencedContainer = "container:iOSApp.xcodeproj">
+            BuildableName = "GeoNag.app"
+            BlueprintName = "GeoNag"
+            ReferencedContainer = "container:GeoNag.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "595A0F3B1DDF7F1F00A68502"
-            BuildableName = "iOSApp.app"
-            BlueprintName = "iOSApp"
-            ReferencedContainer = "container:iOSApp.xcodeproj">
+            BuildableName = "GeoNag.app"
+            BlueprintName = "GeoNag"
+            ReferencedContainer = "container:GeoNag.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -94,17 +94,17 @@
 		59316F0D1DFA094B00566387 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		59316F0F1DFA0C3200566387 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		594360C61DF8FE3800549D0F /* LeftMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenu.swift; sourceTree = "<group>"; };
-		595A0F3C1DDF7F1F00A68502 /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F3C1DDF7F1F00A68502 /* GeoNag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoNag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F3F1DDF7F1F00A68502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		595A0F441DDF7F1F00A68502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		595A0F471DDF7F1F00A68502 /* iOSApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSApp.xcdatamodel; sourceTree = "<group>"; };
 		595A0F491DDF7F1F00A68502 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		595A0F4C1DDF7F1F00A68502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		595A0F4E1DDF7F1F00A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F531DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F571DDF7F2000A68502 /* iOSAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppTests.swift; sourceTree = "<group>"; };
 		595A0F591DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
 		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -193,9 +193,9 @@
 		595A0F3D1DDF7F1F00A68502 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				595A0F3C1DDF7F1F00A68502 /* iOSApp.app */,
-				595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */,
-				595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */,
+				595A0F3C1DDF7F1F00A68502 /* GeoNag.app */,
+				595A0F531DDF7F2000A68502 /* GeoNag.xctest */,
+				595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,9 +344,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		595A0F3B1DDF7F1F00A68502 /* iOSApp */ = {
+		595A0F3B1DDF7F1F00A68502 /* GeoNag */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSApp" */;
+			buildConfigurationList = 595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNag" */;
 			buildPhases = (
 				595A0F381DDF7F1F00A68502 /* Sources */,
 				595A0F391DDF7F1F00A68502 /* Frameworks */,
@@ -356,14 +356,14 @@
 			);
 			dependencies = (
 			);
-			name = iOSApp;
+			name = GeoNag;
 			productName = iOSApp;
-			productReference = 595A0F3C1DDF7F1F00A68502 /* iOSApp.app */;
+			productReference = 595A0F3C1DDF7F1F00A68502 /* GeoNag.app */;
 			productType = "com.apple.product-type.application";
 		};
-		595A0F521DDF7F2000A68502 /* iOSAppTests */ = {
+		595A0F521DDF7F2000A68502 /* GeoNagTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppTests" */;
+			buildConfigurationList = 595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagTests" */;
 			buildPhases = (
 				595A0F4F1DDF7F2000A68502 /* Sources */,
 				595A0F501DDF7F2000A68502 /* Frameworks */,
@@ -374,14 +374,14 @@
 			dependencies = (
 				595A0F551DDF7F2000A68502 /* PBXTargetDependency */,
 			);
-			name = iOSAppTests;
+			name = GeoNagTests;
 			productName = iOSAppTests;
-			productReference = 595A0F531DDF7F2000A68502 /* iOSAppTests.xctest */;
+			productReference = 595A0F531DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		595A0F5D1DDF7F2000A68502 /* iOSAppUITests */ = {
+		595A0F5D1DDF7F2000A68502 /* GeoNagUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppUITests" */;
+			buildConfigurationList = 595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */;
 			buildPhases = (
 				595A0F5A1DDF7F2000A68502 /* Sources */,
 				595A0F5B1DDF7F2000A68502 /* Frameworks */,
@@ -392,9 +392,9 @@
 			dependencies = (
 				595A0F601DDF7F2000A68502 /* PBXTargetDependency */,
 			);
-			name = iOSAppUITests;
+			name = GeoNagUITests;
 			productName = iOSAppUITests;
-			productReference = 595A0F5E1DDF7F2000A68502 /* iOSAppUITests.xctest */;
+			productReference = 595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -426,7 +426,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "iOSApp" */;
+			buildConfigurationList = 595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "GeoNag" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -439,9 +439,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				595A0F3B1DDF7F1F00A68502 /* iOSApp */,
-				595A0F521DDF7F2000A68502 /* iOSAppTests */,
-				595A0F5D1DDF7F2000A68502 /* iOSAppUITests */,
+				595A0F3B1DDF7F1F00A68502 /* GeoNag */,
+				595A0F521DDF7F2000A68502 /* GeoNagTests */,
+				595A0F5D1DDF7F2000A68502 /* GeoNagUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -557,12 +557,12 @@
 /* Begin PBXTargetDependency section */
 		595A0F551DDF7F2000A68502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 595A0F3B1DDF7F1F00A68502 /* iOSApp */;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F541DDF7F2000A68502 /* PBXContainerItemProxy */;
 		};
 		595A0F601DDF7F2000A68502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 595A0F3B1DDF7F1F00A68502 /* iOSApp */;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F5F1DDF7F2000A68502 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -681,7 +681,7 @@
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -695,7 +695,7 @@
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -707,8 +707,8 @@
 				INFOPLIST_FILE = iOSAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp";
+				PRODUCT_NAME = GeoNag;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Debug;
 		};
@@ -719,8 +719,8 @@
 				INFOPLIST_FILE = iOSAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp";
+				PRODUCT_NAME = GeoNag;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Release;
 		};
@@ -730,7 +730,7 @@
 				INFOPLIST_FILE = iOSAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				TEST_TARGET_NAME = iOSApp;
 			};
 			name = Debug;
@@ -741,7 +741,7 @@
 				INFOPLIST_FILE = iOSAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GeoNag;
 				TEST_TARGET_NAME = iOSApp;
 			};
 			name = Release;
@@ -749,7 +749,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "iOSApp" */ = {
+		595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "GeoNag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F651DDF7F2000A68502 /* Debug */,
@@ -758,7 +758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSApp" */ = {
+		595A0F671DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNag" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F681DDF7F2000A68502 /* Debug */,
@@ -767,7 +767,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppTests" */ = {
+		595A0F6A1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F6B1DDF7F2000A68502 /* Debug */,
@@ -776,7 +776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "iOSAppUITests" */ = {
+		595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				595A0F6E1DDF7F2000A68502 /* Debug */,
