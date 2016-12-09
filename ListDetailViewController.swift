@@ -154,25 +154,17 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         // deselect row clicked
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        let alert = UIAlertController(title: "Update", message: "Please enter the new text for the item.", preferredStyle: .Alert)
-        
-        let updateAction = UIAlertAction(title: "Update", style: .Default){(_) in
-            let newText = alert.textFields![0]
-            print("adter: ")
-            print(indexPath.row)
-            self.updateItem(indexPath.row, text: newText.text!)
-            self.tableView.reloadData()
+        var text = detailViewModel!.items[indexPath.row].text!
+        if text.characters.contains("✔"){
+            text = String(text.characters.dropLast())
+            text = String(text.characters.dropLast())
+        }
+        else {
+            text = text + " ✔"
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        alert.addTextFieldWithConfigurationHandler(nil)
-        
-        alert.addAction(updateAction)
-        alert.addAction(cancelAction)
-        
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.updateItem(indexPath.row, text: text)
+        self.tableView.reloadData()
     }
     
     
