@@ -14,7 +14,7 @@ class ListDetailView {
     var items = [Item]()
     var reminderList: List
     
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let coreDataHelper = CoreDataHelper()
     
     init(list: List) {
         reminderList = list
@@ -37,14 +37,14 @@ class ListDetailView {
         let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
         mutableList.addObject(tag)
         reminderList.tags = mutableList.copy() as? NSOrderedSet
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     func deleteTag(tag:Tag) {
         let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
         mutableList.removeObject(tag)
         reminderList.tags = mutableList.copy() as? NSOrderedSet
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     func getReminderItems() -> [Item] {

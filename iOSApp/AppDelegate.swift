@@ -126,53 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
-    
-//    // MARK: - Core Data Method for Creating Records
-//    
-//    func createRecordForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
-//        // Helpers
-//        var result: NSManagedObject? = nil
-//        
-//        // Create Entity Description
-//        let entityDescription = NSEntityDescription.entityForName(entity, inManagedObjectContext: managedObjectContext)
-//        
-//        if let entityDescription = entityDescription {
-//            // Create Managed Object
-//            result = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
-//        }
-//        return result
-//    }
-//    
-//    // MARK: - Core Data Method for Fetching Records
-//    
-//    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil, sortDescriptor: NSSortDescriptor?=nil) -> [NSManagedObject] {
-//        // Create Fetch Request
-//        let fetchRequest = NSFetchRequest(entityName: entity)
-//        
-//        if (predicate != nil) {
-//            fetchRequest.predicate = predicate
-//        }
-//        
-//        if (sortDescriptor != nil) {
-//            fetchRequest.sortDescriptors = [sortDescriptor!]
-//        }
-//        
-//        // Helpers
-//        var result = [NSManagedObject]()
-//        
-//        do {
-//            // Execute Fetch Request
-//            let records = try managedObjectContext.executeFetchRequest(fetchRequest)
-//            
-//            if let records = records as? [NSManagedObject] {
-//                result = records
-//            }
-//        } catch {
-//            print("Unable to fetch managed objects for entity \(entity).")
-//        }
-//        return result
-//    }
-    
     //Initialzed all attributes needed for core location
     func initLocation() {
         locationManager = CLLocationManager()

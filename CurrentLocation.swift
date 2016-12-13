@@ -55,8 +55,6 @@ class CurrentLocation {
             let match = response.mapItems
             if (match.count > 0){
                 for item in match {
-                    ///let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
                     let newItem = self.coreDataHelper.createRecordForEntity("SearchItem")!
                     //save to coredata
                     newItem.setValue(item.name, forKey: "name")

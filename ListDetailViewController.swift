@@ -58,9 +58,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func saveItem(text: String) {
         
-        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
         // create new item entity
         let itemEntity = coreDataHelper.createRecordForEntity("Item")!
         // set values of new list entity
@@ -76,29 +73,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func updateItem(index: Int, text: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        print("items:")
-        print(detailViewModel!.items)
         detailViewModel!.items[index].text = text
         detailViewModel!.reminderList.dateModified = NSDate()
         
-        appDelegate.coreDataStack.saveContext()
-    }
-    
-    
-    @IBAction func addTag(sender: AnyObject) {
-        print("woo")
-    }
-    
-    @IBAction func deleteButtonPressed(sender: AnyObject) {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let context = appDelegate.coreDataStack.managedObjectContext
-//        
-//        context.deleteObject(viewModel.lists[indexPath.row])
-//        appDelegate.coreDataStack.saveContext()
-//        
-//        viewModel.lists.removeAtIndex(indexPath.row)
-//        tableView.reloadData()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     @IBAction func notificationSwitch(sender: AnyObject) {
@@ -122,10 +100,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         
         let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
         detailViewModel!.items = coreDataHelper.fetchRecordsForEntity("Item", predicate: itemPredicate) as! [Item]
@@ -151,11 +125,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let context = appDelegate.coreDataStack.managedObjectContext
+            let context = coreDataHelper.coreDataStack.managedObjectContext
             
             context.deleteObject(detailViewModel!.items[indexPath.row])
-            appDelegate.coreDataStack.saveContext()
+            coreDataHelper.coreDataStack.saveContext()
             
             detailViewModel!.items.removeAtIndex(indexPath.row)
             tableView.reloadData()
@@ -202,11 +175,10 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
         if segue.identifier == "DeleteItemList"
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let context = appDelegate.coreDataStack.managedObjectContext
+            let context = coreDataHelper.coreDataStack.managedObjectContext
             
             context.deleteObject(detailViewModel!.reminderList)
-            appDelegate.coreDataStack.saveContext()
+            coreDataHelper.coreDataStack.saveContext()
             
 //            viewModel.lists.removeAtIndex(indexPath.row)
 //            tableView.reloadData()

@@ -26,10 +26,6 @@ struct TagView {
     
     // only run once! Adds all programmed tags to coredata
     mutating func createAllTags() ->[Tag] {
-        //let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        //let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
         let tagNames = ["Groceries", "Convenience", "Drug", "Post", "Bank", "Beverage", "Home", "Sports"]
         
         for i in 0..<numberOfTags {
@@ -51,8 +47,6 @@ struct TagView {
     }
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
-        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as! [Tag]
         

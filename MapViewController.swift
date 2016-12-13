@@ -31,7 +31,6 @@ class MapViewController: UIViewController {
         
         // Load AppDelegate Tools
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         appDelegate.restoreLocation()
         
         // Center Map on User's Location
