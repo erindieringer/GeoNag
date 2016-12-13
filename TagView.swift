@@ -11,7 +11,12 @@ import CoreData
 import UIKit
 
 struct TagView {
+    
     var tags = [Tag]()
+    // selected tag img files
+    var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
+    // unselected tag img files
+    var oTagImages:NSArray = ["ogroceries.png", "oconvenience.png", "odrug", "opost.png", "obank", "obeverage.png", "ohome.png", "osports.png"]
     
     // as of now with this iteration tags are static
     var numberOfTags = 8
@@ -45,8 +50,7 @@ struct TagView {
     }
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext, predicate: predicate) as! [Tag]

@@ -11,12 +11,8 @@ import UIKit
 class TagViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // Variables to Access Tag Info
-    var tagView:TagView?
+    var tagView = TagView()
     var listModel:ListDetailView?
-    // selected tag img files
-    var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
-    // unselected tag img files
-    var oTagImages:NSArray = ["ogroceries.png", "oconvenience.png", "odrug", "opost.png", "obank", "obeverage.png", "ohome.png", "osports.png"]
     
     // reuse id of tag collection cells
     let reuseIdentifier = "cell"
@@ -26,7 +22,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagView!.numberOfTags
+        return tagView.numberOfTags
     }
     
     
@@ -39,20 +35,23 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseID, forIndexPath: indexPath) as! TagCollectionViewCell
    
         // use cell for actual cell styles
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true {
-            let tag = tagView!.tags[indexPath.row]
-            let currTagsForList = listModel?.getTags()
-            if (currTagsForList?.contains(tag) == true) {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                // if the tag is not selected, make it normal tag image
-                tagImageView.image = UIImage(named: tagImages[indexPath.row] as! String)
-                listModel?.deleteTag(tag)
-            } else {
-                // if tag is selected, make it opaque tag image
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: oTagImages[indexPath.row] as! String)
-                listModel?.addTag(tag)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+            if cell.selected == true {
+                let tag = tagView.tags[indexPath.row]
+                let currTagsForList = listModel?.getTags()
+                if (currTagsForList?.contains(tag) == true) {
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        // if the tag is not selected, make it normal tag image
+                        tagImageView.image = UIImage(named: tagView.tagImages[indexPath.row] as! String)
+                        listModel?.deleteTag(tag)
+                    }
+                } else {
+                    // if tag is selected, make it opaque tag image
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        tagImageView.image = UIImage(named: tagView.oTagImages[indexPath.row] as! String)
+                        listModel?.addTag(tag)
+                    }
+                }
             }
         }
         
@@ -64,20 +63,22 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true {
-            let tag = tagView!.tags[indexPath.item]
-            let currTagsForList = listModel?.getTags()
-            if (currTagsForList?.contains(tag) == true) {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                // if the tag is not selected, make it normal tag image
-                tagImageView.image = UIImage(named: tagImages[indexPath.row] as! String)
-                listModel?.deleteTag(tag)
-            } else {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                // if tag is selected, make it opaque tag image
-                tagImageView.image = UIImage(named: oTagImages[indexPath.row] as! String)
-                listModel?.addTag(tag)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+            if cell.selected == true {
+                let tag = tagView.tags[indexPath.item]
+                let currTagsForList = listModel?.getTags()
+                if (currTagsForList?.contains(tag) == true) {
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        // if the tag is not selected, make it normal tag image
+                        tagImageView.image = UIImage(named: tagView.tagImages[indexPath.row] as! String)
+                        listModel?.deleteTag(tag)
+                    }
+                } else {
+                    let tagImageView = (cell.viewWithTag(100)! as! UIImageView)
+                    // if tag is selected, make it opaque tag image
+                    tagImageView.image = UIImage(named: tagView.oTagImages[indexPath.row] as! String)
+                    listModel?.addTag(tag)
+                }
             }
         }
     }
@@ -85,10 +86,6 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // Assign
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        tagView = appDelegate.tagView
     }
     
     override func didReceiveMemoryWarning() {
