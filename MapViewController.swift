@@ -11,7 +11,11 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-        
+    
+    // Add Variables to control the Map Menu
+    var interactor:Interactor? = nil
+    var menuActionDelegate:MenuActionDelegate? = nil
+    
     @IBOutlet weak var mapView: MKMapView!
     let currentLocation = CurrentLocation()
     
@@ -21,21 +25,26 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // get current location
+        
+        // Get the Current Location for Map View Controller
+        
+        // Load AppDelegate Tools
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         appDelegate.restoreData()
-        //let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
+        
+        // Center Map on User's Location
         let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
         centerMapOnLocation(userCoords)
 
-        // drop a pin at current location
+        // Assign delegate
         mapView.delegate = self
         
+        // Retrieve all items that are nearby
         let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
         
+        // Add annotation/pin for each item that is nearby
         if let mapSearchItems = ADmapSearchItems as? [SearchItem] {
-            //let closestSearchItemName = appDelegate.findClosestItem(ADmapSearchItems)
             var mapAnnotationsArray:[MKAnnotation] = []
             for item in mapSearchItems {
                 let title = item.valueForKey("name") as! String
@@ -43,14 +52,7 @@ class MapViewController: UIViewController {
                 let longitude = item.valueForKey("longitude") as! CLLocationDegrees
                 let mapAnnotation = MapAnnotation(title:title, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 mapAnnotationsArray.append(mapAnnotation)
-                
-//                // find closest item 
-//                if title == closestSearchItemName {
-//                    mapView.selectAnnotation(mapAnnotation, animated: true)
-//                }
             }
-            //print("search items")
-            //print(mapSearchItems)
             mapView.addAnnotations(mapAnnotationsArray)
         } else {
             print("Map Search Items is Nil")
@@ -58,6 +60,7 @@ class MapViewController: UIViewController {
         
     }
     
+    // Set a region radius for the map that only considers and shows the neraby pins
     let regionRadius: CLLocationDistance = 300
     
     func centerMapOnLocation(location: CLLocation) {
@@ -68,14 +71,9 @@ class MapViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    var interactor:Interactor? = nil
-    
-    var menuActionDelegate:MenuActionDelegate? = nil
-    
-    
+    // MARK: - Map response to user gestures
     @IBAction func handleGesture(sender: UIPanGestureRecognizer) {
         let translation = sender.translationInView(view)
         
@@ -89,6 +87,7 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - close map
     @IBAction func closeMenu(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -100,6 +99,7 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: - Transition View
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         dismissViewControllerAnimated(true){
             self.delay(seconds: 0.5){
