@@ -220,7 +220,6 @@
 				59AE8D781DF7D5D900EB8B76 /* Tags */,
 				597C330F1E00551000F70AF9 /* MapMenu */,
 				595A0F3F1DDF7F1F00A68502 /* AppDelegate.swift */,
-				597C33121E006DE600F70AF9 /* CoreDataHelper.swift */,
 				595A0F431DDF7F1F00A68502 /* Main.storyboard */,
 				595A0F491DDF7F1F00A68502 /* Assets.xcassets */,
 				595A0F4B1DDF7F1F00A68502 /* LaunchScreen.storyboard */,
@@ -286,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				59B430191DECE199009F615E /* CoreDataStack.swift */,
+				597C33121E006DE600F70AF9 /* CoreDataHelper.swift */,
 			);
 			name = CoreDataHelpers;
 			sourceTree = "<group>";

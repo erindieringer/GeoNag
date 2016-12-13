@@ -17,6 +17,7 @@ protocol MenuActionDelegate {
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     let viewModel = ListView()
+    var coreDataHelper = CoreDataHelper()
     
     // For Pan View
     let interactor = Interactor()
@@ -76,12 +77,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func saveList(name: String) {
         
-        let appDelegate =
+        //let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
+        //let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new list entity
-        let listEntity = (appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext))!
+        let listEntity = (coreDataHelper.createRecordForEntity("List"))!
         
         // set values of new list entity
         listEntity.setValue(name, forKey: "name")
@@ -94,7 +95,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
         viewModel.lists.insert(listEntity as! List, atIndex:0)
         // save entity
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     func updateList(index: Int, name: String) {
@@ -135,13 +136,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.deselectRowAtIndexPath(selectedRow, animated: true)
         }
         
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
                 
                 let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, sortDescriptor: sortDescriptor) as! [List]
+        viewModel.lists = coreDataHelper.fetchRecordsForEntity("List", sortDescriptor: sortDescriptor) as! [List]
 
     }
     

@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     // Add Variables to control the Map Menu
     var interactor:Interactor? = nil
     var menuActionDelegate:MenuActionDelegate? = nil
+    var coreDataHelper = CoreDataHelper()
     
     @IBOutlet weak var mapView: MKMapView!
     let currentLocation = CurrentLocation()
@@ -30,7 +31,7 @@ class MapViewController: UIViewController {
         
         // Load AppDelegate Tools
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         appDelegate.restoreLocation()
         
         // Center Map on User's Location
@@ -41,7 +42,7 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         // Retrieve all items that are nearby
-        let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        let ADmapSearchItems = coreDataHelper.fetchRecordsForEntity("SearchItem")
         
         // Add annotation/pin for each item that is nearby
         if let mapSearchItems = ADmapSearchItems as? [SearchItem] {

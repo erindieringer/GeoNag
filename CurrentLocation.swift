@@ -17,6 +17,7 @@ class CurrentLocation {
     var matchingItems:[MKMapItem] = []
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
+    var coreDataHelper = CoreDataHelper()
     
     let plist =  PlistManager.sharedInstance
     
@@ -54,9 +55,9 @@ class CurrentLocation {
             let match = response.mapItems
             if (match.count > 0){
                 for item in match {
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
-                    let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
+                    ///let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+                    let newItem = self.coreDataHelper.createRecordForEntity("SearchItem")!
                     //save to coredata
                     newItem.setValue(item.name, forKey: "name")
                     newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")

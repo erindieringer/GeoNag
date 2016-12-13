@@ -36,7 +36,10 @@ struct CoreDataHelper {
     
     // MARK: - Core Data Method for Fetching Records
     
-    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil, sortDescriptor: NSSortDescriptor?=nil) -> [NSManagedObject] {
+    func fetchRecordsForEntity(entity: String, predicate:NSPredicate?=nil, sortDescriptor: NSSortDescriptor?=nil) -> [NSManagedObject] {
+        
+        let managedObjectContext = coreDataStack.managedObjectContext
+        
         // Create Fetch Request
         let fetchRequest = NSFetchRequest(entityName: entity)
         

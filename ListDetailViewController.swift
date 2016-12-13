@@ -14,6 +14,7 @@ import CoreLocation
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
     
     var detailViewModel:ListDetailView?
+    var coreDataHelper = CoreDataHelper()
         
     // Set up location details
     let locationManager = CLLocationManager()
@@ -57,11 +58,11 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func saveItem(text: String) {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
+        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         // create new item entity
-        let itemEntity = (appDelegate.createRecordForEntity("Item", inManagedObjectContext: managedContext))!
+        let itemEntity = coreDataHelper.createRecordForEntity("Item")!
         // set values of new list entity
         itemEntity.setValue(text, forKey: "text")
         itemEntity.setValue((detailViewModel!.reminderList as NSManagedObject), forKey: "list")
@@ -71,7 +72,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         print(detailViewModel!.items)
         
         // save entity
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     func updateItem(index: Int, text: String) {
@@ -122,12 +123,12 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
+        //let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         
         let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
-        detailViewModel!.items = appDelegate.fetchRecordsForEntity("Item", inManagedObjectContext: managedObjectContext, predicate: itemPredicate) as! [Item]
+        detailViewModel!.items = coreDataHelper.fetchRecordsForEntity("Item", predicate: itemPredicate) as! [Item]
         
         label.text = detailViewModel?.title()
     }

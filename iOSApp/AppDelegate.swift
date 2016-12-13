@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     lazy var tagView = TagView()
+    var coreDataHelper = CoreDataHelper()
     var usedTags:[Tag]?
     
     var isExecutingInBackground = false
@@ -243,8 +244,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     // Returns list of searchItems from coreData
     func getSearchItems() -> [NSManagedObject] {
-        let managedObjectContext = coreDataStack.managedObjectContext
-        let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        //let managedObjectContext = coreDataStack.managedObjectContext
+        let items = coreDataHelper.fetchRecordsForEntity("SearchItem")
         return items
     }
     
