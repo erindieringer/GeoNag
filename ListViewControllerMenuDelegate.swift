@@ -17,6 +17,7 @@ extension ListViewController: MenuActionDelegate {
             self.performSegueWithIdentifier(segueName, sender: sender)
         }
     }
+    
     func reopenMenu(){
         performSegueWithIdentifier("openMenu", sender: nil)
     }

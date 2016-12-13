@@ -59,28 +59,13 @@ struct TagView {
         }
     }
     
-    // // MARK: - returns true only if tag array is not empty
+    // MARK: - returns true only if tag array is not empty
     func tagsExist() -> Bool {
         let tags = fetchAllTags()
         if tags?.count > 0 {
             return true
         } else {
             return false
-        }
-    }
-    
-    // MARK: - title for tag row
-    func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        let index = indexPath.row
-        if index < 0 || index >= numberOfTags {
-            return ""
-        }
-        let returnTag = tags[index]
-        if let returnName = returnTag.name {
-            return returnName
-        } else {
-            print("error getting tag name in tagView")
-            return ""
         }
     }
 }
