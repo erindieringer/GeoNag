@@ -9,11 +9,15 @@
 import UIKit
 
 extension ListViewController: MenuActionDelegate {
+    
+    // MARK: - Menu Controls for Open and Reopen
+    
     func openSegue(segueName: String, sender: AnyObject?) {
         dismissViewControllerAnimated(true){
             self.performSegueWithIdentifier(segueName, sender: sender)
         }
     }
+    
     func reopenMenu(){
         performSegueWithIdentifier("openMenu", sender: nil)
     }
