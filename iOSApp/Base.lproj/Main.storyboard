@@ -146,7 +146,6 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="deleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC4-Ff-2bK"/>
                                     <segue destination="Hfo-LP-hGQ" kind="show" identifier="DeleteItemList" id="aiw-QQ-SX0"/>
                                 </connections>
                             </button>
