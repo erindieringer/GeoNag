@@ -26,9 +26,7 @@ struct TagView {
     // as of now with this iteration tags are static
     var numberOfTags = 8
     
-    // MARK: - Tag Creation, Fetching, and Displaying as CollectionView
-    
-    // only run once! Adds all programmed tags to coredata
+    // MARK: - Adds all programmed tags to coredata; only run once!
     mutating func createAllTags() ->[Tag] {
         let tagNames = ["Groceries", "Convenience", "Drug", "Post", "Bank", "Beverage", "Home", "Sports"]
         
@@ -51,6 +49,7 @@ struct TagView {
         return tags
     }
     
+    // MARK: Fetch All Tags
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
         
         if let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as? [Tag] {
@@ -60,27 +59,13 @@ struct TagView {
         }
     }
     
-    // returns true only if tag array is not empty
+    // MARK: - returns true only if tag array is not empty
     func tagsExist() -> Bool {
         let tags = fetchAllTags()
         if tags?.count > 0 {
             return true
         } else {
             return false
-        }
-    }
-    
-    func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        let index = indexPath.row
-        if index < 0 || index >= numberOfTags {
-            return ""
-        }
-        let returnTag = tags[index]
-        if let returnName = returnTag.name {
-            return returnName
-        } else {
-            print("error getting tag name in tagView")
-            return ""
         }
     }
 }

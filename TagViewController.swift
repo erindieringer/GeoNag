@@ -31,7 +31,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     
-    // make a cell for each cell index path
+    // MARK: - make a cell for each cell index path in tag collection
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         // get a reference to the storyboard cell ids
@@ -68,8 +68,7 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     }
     
     
-    // MARK: - UICollectionViewDelegate protocol
-    
+    // MARK: - Controls when selecting a tag in view
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
