@@ -20,7 +20,7 @@ class CurrentLocation {
     
     let plist =  PlistManager.sharedInstance
     
-    //intitialize to zero before calling getCurrentLocation()
+    //Intitialize to zero before calling getCurrentLocation()
     init() {
         self.latitude = 0.0
         self.longitude = 0.0
@@ -40,6 +40,7 @@ class CurrentLocation {
         }
     }
     
+    //Given tag, find resulting matching items and save to coreData
     func findMatchingItems(tag: String, region: MKCoordinateRegion) {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = tag
