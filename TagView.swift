@@ -37,8 +37,9 @@ struct TagView {
                 tagEntity.setValue(NSOrderedSet(), forKey: "lists" )
                 tagEntity.setValue(NSOrderedSet(), forKey: "locations")
         
-                let tag = tagEntity
-                tags.append(tag as! Tag)
+                if let tag = tagEntity as? Tag {
+                    tags.append(tag)
+                }
             }
         }
         
@@ -49,9 +50,11 @@ struct TagView {
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
         
-        let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as! [Tag]
-        
-        return allTags
+        if let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as? [Tag] {
+            return allTags
+        } else {
+            return tags
+        }
     }
     
     // returns true only if tag array is not empty
@@ -70,7 +73,11 @@ struct TagView {
             return ""
         }
         let returnTag = tags[index]
-        let returnName = returnTag.name!
-        return returnName
+        if let returnName = returnTag.name {
+            return returnName
+        } else {
+            print("error getting tag name in tagView")
+            return ""
+        }
     }
 }
