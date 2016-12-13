@@ -4,10 +4,13 @@
 //
 //  Created by Katie Williams on 12/7/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
+//  Followed tutorial here: http://www.thorntech.com/2016/03/ios-tutorial-make-interactive-slide-menu-swift/
 //
 
 import Foundation
 import UIKit
+
+// MARK: - Support for animation of menu
 
 enum Direction {
     case Up
@@ -24,6 +27,8 @@ struct MenuHelper {
     
     static let snapshotNumber = 12345
     
+    
+    // MARK: - Calculate the position of view in animation
     static func calculateProgress(translationInView:CGPoint, viewBounds:CGRect, direction:Direction) -> CGFloat {
         let pointOnAxis:CGFloat
         let axisLength:CGFloat
@@ -50,6 +55,7 @@ struct MenuHelper {
         }
     }
     
+    // MARK: - Use Gestures to trigger MapMenu
     static func mapGestureStateToInteractor(gestureState:UIGestureRecognizerState, progress:CGFloat, interactor: Interactor?, triggerSegue: () -> ()){
         guard let interactor = interactor else { return }
         switch gestureState {
