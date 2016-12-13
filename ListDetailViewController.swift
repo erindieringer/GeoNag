@@ -14,12 +14,14 @@ import CoreLocation
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     var detailViewModel:ListDetailView?
+
     // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
         
     // Set up location details
     let locationManager = CLLocationManager()
     var location = CurrentLocation()
+
     
     @IBOutlet var label: UILabel!
     
@@ -156,19 +158,6 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.reloadData()
     }
     
-    
-    // MARK: - Trigger Location Notification
-    func locationNotification() {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        let locattionnotification = UILocalNotification()
-        locattionnotification.alertBody = "You have entered a high risk zone (Crown Range Road) , proceed with caution"
-        locattionnotification.regionTriggersOnce = false
-        let center = CLLocationCoordinate2DMake(37.33233141, -122.03121860)
-        //CLLocationCoordinate2D(latitude: 37.33233141, longitude: -122.03121860)
-        locattionnotification.region = CLCircularRegion(center: center, radius: 200.0, identifier: "Location1")
-        locattionnotification.alertAction = "View List"
-        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
-    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

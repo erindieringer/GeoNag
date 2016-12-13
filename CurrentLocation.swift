@@ -21,14 +21,13 @@ class CurrentLocation {
     // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
     
-    let plist =  PlistManager.sharedInstance
-    
-    //intitialize to zero before calling getCurrentLocation()
+    // Intitialize to zero before calling getCurrentLocation()
     init() {
         self.latitude = 0.0
         self.longitude = 0.0
     }
     
+    //Set the current location to latitude and longitude
     func getCurrentLocation() {
         manager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -43,6 +42,7 @@ class CurrentLocation {
         }
     }
     
+    //Given tag, find resulting matching items and save to coreData
     func findMatchingItems(tag: String, region: MKCoordinateRegion) {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = tag
@@ -69,19 +69,31 @@ class CurrentLocation {
     
     }
     
+    // MARK: Functions to set location data to the core data
     
-    // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
-    func getPlistUserLocation () {
-        let plistLong = plist.getValueForKey("userCurrentLocationLongitude")
-        let plistLat = plist.getValueForKey("userCurrentLocationLatitude")
-        self.longitude = CLLocationDegrees(plistLong as! NSNumber)
-        self.latitude = CLLocationDegrees(plistLat as! NSNumber)
+    // Returns list of searchItems from coreData
+    func getSearchItems() -> [NSManagedObject] {
+        //let managedObjectContext = coreDataStack.managedObjectContext
+        let items = coreDataHelper.fetchRecordsForEntity("SearchItem")
+        return items
     }
     
-    func savePlistUserLocation(){
-        plist.saveValue( NSNumber(double: self.longitude), forKey: "UserCurrentLocationLongitude")
-        plist.saveValue( NSNumber(double: self.latitude), forKey: "UserCurrentLocationLatitude")
+    //Delete all search items from coredata to prepare for setting new ones
+    func deleteSearchItems() {
+        let fetchRequest = NSFetchRequest(entityName: "SearchItem")
+        let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.executeRequest(batchDeleteRequest)
+            
+        } catch {
+            print("error batch delete")
+        }
+        
     }
+    
     
  
 }
