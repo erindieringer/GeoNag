@@ -82,11 +82,17 @@ class CurrentLocation {
     func deleteSearchItems() {
         let fetchRequest = NSFetchRequest(entityName: "SearchItem")
         let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
-        // Create Batch Delete Request
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
         do {
-            try managedObjectContext.executeRequest(batchDeleteRequest)
+
+            if let records = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]{
+                for object in records {
+                    managedObjectContext.deleteObject(object)
+                     try!managedObjectContext.save()
+                    
+                }
+            }
+            
+            
             
         } catch {
             print("error batch delete")

@@ -17,7 +17,6 @@
 		595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 595A0F491DDF7F1F00A68502 /* Assets.xcassets */; };
 		595A0F4D1DDF7F1F00A68502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595A0F4B1DDF7F1F00A68502 /* LaunchScreen.storyboard */; };
 		595A0F581DDF7F2000A68502 /* iOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F571DDF7F2000A68502 /* iOSAppTests.swift */; };
-		595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */; };
 		59617D0F1DF90B5C009BDFB7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */; };
 		59617D111DF92F29009BDFB7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D101DF92F29009BDFB7 /* MapView.swift */; };
 		59617D131DF93CBF009BDFB7 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59617D121DF93CBF009BDFB7 /* MapAnnotation.swift */; };
@@ -69,6 +68,8 @@
 		8049576C1E0059890023A368 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8049576B1E0059890023A368 /* NotificationManager.swift */; };
 		805A4AD31DFA010800F95CE7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A4AD21DFA010800F95CE7 /* DataManager.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
+		80D392781E0098F2004D0D2E /* CurrentLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392771E0098F2004D0D2E /* CurrentLocationTests.swift */; };
+		80D392861E00AB80004D0D2E /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392851E00AB80004D0D2E /* DataManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,12 +80,19 @@
 			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
 			remoteInfo = iOSApp;
 		};
-		595A0F5F1DDF7F2000A68502 /* PBXContainerItemProxy */ = {
+		80D3927A1E0098F2004D0D2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 595A0F341DDF7F1F00A68502 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
-			remoteInfo = iOSApp;
+			remoteInfo = GeoNag;
+		};
+		80D392881E00AB80004D0D2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 595A0F341DDF7F1F00A68502 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
+			remoteInfo = GeoNag;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -103,9 +111,6 @@
 		595A0F531DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F571DDF7F2000A68502 /* iOSAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppTests.swift; sourceTree = "<group>"; };
 		595A0F591DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoNag.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppUITests.swift; sourceTree = "<group>"; };
-		595A0F641DDF7F2000A68502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		59617D101DF92F29009BDFB7 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		59617D121DF93CBF009BDFB7 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
@@ -157,6 +162,12 @@
 		8049576B1E0059890023A368 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		805A4AD21DFA010800F95CE7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentLocation.swift; path = ../CurrentLocation.swift; sourceTree = "<group>"; };
+		80D392751E0098F2004D0D2E /* CurrentLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrentLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80D392771E0098F2004D0D2E /* CurrentLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationTests.swift; sourceTree = "<group>"; };
+		80D392791E0098F2004D0D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80D392831E00AB80004D0D2E /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80D392851E00AB80004D0D2E /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		80D392871E00AB80004D0D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +185,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		595A0F5B1DDF7F2000A68502 /* Frameworks */ = {
+		80D392721E0098F2004D0D2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80D392801E00AB80004D0D2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -189,7 +207,6 @@
 			children = (
 				595A0F3E1DDF7F1F00A68502 /* iOSApp */,
 				595A0F561DDF7F2000A68502 /* iOSAppTests */,
-				595A0F611DDF7F2000A68502 /* iOSAppUITests */,
 				595A0F3D1DDF7F1F00A68502 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,7 +216,8 @@
 			children = (
 				595A0F3C1DDF7F1F00A68502 /* GeoNag.app */,
 				595A0F531DDF7F2000A68502 /* GeoNag.xctest */,
-				595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */,
+				80D392751E0098F2004D0D2E /* CurrentLocationTests.xctest */,
+				80D392831E00AB80004D0D2E /* DataManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,20 +246,12 @@
 		595A0F561DDF7F2000A68502 /* iOSAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				80D392601E0092C6004D0D2E /* CurrentLocation */,
+				80D392841E00AB80004D0D2E /* DataManagerTests */,
+				80D392761E0098F2004D0D2E /* CurrentLocationTests */,
 				595A0F571DDF7F2000A68502 /* iOSAppTests.swift */,
 				595A0F591DDF7F2000A68502 /* Info.plist */,
 			);
 			path = iOSAppTests;
-			sourceTree = "<group>";
-		};
-		595A0F611DDF7F2000A68502 /* iOSAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				595A0F621DDF7F2000A68502 /* iOSAppUITests.swift */,
-				595A0F641DDF7F2000A68502 /* Info.plist */,
-			);
-			path = iOSAppUITests;
 			sourceTree = "<group>";
 		};
 		597C330D1E0053D300F70AF9 /* Plist */ = {
@@ -399,11 +409,24 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		80D392601E0092C6004D0D2E /* CurrentLocation */ = {
+		80D392761E0098F2004D0D2E /* CurrentLocationTests */ = {
 			isa = PBXGroup;
 			children = (
+				80D392771E0098F2004D0D2E /* CurrentLocationTests.swift */,
+				80D392791E0098F2004D0D2E /* Info.plist */,
 			);
-			name = CurrentLocation;
+			name = CurrentLocationTests;
+			path = ../CurrentLocationTests;
+			sourceTree = "<group>";
+		};
+		80D392841E00AB80004D0D2E /* DataManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				80D392851E00AB80004D0D2E /* DataManagerTests.swift */,
+				80D392871E00AB80004D0D2E /* Info.plist */,
+			);
+			name = DataManagerTests;
+			path = ../DataManagerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,23 +467,41 @@
 			productReference = 595A0F531DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		595A0F5D1DDF7F2000A68502 /* GeoNagUITests */ = {
+		80D392741E0098F2004D0D2E /* CurrentLocationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */;
+			buildConfigurationList = 80D3927C1E0098F2004D0D2E /* Build configuration list for PBXNativeTarget "CurrentLocationTests" */;
 			buildPhases = (
-				595A0F5A1DDF7F2000A68502 /* Sources */,
-				595A0F5B1DDF7F2000A68502 /* Frameworks */,
-				595A0F5C1DDF7F2000A68502 /* Resources */,
+				80D392711E0098F2004D0D2E /* Sources */,
+				80D392721E0098F2004D0D2E /* Frameworks */,
+				80D392731E0098F2004D0D2E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				595A0F601DDF7F2000A68502 /* PBXTargetDependency */,
+				80D3927B1E0098F2004D0D2E /* PBXTargetDependency */,
 			);
-			name = GeoNagUITests;
-			productName = iOSAppUITests;
-			productReference = 595A0F5E1DDF7F2000A68502 /* GeoNag.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = CurrentLocationTests;
+			productName = CurrentLocationTests;
+			productReference = 80D392751E0098F2004D0D2E /* CurrentLocationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		80D392821E00AB80004D0D2E /* DataManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80D3928A1E00AB80004D0D2E /* Build configuration list for PBXNativeTarget "DataManagerTests" */;
+			buildPhases = (
+				80D3927F1E00AB80004D0D2E /* Sources */,
+				80D392801E00AB80004D0D2E /* Frameworks */,
+				80D392811E00AB80004D0D2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80D392891E00AB80004D0D2E /* PBXTargetDependency */,
+			);
+			name = DataManagerTests;
+			productName = DataManagerTests;
+			productReference = 80D392831E00AB80004D0D2E /* DataManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -485,7 +526,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 595A0F3B1DDF7F1F00A68502;
 					};
-					595A0F5D1DDF7F2000A68502 = {
+					80D392741E0098F2004D0D2E = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 595A0F3B1DDF7F1F00A68502;
+					};
+					80D392821E00AB80004D0D2E = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 595A0F3B1DDF7F1F00A68502;
 					};
@@ -506,7 +551,8 @@
 			targets = (
 				595A0F3B1DDF7F1F00A68502 /* GeoNag */,
 				595A0F521DDF7F2000A68502 /* GeoNagTests */,
-				595A0F5D1DDF7F2000A68502 /* GeoNagUITests */,
+				80D392741E0098F2004D0D2E /* CurrentLocationTests */,
+				80D392821E00AB80004D0D2E /* DataManagerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -550,7 +596,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		595A0F5C1DDF7F2000A68502 /* Resources */ = {
+		80D392731E0098F2004D0D2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80D392811E00AB80004D0D2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -611,11 +664,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		595A0F5A1DDF7F2000A68502 /* Sources */ = {
+		80D392711E0098F2004D0D2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				595A0F631DDF7F2000A68502 /* iOSAppUITests.swift in Sources */,
+				80D392781E0098F2004D0D2E /* CurrentLocationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80D3927F1E00AB80004D0D2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80D392861E00AB80004D0D2E /* DataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,10 +688,15 @@
 			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F541DDF7F2000A68502 /* PBXContainerItemProxy */;
 		};
-		595A0F601DDF7F2000A68502 /* PBXTargetDependency */ = {
+		80D3927B1E0098F2004D0D2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
-			targetProxy = 595A0F5F1DDF7F2000A68502 /* PBXContainerItemProxy */;
+			targetProxy = 80D3927A1E0098F2004D0D2E /* PBXContainerItemProxy */;
+		};
+		80D392891E00AB80004D0D2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
+			targetProxy = 80D392881E00AB80004D0D2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -791,25 +857,51 @@
 			};
 			name = Release;
 		};
-		595A0F6E1DDF7F2000A68502 /* Debug */ = {
+		80D3927D1E0098F2004D0D2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = iOSAppUITests/Info.plist;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CurrentLocationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = GeoNag;
-				TEST_TARGET_NAME = iOSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.CurrentLocationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Debug;
 		};
-		595A0F6F1DDF7F2000A68502 /* Release */ = {
+		80D3927E1E0098F2004D0D2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = iOSAppUITests/Info.plist;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CurrentLocationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.iOSAppUITests;
-				PRODUCT_NAME = GeoNag;
-				TEST_TARGET_NAME = iOSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.CurrentLocationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Release;
+		};
+		80D3928B1E00AB80004D0D2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Debug;
+		};
+		80D3928C1E00AB80004D0D2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
 			};
 			name = Release;
 		};
@@ -843,14 +935,21 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		595A0F6D1DDF7F2000A68502 /* Build configuration list for PBXNativeTarget "GeoNagUITests" */ = {
+		80D3927C1E0098F2004D0D2E /* Build configuration list for PBXNativeTarget "CurrentLocationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				595A0F6E1DDF7F2000A68502 /* Debug */,
-				595A0F6F1DDF7F2000A68502 /* Release */,
+				80D3927D1E0098F2004D0D2E /* Debug */,
+				80D3927E1E0098F2004D0D2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		};
+		80D3928A1E00AB80004D0D2E /* Build configuration list for PBXNativeTarget "DataManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80D3928B1E00AB80004D0D2E /* Debug */,
+				80D3928C1E00AB80004D0D2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
