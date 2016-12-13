@@ -10,32 +10,18 @@ import UIKit
 
 class TagViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // Variables to Access Tag Info
     var tagView:TagView?
     var tags:[Tag]?
     var listModel:ListDetailView?
     var tagImages:NSArray?
     var oTagImages:NSArray?
     
-    @IBOutlet weak var cv: UICollectionView!
-    
-    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
+    // reuse id of tag collection cells
+    let reuseIdentifier = "cell"
     
     
     // MARK: - UICollectionViewDataSource protocol
-    
-    // edit collection view
-    
-    func collectionView(collectionView: UICollectionView, didDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        print("woo")
-        print(cell)
-        if (cell.selected == true) {
-            print("IS SELECTED")
-        }
-        let c = cell.viewWithTag(100) as! UIImageView
-        c.image = UIImage(named: "reminder.png")
-        print(c.image)
-    }
-
     
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
