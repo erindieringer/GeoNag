@@ -26,6 +26,8 @@
 		5967413A1DFA1E4600917E11 /* deleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 596741391DFA1E4600917E11 /* deleteButton.png */; };
 		596D2E5E1DF1441F00089476 /* DetailListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */; };
 		597C33131E006DE600F70AF9 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33121E006DE600F70AF9 /* CoreDataHelper.swift */; };
+		597C33181E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33171E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift */; };
+		597C331A1E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33191E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
 		59826B571DF72F1F002CE785 /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B561DF72F1F002CE785 /* PListManager.swift */; };
 		59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */; };
@@ -113,6 +115,8 @@
 		596741391DFA1E4600917E11 /* deleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteButton.png; sourceTree = "<group>"; };
 		596D2E5C1DF1441F00089476 /* DetailListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailListTableViewCell.xib; sourceTree = "<group>"; };
 		597C33121E006DE600F70AF9 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		597C33171E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
+		597C33191E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerMenuDelegate.swift; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
 		59826B561DF72F1F002CE785 /* PListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
 		59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 				596741331DFA11F600917E11 /* ListsTableViewCell.swift */,
 				599088CA1DDF82460090A137 /* ListViewController.swift */,
 				599088CE1DDF82C10090A137 /* ListView.swift */,
+				597C33171E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift */,
+				597C33191E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift */,
 			);
 			name = Lists;
 			path = ..;
@@ -564,12 +570,14 @@
 				59617D111DF92F29009BDFB7 /* MapView.swift in Sources */,
 				59160E591DF9063800BFD6C6 /* PresentMenuAnimator.swift in Sources */,
 				597C33131E006DE600F70AF9 /* CoreDataHelper.swift in Sources */,
+				597C33181E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift in Sources */,
 				59B430101DECC764009F615E /* List.swift in Sources */,
 				59160E551DF905EB00BFD6C6 /* Interactor.swift in Sources */,
 				59B336481DFA8A7400B71E1B /* Item+CoreDataProperties.swift in Sources */,
 				59AE8D7C1DF7D68400EB8B76 /* TagView.swift in Sources */,
 				59B4300C1DECC764009F615E /* Item.swift in Sources */,
 				59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */,
+				597C331A1E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift in Sources */,
 				59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */,
 				599088CD1DDF82580090A137 /* ListDetailViewController.swift in Sources */,
 				59160E531DF905CB00BFD6C6 /* MenuHelper.swift in Sources */,

@@ -14,7 +14,10 @@ struct TagView {
     
     // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
+    
+    // often predefined tags
     var tags = [Tag]()
+    
     // selected tag img files
     var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
     // unselected tag img files

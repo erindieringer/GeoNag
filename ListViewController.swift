@@ -30,6 +30,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegueWithIdentifier("openMenu", sender: nil)
     }
     
+    // gestures to open menu
     @IBAction func edgePanGesture(sender: UIScreenEdgePanGestureRecognizer) {
         let translation = sender.translationInView(view)
         
@@ -43,7 +44,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    // MARK: - Add Lists in Main View
     @IBAction func addItem(sender: AnyObject) {
+        
+        // create alert controller to help add a new list
         
         let alert = UIAlertController(title: "New Item",
                                       message: "Add a new list",
@@ -77,6 +81,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    // MARK: - Save List After Adding New One
     func saveList(name: String) {
         // create new list entity
         let listEntity = (coreDataHelper.createRecordForEntity("List"))!
@@ -91,18 +96,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSOrderedSet(), forKey: "tags" )
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
         viewModel.lists.insert(listEntity as! List, atIndex:0)
+        
         // save entity
         coreDataHelper.coreDataStack.saveContext()
     }
-    
-    func updateList(index: Int, name: String) {
-        
-        viewModel.lists[index].name = name
-        viewModel.lists[index].dateModified = NSDate()
-
-        coreDataHelper.coreDataStack.saveContext()
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +112,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                          name: "SomeNotification",
                                                          object: nil)
     }
+    
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("openMenu", sender: self)
@@ -131,13 +129,15 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedRow, animated: true)
         }
-                
+        
+        // sort lists by date modified
         let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
-        viewModel.lists = coreDataHelper.fetchRecordsForEntity("List", sortDescriptor: sortDescriptor) as! [List]
-
+        if let lists = coreDataHelper.fetchRecordsForEntity("List", sortDescriptor: sortDescriptor) as? [List] {
+            viewModel.lists = lists
+        }
     }
     
-    //Table View
+    // MARK: - Table View Functions to control Table view and Selection in Main List Page
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
         return viewModel.numberOfRows()
     }
@@ -153,9 +153,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Slide left to make Delete Button Appear
         if editingStyle == .Delete {
+            // Delete list if button pushed
             let context = coreDataHelper.coreDataStack.managedObjectContext
-
+            
             context.deleteObject(viewModel.lists[indexPath.row])
             coreDataHelper.coreDataStack.saveContext()
             
@@ -165,45 +167,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Segues to List View
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
             detailVC.detailViewModel!.reminderList = (viewModel.getListForIndexPath(indexPath) as? List)!
         }
-        if let destinationViewController = segue.destinationViewController as? MapViewController {
-            destinationViewController.transitioningDelegate = self
-            destinationViewController.interactor = interactor
-            destinationViewController.menuActionDelegate = self
+        // Segue to Map View
+        if let mapVC = segue.destinationViewController as? MapViewController {
+            mapVC.transitioningDelegate = self
+            mapVC.interactor = interactor
+            mapVC.menuActionDelegate = self
         }
     }
     
-}
-
-extension ListViewController: UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentMenuAnimator()
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissMenuAnimator()
-    }
-    
-    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactor.hasStarted ? interactor : nil
-    }
-    
-    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactor.hasStarted ? interactor : nil
-    }
-}
-
-extension ListViewController: MenuActionDelegate {
-    func openSegue(segueName: String, sender: AnyObject?) {
-        dismissViewControllerAnimated(true){
-            self.performSegueWithIdentifier(segueName, sender: sender)
-        }
-    }
-    func reopenMenu(){
-        performSegueWithIdentifier("openMenu", sender: nil)
-    }
 }
