@@ -5,6 +5,7 @@
 //  Created by Katie Williams on 11/18/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 //
+//  NOTE: our appdelegate is verbose becuase alot of our functionality runs when the app in the background so the functions could not be moved out of the App Delegate
 
 import UIKit
 import CoreData
@@ -47,9 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
         // Initialize tags in the database
         initializeTags()
-        
-        // Start up Plist for storing current user location data
-        PlistManager.sharedInstance.startPlistManager()
         
         //LOCATION INIT
         initLocation()
@@ -127,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
-    //Initialzed all attributes needed for core location
+    // MARK: - Initialzed all attributes needed for core location
     func initLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -155,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
                 saveLocation()
-                deleteSearchItems()
+                currentLocation.deleteSearchItems()
             }
             else {
                 print("speed too fast")
@@ -169,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     //Find matching items based on tags and send notification
     func setupItemsNotification() {
         print("update SIGNIFICANT location")
-        deleteSearchItems()
+        currentLocation.deleteSearchItems()
         //Get all tag names in use
         let tags = getListTags()
         
@@ -177,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         for tag in tags {
             setSearchItems(tag)
         }
-        let tagSearchItems = getSearchItems()
+        let tagSearchItems = currentLocation.getSearchItems()
         mapSearchItems = tagSearchItems
         
         if (tagSearchItems.count > 0){
@@ -196,30 +194,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         currentLocation.findMatchingItems(tag, region: region)
     }
     
-    // Returns list of searchItems from coreData
-    func getSearchItems() -> [NSManagedObject] {
-        //let managedObjectContext = coreDataStack.managedObjectContext
-        let items = coreDataHelper.fetchRecordsForEntity("SearchItem")
-        return items
-    }
     
-    //Delete all search items from coredata to prepare for setting new ones
-    func deleteSearchItems() {
-        let fetchRequest = NSFetchRequest(entityName: "SearchItem")
-        let managedObjectContext = coreDataStack.managedObjectContext
-        // Create Batch Delete Request
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try managedObjectContext.executeRequest(batchDeleteRequest)
-            
-        } catch {
-            print("error batch delete")
-        }
-        
-    }
-    
-    // Using usedTags list to find names of all tags currently selected across all lists
+    // MARK: - Using usedTags list to find names of all tags currently selected across all lists
     func getListTags() -> [String] {
         var tagNames: [String] = []
         if let used = usedTags {
@@ -237,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
-    //Returns name of closest item in itemList to current location
+    // MARK: - Returns name of closest item in itemList to current location
     func findClosestItem(itemList: [NSManagedObject]) -> String {
         var closest = ""
         let currenLat = locationManager.location?.coordinate.latitude
@@ -258,6 +234,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
         return closest
     }
+    //MARK: - Saving and reloading fron plist
     
     //Saving current location object plist
     func saveLocation() {
