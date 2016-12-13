@@ -64,9 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         initLocation()
         
         //Notification INIT
-//        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-//        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-//        currentLocation.getCurrentLocation()
+        currentLocation.getCurrentLocation()
         notificationManager.setupNotificationSettings()
         
         // change navigation bar color
@@ -117,6 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
 
         NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
+        print("recieved notification")
     }
     
     // MARK: - Core Data Method for Creating Records
@@ -199,7 +198,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
    
                 let tagSearchItems = getSearchItems()
                 mapSearchItems = tagSearchItems
-
+                
+                print( "tags: ", tagSearchItems.count)
                 if (tagSearchItems.count > 0){
                     var closest = findClosestItem(tagSearchItems)
                     if ((closest == "") || (closest.characters.count == 0)){
@@ -274,25 +274,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         }
     }
     
-//    func newNotification (name: String) {
-//        UIApplication.sharedApplication().cancelAllLocalNotifications()
-//        cancelNotifications()
-//        let locattionnotification = UILocalNotification()
-//        locattionnotification.category = "locationReminderCategory"
-//        locattionnotification.alertBody = " \(name) is nearby! Click for more locations"
-//        locattionnotification.alertAction = "View List"
-//        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
-//    }
-//    
-//    //Cancels all notificaitons so that new ones can be stored
-//    func cancelNotifications () {
-//        let app:UIApplication = UIApplication.sharedApplication()
-//        for oneEvent in app.scheduledLocalNotifications! {
-//            let notification = oneEvent as UILocalNotification
-//            app.cancelLocalNotification(notification)
-//            }
-//    }
-    
     //Returns name of closest item in itemList to current location
     func findClosestItem(itemList: [NSManagedObject]) -> String {
         var closest = ""
@@ -321,9 +302,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         dataManager.saveLocation()
     }
     
-    func restoruLocation() {
-        dataManager.location = currentLocation
-        dataManager.saveLocation()
+    //Restores currentLocation object on reload
+    func restoreLocation() {
+        dataManager.loadLocation()
+        currentLocation = dataManager.location
     }
     
     

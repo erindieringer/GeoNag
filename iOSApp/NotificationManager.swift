@@ -28,7 +28,8 @@ class NotificationManager {
     }
     
     //creates a new notification 
-    func newNotification (name: String) {
+    func newNotification(name: String) {
+            print("new notif")
             UIApplication.sharedApplication().cancelAllLocalNotifications()
             cancelNotifications()
             let locattionnotification = UILocalNotification()
