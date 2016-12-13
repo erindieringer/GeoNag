@@ -10,7 +10,10 @@
 import MapKit
 import Contacts
 
+// MARK: - Map Annotations
 class MapAnnotation: NSObject, MKAnnotation {
+    
+    // variables for elements on annotation
     let title: String?
     let coordinate: CLLocationCoordinate2D
     
@@ -20,12 +23,8 @@ class MapAnnotation: NSObject, MKAnnotation {
         
         super.init()
     }
-    
-//    var subtitle: String? {
-//        return locationName
-//    }
-    
-    // annotation callout info button opens this mapItem in Maps app
+
+    // MARK: - Annotation callout info button opens this mapItem in the Apple Maps app
     func mapItem() -> MKMapItem {
         let addressDict = [CNPostalAddressStreetKey: title!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)

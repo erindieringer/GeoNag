@@ -9,6 +9,8 @@
 
 import UIKit
 
+
+// MARK: - Interactor class to be used with Animations and Transitions of Menu Open/Close
 class Interactor: UIPercentDrivenInteractiveTransition {
     var hasStarted = false
     var shouldFinish = false

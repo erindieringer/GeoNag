@@ -9,10 +9,9 @@
 
 import UIKit
 
-class PresentMenuAnimator : NSObject {
-}
 
-extension PresentMenuAnimator : UIViewControllerAnimatedTransitioning {
+// MARK: - Present Menu Animations
+class PresentMenuAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.6
     }

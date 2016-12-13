@@ -9,10 +9,8 @@
 
 import UIKit
 
-class DismissMenuAnimator : NSObject {
-}
-
-extension DismissMenuAnimator : UIViewControllerAnimatedTransitioning {
+// MARK: - dismiss menu animations
+class DismissMenuAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.6
     }
