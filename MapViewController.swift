@@ -15,6 +15,8 @@ class MapViewController: UIViewController {
     // Add Variables to control the Map Menu
     var interactor:Interactor? = nil
     var menuActionDelegate:MenuActionDelegate? = nil
+    
+    // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
     
     @IBOutlet weak var mapView: MKMapView!

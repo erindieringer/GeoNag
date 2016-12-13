@@ -17,6 +17,8 @@ class CurrentLocation {
     var matchingItems:[MKMapItem] = []
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
+    
+    // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
     
     let plist =  PlistManager.sharedInstance

@@ -17,6 +17,8 @@ protocol MenuActionDelegate {
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     let viewModel = ListView()
+    
+    // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
     
     // For Pan View

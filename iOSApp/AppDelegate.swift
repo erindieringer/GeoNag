@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     lazy var tagView = TagView()
+    // define core data helper to manage core data objects
+
     var coreDataHelper = CoreDataHelper()
     var usedTags:[Tag]?
     

@@ -14,6 +14,7 @@ import CoreLocation
 class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
     
     var detailViewModel:ListDetailView?
+    // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
         
     // Set up location details
