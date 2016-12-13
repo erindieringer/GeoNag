@@ -12,6 +12,7 @@ import UIKit
 
 struct TagView {
     
+    // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
     var tags = [Tag]()
     // selected tag img files
