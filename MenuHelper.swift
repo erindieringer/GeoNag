@@ -32,6 +32,7 @@ struct MenuHelper {
     static func calculateProgress(translationInView:CGPoint, viewBounds:CGRect, direction:Direction) -> CGFloat {
         let pointOnAxis:CGFloat
         let axisLength:CGFloat
+        // calculate position and change it based on direction
         switch direction {
         case .Up, .Down:
             pointOnAxis = translationInView.y
@@ -58,6 +59,7 @@ struct MenuHelper {
     // MARK: - Use Gestures to trigger MapMenu
     static func mapGestureStateToInteractor(gestureState:UIGestureRecognizerState, progress:CGFloat, interactor: Interactor?, triggerSegue: () -> ()){
         guard let interactor = interactor else { return }
+        // detect user gestures to control animation
         switch gestureState {
         case .Began:
             interactor.hasStarted = true

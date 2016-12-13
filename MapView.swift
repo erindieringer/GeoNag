@@ -11,7 +11,7 @@ import MapKit
 
 extension MapViewController: MKMapViewDelegate {
     
-    
+    // MARK: - Allow Mapview to have pins (Annotations)
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? MapAnnotation {
             let identifier = "pin"
@@ -31,6 +31,7 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
     
+    // MARK: - Annotation View Options
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! MapAnnotation

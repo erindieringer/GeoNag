@@ -24,13 +24,6 @@ class MapViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func dropPins() {
-//        let droppedPin = MKPointAnnotation()
-//        //droppedPin.coordinate = CLLocationCoordinate2D(latitude: carLocation.latitude, longitude: carLocation.longitude)
-//        droppedPin.title = "Your Car"
-//        mapView.addAnnotation(droppedPin)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // get current location
@@ -42,7 +35,6 @@ class MapViewController: UIViewController {
         centerMapOnLocation(userCoords)
 
         // drop a pin at current location
-        dropPins()
         mapView.delegate = self
         
         let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
