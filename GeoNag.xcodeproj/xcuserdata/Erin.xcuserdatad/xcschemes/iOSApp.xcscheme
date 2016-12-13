@@ -78,6 +78,16 @@
                ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "80D392901E00BAA7004D0D2E"
+               BuildableName = "TagViewModelTests.xctest"
+               BlueprintName = "TagViewModelTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
