@@ -13,7 +13,6 @@
 		59160E5B1DF9064F00BFD6C6 /* DismissMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59160E5A1DF9064F00BFD6C6 /* DismissMenuAnimator.swift */; };
 		59316F0E1DFA094B00566387 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 59316F0D1DFA094B00566387 /* map.png */; };
 		59316F101DFA0C3200566387 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 59316F0F1DFA0C3200566387 /* add.png */; };
-		594360C71DF8FE3800549D0F /* LeftMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594360C61DF8FE3800549D0F /* LeftMenu.swift */; };
 		595A0F401DDF7F1F00A68502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595A0F3F1DDF7F1F00A68502 /* AppDelegate.swift */; };
 		595A0F451DDF7F1F00A68502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 595A0F431DDF7F1F00A68502 /* Main.storyboard */; };
 		595A0F4A1DDF7F1F00A68502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 595A0F491DDF7F1F00A68502 /* Assets.xcassets */; };
@@ -97,7 +96,6 @@
 		59160E5A1DF9064F00BFD6C6 /* DismissMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissMenuAnimator.swift; sourceTree = "<group>"; };
 		59316F0D1DFA094B00566387 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		59316F0F1DFA0C3200566387 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
-		594360C61DF8FE3800549D0F /* LeftMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenu.swift; sourceTree = "<group>"; };
 		595A0F3C1DDF7F1F00A68502 /* GeoNag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoNag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		595A0F3F1DDF7F1F00A68502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		595A0F441DDF7F1F00A68502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		597C330F1E00551000F70AF9 /* MapMenu */ = {
 			isa = PBXGroup;
 			children = (
-				594360C61DF8FE3800549D0F /* LeftMenu.swift */,
 				59160E521DF905CB00BFD6C6 /* MenuHelper.swift */,
 				59617D101DF92F29009BDFB7 /* MapView.swift */,
 				59617D0E1DF90B5C009BDFB7 /* MapViewController.swift */,
@@ -543,7 +540,6 @@
 				59B3364B1DFA8A7400B71E1B /* Friend+CoreDataProperties.swift in Sources */,
 				59617D111DF92F29009BDFB7 /* MapView.swift in Sources */,
 				59160E591DF9063800BFD6C6 /* PresentMenuAnimator.swift in Sources */,
-				594360C71DF8FE3800549D0F /* LeftMenu.swift in Sources */,
 				59B430101DECC764009F615E /* List.swift in Sources */,
 				59160E551DF905EB00BFD6C6 /* Interactor.swift in Sources */,
 				59B336481DFA8A7400B71E1B /* Item+CoreDataProperties.swift in Sources */,

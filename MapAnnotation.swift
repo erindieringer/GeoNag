@@ -4,12 +4,16 @@
 //
 //  Created by Katie Williams on 12/8/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
+//  Followed tutorial here: http://www.thorntech.com/2016/03/ios-tutorial-make-interactive-slide-menu-swift/
 //
 
 import MapKit
 import Contacts
 
+// MARK: - Map Annotations
 class MapAnnotation: NSObject, MKAnnotation {
+    
+    // variables for elements on annotation
     let title: String?
     let coordinate: CLLocationCoordinate2D
     
@@ -19,12 +23,8 @@ class MapAnnotation: NSObject, MKAnnotation {
         
         super.init()
     }
-    
-//    var subtitle: String? {
-//        return locationName
-//    }
-    
-    // annotation callout info button opens this mapItem in Maps app
+
+    // MARK: - Annotation callout info button opens this mapItem in the Apple Maps app
     func mapItem() -> MKMapItem {
         let addressDict = [CNPostalAddressStreetKey: title!]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)

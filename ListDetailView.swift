@@ -21,7 +21,12 @@ class ListDetailView {
     }
     
     func title() -> String {
-        return reminderList.name!
+        if let name = reminderList.name {
+            return name
+        } else {
+            print("Error getting List title")
+            return ""
+        }
     }
     
     func getTags() -> [Tag] {
@@ -43,7 +48,6 @@ class ListDetailView {
     }
     
     func getReminderItems() -> [Item] {
-        // if there is a problem with this, loop through the NSOrdered Set and recreate Item Objects
         return reminderList.items!.array as! [Item]
     }
     

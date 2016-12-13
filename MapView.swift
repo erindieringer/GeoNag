@@ -4,13 +4,14 @@
 //
 //  Created by Katie Williams on 12/8/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
+//  Followed tutorial here: http://www.thorntech.com/2016/03/ios-tutorial-make-interactive-slide-menu-swift/
 //
 
 import MapKit
 
 extension MapViewController: MKMapViewDelegate {
     
-    
+    // MARK: - Allow Mapview to have pins (Annotations)
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? MapAnnotation {
             let identifier = "pin"
@@ -30,6 +31,7 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
     
+    // MARK: - Annotation View Options
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         let location = view.annotation as! MapAnnotation

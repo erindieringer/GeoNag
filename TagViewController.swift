@@ -10,62 +10,48 @@ import UIKit
 
 class TagViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var tagView:TagView?
-    var tags:[Tag]?
+    // Variables to Access Tag Info
+    var tagView = TagView()
     var listModel:ListDetailView?
-    var tagImages:NSArray?
-    var oTagImages:NSArray?
     
-    @IBOutlet weak var cv: UICollectionView!
-    
-    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
+    // reuse id of tag collection cells
+    let reuseIdentifier = "cell"
     
     
     // MARK: - UICollectionViewDataSource protocol
     
-    // edit collection view
-    
-    func collectionView(collectionView: UICollectionView, didDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        print("woo")
-        print(cell)
-        if (cell.selected == true) {
-            print("IS SELECTED")
-        }
-        let c = cell.viewWithTag(100) as! UIImageView
-        c.image = UIImage(named: "reminder.png")
-        print(c.image)
-    }
-
-    
     // tell the collection view how many cells to make
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagView!.numberOfTags
+        return tagView.numberOfTags
     }
     
     
     // make a cell for each cell index path
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        
-        // get a reference to our storyboard cell
+        // get a reference to the storyboard cell ids
         let reuseIDs = ["cellGroceries", "cellConvenience", "cellDrug", "cellPost", "cellBank", "cellBeverage", "cellHome", "cellSports"]
         let reuseID = reuseIDs[indexPath.row]
         let cellRef = collectionView.dequeueReusableCellWithReuseIdentifier(reuseID, forIndexPath: indexPath) as! TagCollectionViewCell
    
         // use cell for actual cell styles
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true {
-            print("selected")
-            let tag = tagView!.tags[indexPath.row]
-            let currTagsForList = listModel?.getTags()
-            if (currTagsForList?.contains(tag) == true) {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
-                listModel?.deleteTag(tag)
-            } else {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: oTagImages![indexPath.row] as! String)
-                listModel?.addTag(tag)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+            if cell.selected == true {
+                let tag = tagView.tags[indexPath.row]
+                let currTagsForList = listModel?.getTags()
+                if (currTagsForList?.contains(tag) == true) {
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        // if the tag is not selected, make it normal tag image
+                        tagImageView.image = UIImage(named: tagView.tagImages[indexPath.row] as! String)
+                        listModel?.deleteTag(tag)
+                    }
+                } else {
+                    // if tag is selected, make it opaque tag image
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        tagImageView.image = UIImage(named: tagView.oTagImages[indexPath.row] as! String)
+                        listModel?.addTag(tag)
+                    }
+                }
             }
         }
         
@@ -77,18 +63,22 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // handle tap events
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true {
-            let tag = tagView!.tags[indexPath.item]
-            let currTagsForList = listModel?.getTags()
-            if (currTagsForList?.contains(tag) == true) {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: tagImages![indexPath.row] as! String)
-                listModel?.deleteTag(tag)
-            } else {
-                let tagImageView = (cell!.viewWithTag(100)! as! UIImageView)
-                tagImageView.image = UIImage(named: oTagImages![indexPath.row] as! String)
-                listModel?.addTag(tag)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+            if cell.selected == true {
+                let tag = tagView.tags[indexPath.item]
+                let currTagsForList = listModel?.getTags()
+                if (currTagsForList?.contains(tag) == true) {
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        // if the tag is not selected, make it normal tag image
+                        tagImageView.image = UIImage(named: tagView.tagImages[indexPath.row] as! String)
+                        listModel?.deleteTag(tag)
+                    }
+                } else {
+                    let tagImageView = (cell.viewWithTag(100)! as! UIImageView)
+                    // if tag is selected, make it opaque tag image
+                    tagImageView.image = UIImage(named: tagView.oTagImages[indexPath.row] as! String)
+                    listModel?.addTag(tag)
+                }
             }
         }
     }
@@ -96,10 +86,6 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        tagView = appDelegate.tagView
-        tagImages = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
-        oTagImages = ["ogroceries.png", "oconvenience.png", "odrug", "opost.png", "obank", "obeverage.png", "ohome.png", "osports.png"]
     }
     
     override func didReceiveMemoryWarning() {

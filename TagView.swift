@@ -10,13 +10,21 @@ import Foundation
 import CoreData
 import UIKit
 
-class TagView {
-    var tags = [Tag]()
+struct TagView {
     
+    var tags = [Tag]()
+    // selected tag img files
+    var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
+    // unselected tag img files
+    var oTagImages:NSArray = ["ogroceries.png", "oconvenience.png", "odrug", "opost.png", "obank", "obeverage.png", "ohome.png", "osports.png"]
+    
+    // as of now with this iteration tags are static
     var numberOfTags = 8
     
+    // MARK: - Tag Creation, Fetching, and Displaying as CollectionView
+    
     // only run once! Adds all programmed tags to coredata
-    func createAllTags() ->[Tag] {
+    mutating func createAllTags() ->[Tag] {
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
@@ -42,8 +50,7 @@ class TagView {
     }
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
         
         let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext, predicate: predicate) as! [Tag]
@@ -51,6 +58,7 @@ class TagView {
         return allTags
     }
     
+    // returns true only if tag array is not empty
     func tagsExist() -> Bool {
         let tags = fetchAllTags()
         if tags?.count > 0 {
@@ -69,11 +77,4 @@ class TagView {
         let returnName = returnTag.name!
         return returnName
     }
-    
-    func iconForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        print("iconNames[0]")
-        return ""
-    }
-    
-    
 }
