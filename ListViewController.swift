@@ -174,7 +174,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let detailVC = segue.destinationViewController as? ListDetailViewController,
             indexPath = sender as? NSIndexPath {
             detailVC.detailViewModel =  viewModel.detailViewModelForRowAtIndexPath(indexPath)
-            detailVC.detailViewModel!.reminderList = (viewModel.getListForIndexPath(indexPath) as? List)!
+            if let list = viewModel.getListForIndexPath(indexPath) as? List {
+                if detailVC.detailViewModel != nil {
+                    detailVC.detailViewModel!.reminderList = list
+                }
+            }
         }
         // Segue to Map View
         if let mapVC = segue.destinationViewController as? MapViewController {
