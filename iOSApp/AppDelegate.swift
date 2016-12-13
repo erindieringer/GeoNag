@@ -54,17 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             tagView.tags = tagView.fetchAllTags()!
 
         }
-
-        
         
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
         //LOCATION INIT
         initLocation()
+        currentLocation.getCurrentLocation()
+        saveLocation()
         
         //Notification INIT
-        currentLocation.getCurrentLocation()
         notificationManager.setupNotificationSettings()
         
         // change navigation bar color
@@ -76,8 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         navigationBarAppearance.frame.origin.y = -20
         navigationBarAppearance.translucent = false;
-        
-        saveLocation()
+
         return true
         
     }
@@ -92,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
-        print("background")
 
     }
     
@@ -176,9 +173,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = true
-
     }
     
+    //When the location is updated in background
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
         let loc = locations.last!
@@ -186,35 +183,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         if (distance > 1500.0){
             // if less than 5 meters per second which is average running speed
             if loc.speed < 5.0 {
-                print("update SIGNIFICANT location")
-                deleteSearchItems()
-                //Get all tag names in use
-                let tags = getListTags()
                 
-                //get mapkit search for tag string name
-                for tag in tags {
-                    setSearchItems(tag)
-                }
-   
-                let tagSearchItems = getSearchItems()
-                mapSearchItems = tagSearchItems
+                //Find items and send notification if any
+                setupItemsNotification()
                 
-                print( "tags: ", tagSearchItems.count)
-                if (tagSearchItems.count > 0){
-                    var closest = findClosestItem(tagSearchItems)
-                    if ((closest == "") || (closest.characters.count == 0)){
-                        closest = tagSearchItems.last!.valueForKey("name")! as! String
-                    }
-                    notificationManager.newNotification(closest)
-                }
-                
-                //now reset currentLocatoin and save
+                //Reset currentLocation and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
                 saveLocation()
                 deleteSearchItems()
-
-            
             }
             else {
                 print("speed too fast")
@@ -223,16 +200,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         else {
             print("not far enough")
         }
-   
     }
     
+    //Find matching items based on tags and send notification
+    func setupItemsNotification() {
+        print("update SIGNIFICANT location")
+        deleteSearchItems()
+        //Get all tag names in use
+        let tags = getListTags()
+        
+        //get mapkit search for tag string name
+        for tag in tags {
+            setSearchItems(tag)
+        }
+        let tagSearchItems = getSearchItems()
+        mapSearchItems = tagSearchItems
+        
+        if (tagSearchItems.count > 0){
+            var closest = findClosestItem(tagSearchItems)
+            if ((closest == "") || (closest.characters.count == 0)){
+                closest = tagSearchItems.last!.valueForKey("name")! as! String
+            }
+            notificationManager.newNotification(closest)
+        }
+    }
+    
+    //Use currentLocation to get the matching items
     func setSearchItems(tag: String) {
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         currentLocation.findMatchingItems(tag, region: region)
     }
     
-    // Will return list
+    // Returns list of searchItems from coreData
     func getSearchItems() -> [NSManagedObject] {
         let managedObjectContext = coreDataStack.managedObjectContext
         let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
@@ -255,8 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
     }
     
-    // Using usedTags list to find names of all tags currently selected
-    // across all lists
+    // Using usedTags list to find names of all tags currently selected across all lists
     func getListTags() -> [String] {
         var tagNames: [String] = []
         if let used = usedTags {
@@ -267,7 +266,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return tagNames
     }
     
-    //When Change in Location detected
+    //Location services authorized
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
             print("Ready to go!")
