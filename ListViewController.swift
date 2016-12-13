@@ -115,7 +115,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                          object: nil)
     }
     
-    // When notifications sent, can be clicked to open up map view
+    // MARK: - When notifications sent, can be clicked to open up map view
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("openMenu", sender: self)

@@ -10,12 +10,17 @@ import Foundation
 import CoreData
 
 class ListView {
+    // create list of lists for local changes
     var lists = [List]()
+    
+    
+    // MARK: - Functions to control Lists Table in List View Model
     
     func numberOfRows() -> Int {
         return lists.count
     }
     
+    // Get Title
     func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
         let index = indexPath.row
         if index < 0 || index >= numberOfRows() {
@@ -26,6 +31,7 @@ class ListView {
         return listName
     }
     
+    // Get Summary
     func summaryForRowAtIndexPath(indexPath: NSIndexPath) -> String {
         var returnString = ""
         let index = indexPath.row
@@ -44,12 +50,14 @@ class ListView {
         }
     }
     
+    // Get List Item View
     func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailView {
         let list = lists[indexPath.item]
         let detailVM = ListDetailView(list: list)
         return detailVM
     }
     
+    // Get List in Table
     func getListForIndexPath(indexPath:NSIndexPath) -> NSManagedObject {
         return lists[indexPath.item]
     }

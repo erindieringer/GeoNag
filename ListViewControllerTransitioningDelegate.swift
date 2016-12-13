@@ -9,6 +9,9 @@
 import UIKit
 
 extension ListViewController: UIViewControllerTransitioningDelegate {
+    
+    // MARK: - Functions to control menu animations and how they are presented and dismissed
+    
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentMenuAnimator()
     }
