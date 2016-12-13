@@ -67,6 +67,7 @@
 		59B430141DECC764009F615E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430081DECC764009F615E /* Location.swift */; };
 		59B4301A1DECE199009F615E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B430191DECE199009F615E /* CoreDataStack.swift */; };
 		59B430411DEDF677009F615E /* reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 59B430401DEDF677009F615E /* reminder.png */; };
+		8049576C1E0059890023A368 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8049576B1E0059890023A368 /* NotificationManager.swift */; };
 		805A4AD31DFA010800F95CE7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A4AD21DFA010800F95CE7 /* DataManager.swift */; };
 		8078646C1DE1373100BD92AC /* CurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078646B1DE1373100BD92AC /* CurrentLocation.swift */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,7 @@
 		59B430081DECC764009F615E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
 		59B430191DECE199009F615E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		59B430401DEDF677009F615E /* reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder.png; sourceTree = "<group>"; };
+		8049576B1E0059890023A368 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		805A4AD21DFA010800F95CE7 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8078646B1DE1373100BD92AC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrentLocation.swift; path = ../CurrentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				8078646B1DE1373100BD92AC /* CurrentLocation.swift */,
+				8049576B1E0059890023A368 /* NotificationManager.swift */,
 			);
 			name = LocationModels;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				59AE8D771DF7D38100EB8B76 /* SearchItem.swift in Sources */,
 				596741341DFA11F600917E11 /* ListsTableViewCell.swift in Sources */,
 				59B4300E1DECC764009F615E /* Friend.swift in Sources */,
+				8049576C1E0059890023A368 /* NotificationManager.swift in Sources */,
 				805A4AD31DFA010800F95CE7 /* DataManager.swift in Sources */,
 				599088D11DDF82D20090A137 /* ListDetailView.swift in Sources */,
 			);

@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
         // Load AppDelegate Tools
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
-        appDelegate.restoreData()
+        appDelegate.restoreLocation()
         
         // Center Map on User's Location
         let userCoords = CLLocation(latitude: appDelegate.currentLocation.latitude, longitude: appDelegate.currentLocation.longitude)
