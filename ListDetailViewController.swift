@@ -61,6 +61,9 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    // MARK: - Functions to control CoreData Storage/Fetching of List's Item Entities
+    
+    // Save Item in List
     func saveItem(text: String) {
         if detailViewModel != nil {
             // create new item entity
@@ -76,6 +79,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    // Update Item in List
     func updateItem(index: Int, text: String) {
         if detailViewModel != nil {
             detailViewModel!.items[index].text = text

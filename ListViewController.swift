@@ -27,6 +27,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    // Clicking map icon opens menu
     @IBAction func openMenu(sender: AnyObject) {
         performSegueWithIdentifier("openMenu", sender: nil)
     }
@@ -115,7 +116,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                          object: nil)
     }
     
-    // MARK: - When notifications sent, can be clicked to open up map view
+    // MARK: - Function to transfer notification click to mapmenu
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("openMenu", sender: self)
