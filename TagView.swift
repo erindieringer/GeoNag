@@ -10,13 +10,16 @@ import Foundation
 import CoreData
 import UIKit
 
-class TagView {
+struct TagView {
     var tags = [Tag]()
     
+    // as of now with this iteration tags are static
     var numberOfTags = 8
     
+    // MARK: - Tag Creation, Fetching, and Displaying as CollectionView
+    
     // only run once! Adds all programmed tags to coredata
-    func createAllTags() ->[Tag] {
+    mutating func createAllTags() ->[Tag] {
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.coreDataStack.managedObjectContext
@@ -51,6 +54,7 @@ class TagView {
         return allTags
     }
     
+    // returns true only if tag array is not empty
     func tagsExist() -> Bool {
         let tags = fetchAllTags()
         if tags?.count > 0 {
@@ -69,11 +73,4 @@ class TagView {
         let returnName = returnTag.name!
         return returnName
     }
-    
-    func iconForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        print("iconNames[0]")
-        return ""
-    }
-    
-    
 }
