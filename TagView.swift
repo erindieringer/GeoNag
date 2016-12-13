@@ -12,6 +12,8 @@ import UIKit
 
 struct TagView {
     
+    // define core data helper to manage core data objects
+    var coreDataHelper = CoreDataHelper()
     var tags = [Tag]()
     // selected tag img files
     var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
@@ -25,14 +27,10 @@ struct TagView {
     
     // only run once! Adds all programmed tags to coredata
     mutating func createAllTags() ->[Tag] {
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
         let tagNames = ["Groceries", "Convenience", "Drug", "Post", "Bank", "Beverage", "Home", "Sports"]
         
         for i in 0..<numberOfTags {
-            if let tagEntity = appDelegate.createRecordForEntity("Tag", inManagedObjectContext: managedContext) {
+            if let tagEntity = coreDataHelper.createRecordForEntity("Tag") {
                 
                 // set values of new tag entity
                 tagEntity.setValue(tagNames[i], forKey: "name")
@@ -44,16 +42,14 @@ struct TagView {
             }
         }
         
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
         
         return tags
     }
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
         
-        let allTags = appDelegate.fetchRecordsForEntity("Tag", inManagedObjectContext: managedContext, predicate: predicate) as! [Tag]
+        let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as! [Tag]
         
         return allTags
     }

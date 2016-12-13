@@ -18,6 +18,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let viewModel = ListView()
     
+    // define core data helper to manage core data objects
+    var coreDataHelper = CoreDataHelper()
+    
     // For Pan View
     let interactor = Interactor()
     
@@ -75,13 +78,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func saveList(name: String) {
-        
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.coreDataStack.managedObjectContext
-        
         // create new list entity
-        let listEntity = (appDelegate.createRecordForEntity("List", inManagedObjectContext: managedContext))!
+        let listEntity = (coreDataHelper.createRecordForEntity("List"))!
         
         // set values of new list entity
         listEntity.setValue(name, forKey: "name")
@@ -94,16 +92,15 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         listEntity.setValue(NSOrderedSet(), forKey: "friends")
         viewModel.lists.insert(listEntity as! List, atIndex:0)
         // save entity
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     func updateList(index: Int, name: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
+        
         viewModel.lists[index].name = name
         viewModel.lists[index].dateModified = NSDate()
 
-        appDelegate.coreDataStack.saveContext()
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     
@@ -134,14 +131,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedRow, animated: true)
         }
-        
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
                 
-                let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
-        viewModel.lists = appDelegate.fetchRecordsForEntity("List", inManagedObjectContext: managedObjectContext, sortDescriptor: sortDescriptor) as! [List]
+        let sortDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
+        viewModel.lists = coreDataHelper.fetchRecordsForEntity("List", sortDescriptor: sortDescriptor) as! [List]
 
     }
     
@@ -162,11 +154,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let context = appDelegate.coreDataStack.managedObjectContext
+            let context = coreDataHelper.coreDataStack.managedObjectContext
 
             context.deleteObject(viewModel.lists[indexPath.row])
-            appDelegate.coreDataStack.saveContext()
+            coreDataHelper.coreDataStack.saveContext()
             
             viewModel.lists.removeAtIndex(indexPath.row)
             tableView.reloadData()

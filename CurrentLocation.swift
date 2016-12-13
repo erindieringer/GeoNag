@@ -18,6 +18,9 @@ class CurrentLocation {
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
     
+    // define core data helper to manage core data objects
+    var coreDataHelper = CoreDataHelper()
+    
     let plist =  PlistManager.sharedInstance
     
     //Intitialize to zero before calling getCurrentLocation()
@@ -55,9 +58,7 @@ class CurrentLocation {
             let match = response.mapItems
             if (match.count > 0){
                 for item in match {
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
-                    let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
+                    let newItem = self.coreDataHelper.createRecordForEntity("SearchItem")!
                     //save to coredata
                     newItem.setValue(item.name, forKey: "name")
                     newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")

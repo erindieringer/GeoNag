@@ -16,6 +16,9 @@ class MapViewController: UIViewController {
     var interactor:Interactor? = nil
     var menuActionDelegate:MenuActionDelegate? = nil
     
+    // define core data helper to manage core data objects
+    var coreDataHelper = CoreDataHelper()
+    
     @IBOutlet weak var mapView: MKMapView!
     let currentLocation = CurrentLocation()
     
@@ -30,7 +33,6 @@ class MapViewController: UIViewController {
         
         // Load AppDelegate Tools
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
         appDelegate.restoreLocation()
         
         // Center Map on User's Location
@@ -41,7 +43,7 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         // Retrieve all items that are nearby
-        let ADmapSearchItems = appDelegate.fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        let ADmapSearchItems = coreDataHelper.fetchRecordsForEntity("SearchItem")
         
         // Add annotation/pin for each item that is nearby
         if let mapSearchItems = ADmapSearchItems as? [SearchItem] {

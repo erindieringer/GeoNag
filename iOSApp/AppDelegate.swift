@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
     lazy var tagView = TagView()
+    // define core data helper to manage core data objects
+    var coreDataHelper = CoreDataHelper()
     var usedTags:[Tag]?
     
     var isExecutingInBackground = false
@@ -43,17 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
         self.window?.makeKeyAndVisible()
         
-        // Initialize default list of tags
-        if tagView.tagsExist() == false {
-            let tags = tagView.createAllTags()
-            tagView.tags = tags
-        } else {
-            //sets tagView tags to the tags in use
-            let tagPredicate = NSPredicate(format:"lists.@count > 0")
-            usedTags = tagView.fetchAllTags(tagPredicate)!
-            tagView.tags = tagView.fetchAllTags()!
-
-        }
+        // Initialize tags in the database
+        initializeTags()
         
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
@@ -66,16 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         //Notification INIT
         notificationManager.setupNotificationSettings()
         
-        // change navigation bar color
-        let navigationBarAppearance = UINavigationBar.appearance()
+        // Modify Views for all pages - change navigation bar color
+        changeNavigationBarColor()
         
-        navigationBarAppearance.tintColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha: 1)
-        navigationBarAppearance.barTintColor = UIColor(red:40.0/255.0, green:40.0/255.0, blue:40.0/255.0, alpha: 1.0)
-        
-        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        navigationBarAppearance.frame.origin.y = -20
-        navigationBarAppearance.translucent = false;
-
         return true
         
     }
@@ -110,57 +96,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
-
         NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
         print("recieved notification")
     }
     
-    // MARK: - Core Data Method for Creating Records
-    
-    func createRecordForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
-        // Helpers
-        var result: NSManagedObject? = nil
+    // MARK: - Change Navigation View Color
+    func changeNavigationBarColor() {
+        let navigationBarAppearance = UINavigationBar.appearance()
         
-        // Create Entity Description
-        let entityDescription = NSEntityDescription.entityForName(entity, inManagedObjectContext: managedObjectContext)
+        navigationBarAppearance.tintColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha: 1)
+        navigationBarAppearance.barTintColor = UIColor(red:40.0/255.0, green:40.0/255.0, blue:40.0/255.0, alpha: 1.0)
         
-        if let entityDescription = entityDescription {
-            // Create Managed Object
-            result = NSManagedObject(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
-        }
-        
-        return result
+        navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        navigationBarAppearance.frame.origin.y = -20
+        navigationBarAppearance.translucent = false;
     }
     
-    func fetchRecordsForEntity(entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext, predicate:NSPredicate?=nil, sortDescriptor: NSSortDescriptor?=nil) -> [NSManagedObject] {
-        // Create Fetch Request
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        
-        if (predicate != nil) {
-            fetchRequest.predicate = predicate
+    
+    // MARK: - Tag Database Initialization (static)
+    func initializeTags() {
+        // Initialize default list of tags
+        if tagView.tagsExist() == false {
+            let tags = tagView.createAllTags()
+            tagView.tags = tags
+        } else {
+            //sets tagView tags to the tags in use
+            let tagPredicate = NSPredicate(format:"lists.@count > 0")
+            usedTags = tagView.fetchAllTags(tagPredicate)!
+            tagView.tags = tagView.fetchAllTags()!
         }
-        
-        if (sortDescriptor != nil) {
-            fetchRequest.sortDescriptors = [sortDescriptor!]
-        }
-        
-        // Helpers
-        var result = [NSManagedObject]()
-        
-        do {
-            // Execute Fetch Request
-            let records = try managedObjectContext.executeFetchRequest(fetchRequest)
-            
-            if let records = records as? [NSManagedObject] {
-                result = records
-            }
-            
-            
-        } catch {
-            print("Unable to fetch managed objects for entity \(entity).")
-        }
-        
-        return result
     }
     
     //Initialzed all attributes needed for core location
@@ -234,8 +198,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     // Returns list of searchItems from coreData
     func getSearchItems() -> [NSManagedObject] {
-        let managedObjectContext = coreDataStack.managedObjectContext
-        let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
+        //let managedObjectContext = coreDataStack.managedObjectContext
+        let items = coreDataHelper.fetchRecordsForEntity("SearchItem")
         return items
     }
     
