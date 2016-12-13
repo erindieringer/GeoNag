@@ -8,6 +8,8 @@
 
 import MapKit
 import CoreLocation
+import UIKit
+import CoreData
 
 class CurrentLocation {
     
@@ -39,9 +41,6 @@ class CurrentLocation {
     }
     
     func findMatchingItems(tag: String, region: MKCoordinateRegion) {
-        // region will have to be passed in (template below)
-        //      let span = MKCoordinateSpanMake(0.05, 0.05)
-        //      let region = MKCoordinateRegion(center: location.coordinate, span: span)
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = tag
         request.region = region
@@ -55,26 +54,22 @@ class CurrentLocation {
             let match = response.mapItems
             if (match.count > 0){
                 for item in match {
-           //set item to coreData searchItem
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     let managedObjectContext = appDelegate.coreDataStack.managedObjectContext
                     let newItem = appDelegate.createRecordForEntity("SearchItem", inManagedObjectContext: managedObjectContext)!
-        
-            // Set values for new SearchItem
-        
+                    //save to coredata
                     newItem.setValue(item.name, forKey: "name")
                     newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
                     newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
-            }
+                }
             }
         
         }
     
     }
-
-
-    // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     
+    
+    // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility
     func getPlistUserLocation () {
         let plistLong = plist.getValueForKey("userCurrentLocationLongitude")
         let plistLat = plist.getValueForKey("userCurrentLocationLatitude")
@@ -86,7 +81,6 @@ class CurrentLocation {
         plist.saveValue( NSNumber(double: self.longitude), forKey: "UserCurrentLocationLongitude")
         plist.saveValue( NSNumber(double: self.latitude), forKey: "UserCurrentLocationLatitude")
     }
-
     
  
 }

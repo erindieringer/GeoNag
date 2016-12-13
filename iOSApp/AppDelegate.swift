@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     var dataManager = DataManager()
     
+    var notificationManager = NotificationManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -52,27 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             tagView.tags = tagView.fetchAllTags()!
 
         }
-
-        
         
         // Start up Plist for storing current user location data
         PlistManager.sharedInstance.startPlistManager()
         
         //LOCATION INIT
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        //locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.distanceFilter = 400
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        locationManager.allowsBackgroundLocationUpdates = true
-        //To use for real tests
-        //locationManager.startMonitoringSignificantLocationChanges()
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        initLocation()
         currentLocation.getCurrentLocation()
+        saveLocation()
+        
+        //Notification INIT
+        notificationManager.setupNotificationSettings()
         
         // change navigation bar color
         let navigationBarAppearance = UINavigationBar.appearance()
@@ -83,8 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         navigationBarAppearance.frame.origin.y = -20
         navigationBarAppearance.translucent = false;
-        
-        saveData()
+
         return true
         
     }
@@ -99,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         isExecutingInBackground = true
-        print("background")
 
     }
     
@@ -122,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification){
 
         NSNotificationCenter.defaultCenter().postNotificationName("SomeNotification", object:nil)
+        print("recieved notification")
     }
     
     // MARK: - Core Data Method for Creating Records
@@ -172,68 +163,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return result
     }
     
+    //Initialzed all attributes needed for core location
+    func initLocation() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.distanceFilter = 400
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = true
+    }
+    
+    //When the location is updated in background
     func locationManager( manager: CLLocationManager,
                                     didUpdateLocations locations: [CLLocation]){
-        print("update location")
-        //restoreData()
         let loc = locations.last!
         let distance = loc.distanceFromLocation(CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude))
-        if (distance > 1000.0){
-            /// if less than 5 meters per second which is average running speed
-//            if loc.speed < 5.0 {
-                print("update SIGNIFICANT location")
-                deleteSearchItems()
-                //Get all tag names in use
-                let tags = getListTags()
+        if (distance > 1500.0){
+            // if less than 5 meters per second which is average running speed
+            if loc.speed < 5.0 {
                 
-                //get mapkit search for tag string name
-                for tag in tags {
-                    setSearchItems(tag)
-                }
-   
-                let tagSearchItems = getSearchItems()
-                mapSearchItems = tagSearchItems
-                print(tagSearchItems.count)
-                if (tagSearchItems.count > 0){
-                    // put logic to find closest.. for now do top
-                    //let topItem = tagSearchItems.first!.valueForKey("name")! as! String
-                    var closest = findClosestItem(tagSearchItems)
-                    if ((closest == "") || (closest.characters.count == 0)){
-                        closest = tagSearchItems.last!.valueForKey("name")! as! String
-                    }
-                    newNotification(closest)
-//                }
-                //now reset currentLocatoin and save
+                //Find items and send notification if any
+                setupItemsNotification()
+                
+                //Reset currentLocation and save
                 currentLocation.latitude = loc.coordinate.latitude
                 currentLocation.longitude = loc.coordinate.longitude
-                saveData()
+                saveLocation()
                 deleteSearchItems()
-
-            
             }
             else {
                 print("speed too fast")
-//                currentLocation.latitude = loc.coordinate.latitude
-//                currentLocation.longitude = loc.coordinate.longitude
-//                saveData()
             }
         }
         else {
             print("not far enough")
         }
-        //print("after delete count", mapSearchItems.count)
-        print(currentLocation.longitude, currentLocation.latitude)
-   
     }
     
+    //Find matching items based on tags and send notification
+    func setupItemsNotification() {
+        print("update SIGNIFICANT location")
+        deleteSearchItems()
+        //Get all tag names in use
+        let tags = getListTags()
+        
+        //get mapkit search for tag string name
+        for tag in tags {
+            setSearchItems(tag)
+        }
+        let tagSearchItems = getSearchItems()
+        mapSearchItems = tagSearchItems
+        
+        if (tagSearchItems.count > 0){
+            var closest = findClosestItem(tagSearchItems)
+            if ((closest == "") || (closest.characters.count == 0)){
+                closest = tagSearchItems.last!.valueForKey("name")! as! String
+            }
+            notificationManager.newNotification(closest)
+        }
+    }
+    
+    //Use currentLocation to get the matching items
     func setSearchItems(tag: String) {
-        //print("set search")
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         currentLocation.findMatchingItems(tag, region: region)
     }
     
-    // Will return list
+    // Returns list of searchItems from coreData
     func getSearchItems() -> [NSManagedObject] {
         let managedObjectContext = coreDataStack.managedObjectContext
         let items = fetchRecordsForEntity("SearchItem", inManagedObjectContext: managedObjectContext)
@@ -242,7 +241,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     
     //Delete all search items from coredata to prepare for setting new ones
     func deleteSearchItems() {
-        print("delete")
         let fetchRequest = NSFetchRequest(entityName: "SearchItem")
         let managedObjectContext = coreDataStack.managedObjectContext
         // Create Batch Delete Request
@@ -257,6 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         
     }
     
+    // Using usedTags list to find names of all tags currently selected across all lists
     func getListTags() -> [String] {
         var tagNames: [String] = []
         if let used = usedTags {
@@ -267,31 +266,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return tagNames
     }
     
-    
-    //from view controller
+    //Location services authorized
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
             print("Ready to go!")
         }
-    }
-    
-    func newNotification (name: String) {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
-        cancelNotifications()
-        let locattionnotification = UILocalNotification()
-        locattionnotification.category = "locationReminderCategory"
-        locattionnotification.alertBody = " \(name) is nearby! Click for more locations"
-        locattionnotification.alertAction = "View List"
-        UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
-    }
-    
-    //Cancels all notificaitons so that new ones can be stored
-    func cancelNotifications () {
-        let app:UIApplication = UIApplication.sharedApplication()
-        for oneEvent in app.scheduledLocalNotifications! {
-            let notification = oneEvent as UILocalNotification
-            app.cancelLocalNotification(notification)
-            }
     }
     
     //Returns name of closest item in itemList to current location
@@ -317,17 +296,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     }
     
     //Saving current location object plist
-    func saveData() {
+    func saveLocation() {
         dataManager.location = currentLocation
         dataManager.saveLocation()
     }
     
     //Restores currentLocation object on reload
-    func restoreData() {
+    func restoreLocation() {
         dataManager.loadLocation()
         currentLocation = dataManager.location
     }
-
     
     
 }
