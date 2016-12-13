@@ -14,7 +14,10 @@ struct TagView {
     
     // define core data helper to manage core data objects
     var coreDataHelper = CoreDataHelper()
+    
+    // often predefined tags
     var tags = [Tag]()
+    
     // selected tag img files
     var tagImages:NSArray = ["groceries.png", "convenience.png", "drug", "post.png", "bank", "beverage.png", "home.png", "sports.png"]
     // unselected tag img files
@@ -37,8 +40,9 @@ struct TagView {
                 tagEntity.setValue(NSOrderedSet(), forKey: "lists" )
                 tagEntity.setValue(NSOrderedSet(), forKey: "locations")
         
-                let tag = tagEntity
-                tags.append(tag as! Tag)
+                if let tag = tagEntity as? Tag {
+                    tags.append(tag)
+                }
             }
         }
         
@@ -49,9 +53,11 @@ struct TagView {
     
     func fetchAllTags(predicate:NSPredicate?=nil) -> [Tag]?{
         
-        let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as! [Tag]
-        
-        return allTags
+        if let allTags = coreDataHelper.fetchRecordsForEntity("Tag") as? [Tag] {
+            return allTags
+        } else {
+            return tags
+        }
     }
     
     // returns true only if tag array is not empty
@@ -70,7 +76,11 @@ struct TagView {
             return ""
         }
         let returnTag = tags[index]
-        let returnName = returnTag.name!
-        return returnName
+        if let returnName = returnTag.name {
+            return returnName
+        } else {
+            print("error getting tag name in tagView")
+            return ""
+        }
     }
 }

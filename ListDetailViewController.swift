@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 
 
-class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
+class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     var detailViewModel:ListDetailView?
 
@@ -24,6 +24,8 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     
     @IBOutlet var label: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func addItem(sender: AnyObject) {
         
@@ -60,41 +62,40 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func saveItem(text: String) {
+        if detailViewModel != nil {
+            // create new item entity
+            let itemEntity = coreDataHelper.createRecordForEntity("Item")!
+            // set values of new list entity
+            itemEntity.setValue(text, forKey: "text")
+            itemEntity.setValue((detailViewModel!.reminderList as NSManagedObject), forKey: "list")
+            
+            detailViewModel!.items.append( itemEntity as! Item )
         
-        // create new item entity
-        let itemEntity = coreDataHelper.createRecordForEntity("Item")!
-        // set values of new list entity
-        itemEntity.setValue(text, forKey: "text")
-        itemEntity.setValue((detailViewModel!.reminderList as NSManagedObject), forKey: "list")
-        
-        detailViewModel!.items.append( itemEntity as! Item )
-        print("items after append")
-        print(detailViewModel!.items)
-        
-        // save entity
-        coreDataHelper.coreDataStack.saveContext()
+            // save entity
+            coreDataHelper.coreDataStack.saveContext()
+        }
     }
     
     func updateItem(index: Int, text: String) {
-        detailViewModel!.items[index].text = text
-        detailViewModel!.reminderList.dateModified = NSDate()
-        
-        coreDataHelper.coreDataStack.saveContext()
+        if detailViewModel != nil {
+            detailViewModel!.items[index].text = text
+            detailViewModel!.reminderList.dateModified = NSDate()
+            
+            coreDataHelper.coreDataStack.saveContext()
+        }
     }
     
     @IBAction func notificationSwitch(sender: AnyObject) {
-        //on
-        if detailViewModel!.reminderList.notifications == false {
-            detailViewModel!.reminderList.notifications = true
-        }
-            //off
-        else {
-            detailViewModel!.reminderList.notifications = false
+        if detailViewModel != nil {
+            if detailViewModel!.reminderList.notifications == false {
+                // on
+                detailViewModel!.reminderList.notifications = true
+            } else {
+                // off
+                detailViewModel!.reminderList.notifications = false
+            }
         }
     }
-    
-    @IBOutlet weak var tableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,10 +105,12 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
-        detailViewModel!.items = coreDataHelper.fetchRecordsForEntity("Item", predicate: itemPredicate) as! [Item]
+        if detailViewModel != nil {
+            let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
+            detailViewModel!.items = coreDataHelper.fetchRecordsForEntity("Item", predicate: itemPredicate) as! [Item]
         
-        label.text = detailViewModel?.title()
+            label.text = detailViewModel!.title()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,7 +118,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    //Table View
+    // MARK: - Table View Detail Functiosn for Controlling List Detail Tables ... no need for checking optionals because detailViewModel exists once the page has loade as seen on prepareForSegue() in ListViewController.swift
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
         return detailViewModel!.numberOfRows()
     }
@@ -140,7 +143,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // deselect row clicked
+        // Add Check marks on row select or unselect for list items
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         var text = detailViewModel!.items[indexPath.row].text!
         if text.characters.contains("✔"){
@@ -157,20 +160,18 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Segues to tag view controller always showing
         if let tagVC = segue.destinationViewController as? TagViewController {
             tagVC.listModel = detailViewModel
         }
+        // Control for Delete button at button of page
         if segue.identifier == "DeleteItemList"
         {
             let context = coreDataHelper.coreDataStack.managedObjectContext
             
             context.deleteObject(detailViewModel!.reminderList)
             coreDataHelper.coreDataStack.saveContext()
-            
-//            viewModel.lists.removeAtIndex(indexPath.row)
-//            tableView.reloadData()
         }
     }
     

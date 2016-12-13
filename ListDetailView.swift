@@ -11,15 +11,18 @@ import CoreData
 import UIKit
 
 class ListDetailView {
-    var items = [Item]()
-    var reminderList: List
     
-    let coreDataHelper = CoreDataHelper()
+    var items = [Item]() // items in list
+    var reminderList: List // list that was clicked
+    
+    // initialize coreDataHelper to manage coredata functions
+    var coreDataHelper = CoreDataHelper()
     
     init(list: List) {
         reminderList = list
     }
     
+    // get title of given reminder list
     func title() -> String {
         if let name = reminderList.name {
             return name
@@ -29,10 +32,12 @@ class ListDetailView {
         }
     }
     
+    // get tags of given reminder list
     func getTags() -> [Tag] {
         return reminderList.tags!.array as! [Tag]
     }
     
+    // MARK: - Add Tags for List
     func addTag(tag:Tag) {
         let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
         mutableList.addObject(tag)
@@ -40,6 +45,7 @@ class ListDetailView {
         coreDataHelper.coreDataStack.saveContext()
     }
     
+    // MARK: - Delete Tags for List
     func deleteTag(tag:Tag) {
         let mutableList = reminderList.tags?.mutableCopy() as! NSMutableOrderedSet
         mutableList.removeObject(tag)
@@ -47,6 +53,7 @@ class ListDetailView {
         coreDataHelper.coreDataStack.saveContext()
     }
     
+    // MARK: - Functions to Retrieve Tags for List
     func getReminderItems() -> [Item] {
         return reminderList.items!.array as! [Item]
     }

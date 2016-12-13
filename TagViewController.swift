@@ -11,8 +11,8 @@ import UIKit
 class TagViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // Variables to Access Tag Info
-    var tagView:TagView?
-    var listModel:ListDetailView?
+    var tagView:TagView? // tag collection view
+    var listModel:ListDetailView? // list that tag view is linekd to
     
     // reuse id of tag collection cells
     let reuseIdentifier = "cell"
@@ -85,11 +85,12 @@ class TagViewController: UIViewController, UICollectionViewDataSource, UICollect
                         }
                     }
                 } else {
-                    let tagImageView = (cell.viewWithTag(100)! as! UIImageView)
-                    if let tvoImages = tagView?.oTagImages {
-                        // if tag is selected, make it opaque tag image
-                        tagImageView.image = UIImage(named: tvoImages[indexPath.row] as! String)
-                        listModel?.addTag(tag)
+                    if let tagImageView = cell.viewWithTag(100) as? UIImageView {
+                        if let tvoImages = tagView?.oTagImages {
+                            // if tag is selected, make it opaque tag image
+                            tagImageView.image = UIImage(named: tvoImages[indexPath.row] as! String)
+                            listModel?.addTag(tag)
+                        }
                     }
                 }
             }
