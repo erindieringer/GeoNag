@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 
 
-class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate   {
+class ListDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     var detailViewModel:ListDetailView?
     // define core data helper to manage core data objects

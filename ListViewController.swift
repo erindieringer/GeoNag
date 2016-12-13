@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// Protocol for menu actions for map view
 protocol MenuActionDelegate {
     func openSegue(segueName: String, sender: AnyObject?)
     func reopenMenu()
@@ -107,18 +108,20 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // register the nib
         let cellNib = UINib(nibName: "ListsTableViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "list")
+        // Open Map on notification click
         NSNotificationCenter.defaultCenter().addObserver(self,
                                                          selector: #selector(ListViewController.SomeNotificationAct(_:)),
                                                          name: "SomeNotification",
                                                          object: nil)
     }
     
+    // When notifications sent, can be clicked to open up map view
     func SomeNotificationAct(notification: NSNotification){
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("openMenu", sender: self)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
