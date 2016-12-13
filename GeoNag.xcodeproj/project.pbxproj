@@ -281,21 +281,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		597C33101E0068A700F70AF9 /* CoreDataHelpers */ = {
-			isa = PBXGroup;
-			children = (
-				59B430191DECE199009F615E /* CoreDataStack.swift */,
-				597C33121E006DE600F70AF9 /* CoreDataHelper.swift */,
-			);
-			name = CoreDataHelpers;
-			sourceTree = "<group>";
-		};
 		597C33111E0068C500F70AF9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				597C33121E006DE600F70AF9 /* CoreDataHelper.swift */,
+				59B430191DECE199009F615E /* CoreDataStack.swift */,
 				59B430161DECC783009F615E /* CoreDataProperties */,
 				59B430151DECC769009F615E /* CoreDataModels */,
-				597C33101E0068A700F70AF9 /* CoreDataHelpers */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
