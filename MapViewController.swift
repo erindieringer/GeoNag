@@ -10,13 +10,8 @@
 import UIKit
 import MapKit
 
-import UIKit
-
-
 class MapViewController: UIViewController {
-    
-    let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-    
+        
     @IBOutlet weak var mapView: MKMapView!
     let currentLocation = CurrentLocation()
     
