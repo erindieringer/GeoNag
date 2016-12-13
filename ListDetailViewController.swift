@@ -27,6 +27,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Use alert controller to add new items to a list
     @IBAction func addItem(sender: AnyObject) {
         
         let alert = UIAlertController(title: "New Reminder",
@@ -63,7 +64,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - Functions to control CoreData Storage/Fetching of List's Item Entities
     
-    // Save Item in List
+    // MARK: - Save Item in List
     func saveItem(text: String) {
         if detailViewModel != nil {
             // create new item entity
@@ -79,7 +80,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    // Update Item in List
+    // MARK: - Update Item in List
     func updateItem(index: Int, text: String) {
         if detailViewModel != nil {
             detailViewModel!.items[index].text = text
@@ -89,6 +90,7 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    // MARK: - Switch notifications on or off
     @IBAction func notificationSwitch(sender: AnyObject) {
         if detailViewModel != nil {
             if detailViewModel!.reminderList.notifications == false {
@@ -106,9 +108,11 @@ class ListDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     }
     
+    // MARK: - On List Detail view appear, load all items for a list
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Find Items for List that was selected if viewmodel is not nil
         if detailViewModel != nil {
             let itemPredicate = NSPredicate(format:"list == %@", (detailViewModel?.reminderList)!)
             detailViewModel!.items = coreDataHelper.fetchRecordsForEntity("Item", predicate: itemPredicate) as! [Item]

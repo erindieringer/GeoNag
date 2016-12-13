@@ -32,7 +32,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegueWithIdentifier("openMenu", sender: nil)
     }
     
-    // gestures to open menu
+    // MARK: - gestures to open menu
     @IBAction func edgePanGesture(sender: UIScreenEdgePanGestureRecognizer) {
         let translation = sender.translationInView(view)
         

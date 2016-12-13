@@ -20,7 +20,7 @@ class ListView {
         return lists.count
     }
     
-    // Get Title
+    // MARK: - Get Title
     func titleForRowAtIndexPath(indexPath: NSIndexPath) -> String {
         let index = indexPath.row
         if index < 0 || index >= numberOfRows() {
@@ -31,7 +31,7 @@ class ListView {
         return listName
     }
     
-    // Get Summary
+    // MARK: - Get Summary
     func summaryForRowAtIndexPath(indexPath: NSIndexPath) -> String {
         var returnString = ""
         let index = indexPath.row
@@ -50,14 +50,14 @@ class ListView {
         }
     }
     
-    // Get List Item View
+    // MARK: - Get List Item View
     func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailView {
         let list = lists[indexPath.item]
         let detailVM = ListDetailView(list: list)
         return detailVM
     }
     
-    // Get List in Table
+    // MARK: - Get List in Table
     func getListForIndexPath(indexPath:NSIndexPath) -> NSManagedObject {
         return lists[indexPath.item]
     }
