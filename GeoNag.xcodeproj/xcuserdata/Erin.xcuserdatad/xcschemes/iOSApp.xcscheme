@@ -48,6 +48,46 @@
                ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "80D392661E0098B3004D0D2E"
+               BuildableName = "CoreLocationTests.xctest"
+               BlueprintName = "CoreLocationTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "80D392741E0098F2004D0D2E"
+               BuildableName = "CurrentLocationTests.xctest"
+               BlueprintName = "CurrentLocationTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "80D392821E00AB80004D0D2E"
+               BuildableName = "DataManagerTests.xctest"
+               BlueprintName = "DataManagerTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "80D392901E00BAA7004D0D2E"
+               BuildableName = "TagViewModelTests.xctest"
+               BlueprintName = "TagViewModelTests"
+               ReferencedContainer = "container:GeoNag.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
