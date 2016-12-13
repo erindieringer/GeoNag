@@ -4,7 +4,7 @@
 //
 //  Created by Erin Dieringer on 12/8/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
-//
+//  CODE USED FROM PROF H FindMyCarLAb
 
 import Foundation
 import CoreLocation

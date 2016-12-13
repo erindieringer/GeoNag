@@ -65,14 +65,12 @@ class CurrentLocation {
                     newItem.setValue(item.name, forKey: "name")
                     newItem.setValue(item.placemark.coordinate.latitude, forKey: "latitude")
                     newItem.setValue(item.placemark.coordinate.longitude, forKey: "longitude")
-//                    appDelegate.coreDataStack.saveContext()
             }
             }
         
         }
     
     }
-
 
 
     // MARK: Added new plist functions that will get and store current location of user in plist for more accessibility

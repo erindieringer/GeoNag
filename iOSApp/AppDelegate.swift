@@ -278,7 +278,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
     func newNotification (name: String) {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         cancelNotifications()
-        //print("notif here")
         let locattionnotification = UILocalNotification()
         locattionnotification.category = "locationReminderCategory"
         locattionnotification.alertBody = " \(name) is nearby! Click for more locations"
@@ -286,7 +285,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         UIApplication.sharedApplication().scheduleLocalNotification(locattionnotification)
     }
     
-    //cancels all notificaitons so that new ones can be stored
+    //Cancels all notificaitons so that new ones can be stored
     func cancelNotifications () {
         let app:UIApplication = UIApplication.sharedApplication()
         for oneEvent in app.scheduledLocalNotifications! {
@@ -295,13 +294,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
             }
     }
     
-    //find closest item to the current location
+    //Returns name of closest item in itemList to current location
     func findClosestItem(itemList: [NSManagedObject]) -> String {
         var closest = ""
-        //Hard coding sorry (we know it'll never be greater than 800 becuase radius)
         let currenLat = locationManager.location?.coordinate.latitude
         let currenLong = locationManager.location?.coordinate.longitude
         let currentLoc = CLLocation(latitude: currenLat!, longitude: currenLong!)
+        //Hard coding sorry (we know it'll never be greater than 800 becuase radius)
         var min = 5000.0
         for item in itemList{
             let mapItem = item
@@ -317,12 +316,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate , CLLocationManagerDelegat
         return closest
     }
     
-    //saving plist
+    //Saving current location object plist
     func saveData() {
         dataManager.location = currentLocation
         dataManager.saveLocation()
     }
     
+    //Restores currentLocation object on reload
     func restoreData() {
         dataManager.loadLocation()
         currentLocation = dataManager.location
