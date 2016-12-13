@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import iOSApp
+@testable import GeoNag
 
 class iOSAppTests: XCTestCase {
     

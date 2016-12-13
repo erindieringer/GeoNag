@@ -232,6 +232,7 @@
 		595A0F561DDF7F2000A68502 /* iOSAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				80D392601E0092C6004D0D2E /* CurrentLocation */,
 				595A0F571DDF7F2000A68502 /* iOSAppTests.swift */,
 				595A0F591DDF7F2000A68502 /* Info.plist */,
 			);
@@ -378,6 +379,13 @@
 				59B430401DEDF677009F615E /* reminder.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		80D392601E0092C6004D0D2E /* CurrentLocation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CurrentLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
