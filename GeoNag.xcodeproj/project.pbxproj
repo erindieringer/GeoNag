@@ -303,11 +303,8 @@
 		595A0F561DDF7F2000A68502 /* iOSAppTests */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				80D392A01E00C3A0004D0D2E /* ListViewModelTests */,
-=======
 				597C33211E00C6D800F70AF9 /* DetailListViewTests */,
->>>>>>> codereview
 				80D392921E00BAA7004D0D2E /* TagViewModelTests */,
 				80D392841E00AB80004D0D2E /* DataManagerTests */,
 				80D392761E0098F2004D0D2E /* CurrentLocationTests */,
@@ -713,11 +710,8 @@
 				80D392741E0098F2004D0D2E /* CurrentLocationTests */,
 				80D392821E00AB80004D0D2E /* DataManagerTests */,
 				80D392901E00BAA7004D0D2E /* TagViewModelTests */,
-<<<<<<< HEAD
 				80D3929E1E00C3A0004D0D2E /* ListViewModelTests */,
-=======
 				597C331F1E00C6D800F70AF9 /* DetailListViewTests */,
->>>>>>> codereview
 			);
 		};
 /* End PBXProject section */
@@ -1266,7 +1260,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-<<<<<<< HEAD
 		};
 		80D392A81E00C3A0004D0D2E /* Build configuration list for PBXNativeTarget "ListViewModelTests" */ = {
 			isa = XCConfigurationList;
@@ -1275,8 +1268,6 @@
 				80D392A71E00C3A0004D0D2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-=======
->>>>>>> codereview
 		};
 /* End XCConfigurationList section */
 
