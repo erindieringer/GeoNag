@@ -34,7 +34,7 @@ class DetailListViewTests: XCTestCase {
         XCTAssertEqual(list.valueForKey("name") as? String, title)
         deleteLists()
         
-      
+        
     }
     
     func test_getTags() {
@@ -51,17 +51,56 @@ class DetailListViewTests: XCTestCase {
     }
     
     func test_getReminderItems() {
-
+        createList("Grocery")
+        let list = getList()
+        
+        let detailView = ListDetailView(list: list as! List)
+        
+        createItem("eggs", list: (list as NSManagedObject))
+        createItem("milk", list: (list as NSManagedObject))
+        createItem("bacon", list: (list as NSManagedObject))
+        
+        XCTAssertEqual(detailView.getReminderItems().count, 3)
+        XCTAssertEqual(detailView.getReminderItems().map{($0 as Item).text!}.sort(), ["bacon", "eggs", "milk"])
+        
+        deleteItems()
+        deleteLists()
+        
     }
     
     func test_numberOfRows() {
+        createList("Grocery")
+        let list = getList()
         
+        let detailView = ListDetailView(list: list as! List)
         
+        XCTAssertEqual(detailView.numberOfRows(), 0)
         
+        createItem("eggs", list: (list as NSManagedObject))
+        createItem("milk", list: (list as NSManagedObject))
+        createItem("bacon", list: (list as NSManagedObject))
         
+        XCTAssertEqual(detailView.numberOfRows(), 3)
+        
+        deleteItems()
+        deleteLists()
     }
     
     func test_textForRowAtIndexPath() {
+        createList("Grocery")
+        let list = getList()
+        
+        let detailView = ListDetailView(list: list as! List)
+        
+        let index = NSIndexPath(forRow:0, inSection: 0)
+        XCTAssertEqual(detailView.textForRowAtIndexPath(index), "")
+        
+        createItem("eggs", list: (list as NSManagedObject))
+        
+        XCTAssertEqual(detailView.textForRowAtIndexPath(index), "eggs")
+        
+        deleteItems()
+        deleteLists()
         
     }
     
@@ -79,7 +118,7 @@ class DetailListViewTests: XCTestCase {
         }
         let result = list[0]
         return result
-
+        
     }
     
     //Helper function to create list for items
@@ -117,6 +156,19 @@ class DetailListViewTests: XCTestCase {
             }
         }
         
+    }
+    
+    //Helper function to create items for list
+    func createItem(text: String, list: NSManagedObject) {
+        let coreDataHelper = CoreDataHelper()
+        let listEntity = (coreDataHelper.createRecordForEntity("Item"))!
+        
+        // set values of new item entity
+        listEntity.setValue(text, forKey: "text")
+        listEntity.setValue(list, forKey: "list" )
+        
+        // save entity
+        coreDataHelper.coreDataStack.saveContext()
     }
     
     //Helper function to clear CoreData
