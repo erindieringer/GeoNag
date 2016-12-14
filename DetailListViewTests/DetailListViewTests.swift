@@ -38,11 +38,38 @@ class DetailListViewTests: XCTestCase {
     }
     
     func test_getTags() {
+        createList("Grocery")
+        let list = getList()
         
+        let detailVC = ListDetailView(list: list as! List)
+        let tags = createTags()
         
+        detailVC.addTag(tags[0])
+        let tagsInUse = detailVC.getTags()
+        
+        XCTAssertEqual(tagsInUse[0], tags[0])
+    
+        deleteTags()
+        deleteLists()
     }
     
     func test_addTag() {
+        createList("Grocery")
+        let list = getList()
+        
+        let detailVC = ListDetailView(list: list as! List)
+        let tags = createTags()
+        
+        detailVC.addTag(tags[0])
+        detailVC.addTag(tags[1])
+        detailVC.addTag(tags[2])
+        
+        let tagsInUse = detailVC.getTags()
+        XCTAssertEqual(3, tagsInUse.count)
+        XCTAssertEqual("Groceries", tagsInUse[0].name as? String!)
+        
+        deleteTags()
+        deleteLists()
         
     }
     
@@ -123,6 +150,30 @@ class DetailListViewTests: XCTestCase {
     func deleteItems() {
         let coreDataHelper = CoreDataHelper()
         let fetchRequest = NSFetchRequest(entityName: "Item")
+        let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
+        do {
+            
+            if let records = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]{
+                for object in records {
+                    managedObjectContext.deleteObject(object)
+                    try!managedObjectContext.save()
+                    
+                }
+            }
+        }
+        
+    }
+    
+    func createTags() -> [Tag] {
+        var tagView = TagView()
+        let tags = tagView.createAllTags()
+        return tags
+    }
+    
+    //Helper function to remove tags from core data
+    func deleteTags() {
+        let coreDataHelper = CoreDataHelper()
+        let fetchRequest = NSFetchRequest(entityName: "Tag")
         let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
         do {
             
