@@ -91,15 +91,6 @@ class CurrentLocation {
                     
                 }
             }
-            
-            
-            
-        } catch {
-            print("error batch delete")
         }
-        
     }
-    
-    
- 
 }

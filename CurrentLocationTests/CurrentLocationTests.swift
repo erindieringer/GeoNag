@@ -5,7 +5,7 @@
 //  Created by Erin Dieringer on 12/13/16.
 //  Copyright © 2016 Katie Williams. All rights reserved.
 // 
-// READ ME IMPORTATNT: Clean the build before running tests : shift - cntrl - k, and all errors about not recognizing the idenfier for the models will go away and the tests will pass
+// READ ME IMPORTANT: Clean the build before running tests : shift - cntrl - k, and all errors about not recognizing the idenfier for the models will go away and the tests will pass
 
 import XCTest
 @testable import GeoNag

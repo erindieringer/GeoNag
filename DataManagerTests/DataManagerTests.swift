@@ -56,9 +56,6 @@ class DataManagerTests: XCTestCase {
         let manager = DataManager()
         manager.loadLocation()
         
-        //Make sure intially set at zero
-        XCTAssertEqual(0.0, manager.location.latitude)
-        XCTAssertEqual(0.0,  manager.location.longitude)
         
         manager.location.latitude = 10.0
         manager.location.longitude = 20.0
