@@ -533,8 +533,18 @@
                                 </variation>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="438-ql-ScM">
-                                <rect key="frame" x="502" y="0.0" width="98" height="600"/>
+                                <rect key="frame" x="495" y="0.0" width="105" height="600"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="SqR-6w-VgF"/>
+                                    <constraint firstAttribute="width" constant="98" id="zWI-lg-bOw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SqR-6w-VgF"/>
+                                        <exclude reference="zWI-lg-bOw"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="closeMenu:" destination="47l-3C-4GL" eventType="touchUpInside" id="mQC-0p-yiu"/>
                                 </connections>
@@ -543,17 +553,17 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="QSi-sl-wH4" secondAttribute="top" id="5KQ-2F-66h"/>
+                            <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="QSi-sl-wH4" secondAttribute="top" id="Jbi-Jm-OjK"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="width" secondItem="ZxL-H4-72B" secondAttribute="width" multiplier="0.8" id="Nlt-jQ-90B"/>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="leading" secondItem="QSi-sl-wH4" secondAttribute="trailing" constant="2" id="Oxp-z8-59Y"/>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="TQ1-hu-9RQ"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="top" secondItem="ZxL-H4-72B" secondAttribute="top" id="Vbc-PC-IDV"/>
+                            <constraint firstAttribute="trailing" secondItem="438-ql-ScM" secondAttribute="trailing" id="Wco-Kh-VDW"/>
                             <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="DBa-eG-dDl" secondAttribute="bottom" id="YQG-2e-dIw"/>
-                            <constraint firstAttribute="trailing" secondItem="438-ql-ScM" secondAttribute="trailing" id="bWx-lo-gAy"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="leading" secondItem="ZxL-H4-72B" secondAttribute="leading" id="hGj-8z-BCz"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="nmO-s9-skC"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="top" secondItem="ZxL-H4-72B" secondAttribute="top" id="ofv-Jf-OIU"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="width" secondItem="ZxL-H4-72B" secondAttribute="width" constant="1" id="pNp-oP-9nz"/>
+                            <constraint firstItem="438-ql-ScM" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="uTh-yO-G7d"/>
+                            <constraint firstItem="438-ql-ScM" firstAttribute="leading" secondItem="QSi-sl-wH4" secondAttribute="trailing" constant="2" id="yp2-5l-mkV"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
