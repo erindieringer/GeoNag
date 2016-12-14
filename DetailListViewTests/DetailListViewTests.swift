@@ -53,29 +53,6 @@ class DetailListViewTests: XCTestCase {
         deleteLists()
     }
     
-    func test_addTag() {
-        createList("Grocery")
-        let list = getList()
-        
-        let detailVC = ListDetailView(list: list as! List)
-        let tags = createTags()
-        
-        detailVC.addTag(tags[0])
-        detailVC.addTag(tags[1])
-        detailVC.addTag(tags[2])
-        
-        let tagsInUse = detailVC.getTags()
-        XCTAssertEqual(3, tagsInUse.count)
-        XCTAssertEqual("Groceries", tagsInUse[0].name as? String!)
-        
-        deleteTags()
-        deleteLists()
-        
-    }
-    
-    func test_deleteTag() {
-        
-    }
     
     func test_getReminderItems() {
 
