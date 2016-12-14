@@ -56,7 +56,6 @@ class DataManagerTests: XCTestCase {
         let manager = DataManager()
         manager.loadLocation()
         
-        
         manager.location.latitude = 10.0
         manager.location.longitude = 20.0
         

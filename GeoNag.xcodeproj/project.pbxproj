@@ -72,6 +72,7 @@
 		80D392781E0098F2004D0D2E /* CurrentLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392771E0098F2004D0D2E /* CurrentLocationTests.swift */; };
 		80D392861E00AB80004D0D2E /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392851E00AB80004D0D2E /* DataManagerTests.swift */; };
 		80D392941E00BAA8004D0D2E /* TagViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392931E00BAA8004D0D2E /* TagViewModelTests.swift */; };
+		80D392A21E00C3A0004D0D2E /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D392A11E00C3A0004D0D2E /* ListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,13 @@
 			remoteInfo = GeoNag;
 		};
 		80D392961E00BAA8004D0D2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 595A0F341DDF7F1F00A68502 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
+			remoteInfo = GeoNag;
+		};
+		80D392A41E00C3A0004D0D2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 595A0F341DDF7F1F00A68502 /* Project object */;
 			proxyType = 1;
@@ -190,6 +198,9 @@
 		80D392911E00BAA7004D0D2E /* TagViewModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagViewModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D392931E00BAA8004D0D2E /* TagViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTests.swift; sourceTree = "<group>"; };
 		80D392951E00BAA8004D0D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80D3929F1E00C3A0004D0D2E /* ListViewModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListViewModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80D392A11E00C3A0004D0D2E /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		80D392A31E00C3A0004D0D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +246,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80D3929C1E00C3A0004D0D2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -255,6 +273,7 @@
 				80D392751E0098F2004D0D2E /* CurrentLocationTests.xctest */,
 				80D392831E00AB80004D0D2E /* DataManagerTests.xctest */,
 				80D392911E00BAA7004D0D2E /* TagViewModelTests.xctest */,
+				80D3929F1E00C3A0004D0D2E /* ListViewModelTests.xctest */,
 				597C33201E00C6D800F70AF9 /* DetailListViewTests.xctest */,
 			);
 			name = Products;
@@ -284,6 +303,7 @@
 		595A0F561DDF7F2000A68502 /* iOSAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				80D392A01E00C3A0004D0D2E /* ListViewModelTests */,
 				597C33211E00C6D800F70AF9 /* DetailListViewTests */,
 				80D392921E00BAA7004D0D2E /* TagViewModelTests */,
 				80D392841E00AB80004D0D2E /* DataManagerTests */,
@@ -489,6 +509,16 @@
 			path = ../TagViewModelTests;
 			sourceTree = "<group>";
 		};
+		80D392A01E00C3A0004D0D2E /* ListViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				80D392A11E00C3A0004D0D2E /* ListViewModelTests.swift */,
+				80D392A31E00C3A0004D0D2E /* Info.plist */,
+			);
+			name = ListViewModelTests;
+			path = ../ListViewModelTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -599,6 +629,24 @@
 			productReference = 80D392911E00BAA7004D0D2E /* TagViewModelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		80D3929E1E00C3A0004D0D2E /* ListViewModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80D392A81E00C3A0004D0D2E /* Build configuration list for PBXNativeTarget "ListViewModelTests" */;
+			buildPhases = (
+				80D3929B1E00C3A0004D0D2E /* Sources */,
+				80D3929C1E00C3A0004D0D2E /* Frameworks */,
+				80D3929D1E00C3A0004D0D2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80D392A51E00C3A0004D0D2E /* PBXTargetDependency */,
+			);
+			name = ListViewModelTests;
+			productName = ListViewModelTests;
+			productReference = 80D3929F1E00C3A0004D0D2E /* ListViewModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -638,6 +686,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 595A0F3B1DDF7F1F00A68502;
 					};
+					80D3929E1E00C3A0004D0D2E = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 595A0F3B1DDF7F1F00A68502;
+					};
 				};
 			};
 			buildConfigurationList = 595A0F371DDF7F1F00A68502 /* Build configuration list for PBXProject "GeoNag" */;
@@ -658,6 +710,7 @@
 				80D392741E0098F2004D0D2E /* CurrentLocationTests */,
 				80D392821E00AB80004D0D2E /* DataManagerTests */,
 				80D392901E00BAA7004D0D2E /* TagViewModelTests */,
+				80D3929E1E00C3A0004D0D2E /* ListViewModelTests */,
 				597C331F1E00C6D800F70AF9 /* DetailListViewTests */,
 			);
 		};
@@ -724,6 +777,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80D3928F1E00BAA7004D0D2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80D3929D1E00C3A0004D0D2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -816,6 +876,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80D3929B1E00C3A0004D0D2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80D392A21E00C3A0004D0D2E /* ListViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -843,6 +911,11 @@
 			isa = PBXTargetDependency;
 			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 80D392961E00BAA8004D0D2E /* PBXContainerItemProxy */;
+		};
+		80D392A51E00C3A0004D0D2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
+			targetProxy = 80D392A41E00C3A0004D0D2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1099,6 +1172,30 @@
 			};
 			name = Release;
 		};
+		80D392A61E00C3A0004D0D2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ListViewModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.ListViewModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Debug;
+		};
+		80D392A71E00C3A0004D0D2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ListViewModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Erin.ListViewModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1163,6 +1260,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		80D392A81E00C3A0004D0D2E /* Build configuration list for PBXNativeTarget "ListViewModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80D392A61E00C3A0004D0D2E /* Debug */,
+				80D392A71E00C3A0004D0D2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
