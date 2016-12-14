@@ -82,9 +82,15 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+<<<<<<< HEAD
                BlueprintIdentifier = "80D3929E1E00C3A0004D0D2E"
                BuildableName = "ListViewModelTests.xctest"
                BlueprintName = "ListViewModelTests"
+=======
+               BlueprintIdentifier = "597C331F1E00C6D800F70AF9"
+               BuildableName = "DetailListViewTests.xctest"
+               BlueprintName = "DetailListViewTests"
+>>>>>>> codereview
                ReferencedContainer = "container:GeoNag.xcodeproj">
             </BuildableReference>
          </TestableReference>
