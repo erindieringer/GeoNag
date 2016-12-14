@@ -27,8 +27,6 @@ class DataManager {
     
     init() {
         loadLocation()
-        print("Documents folder is \(documentsDirectory())\n")
-        print("Data file path is \(dataFilePath())")
     }
     
     
