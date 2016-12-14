@@ -4,7 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -520,7 +519,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QSi-sl-wH4">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QSi-sl-wH4">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="500" id="OBn-Na-1P5"/>
@@ -531,11 +530,12 @@
                                     </mask>
                                 </variation>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="438-ql-ScM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="438-ql-ScM">
                                 <rect key="frame" x="495" y="0.0" width="105" height="600"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="SqR-6w-VgF"/>
+                                    <constraint firstAttribute="width" constant="105" id="Zwc-9v-laA"/>
                                     <constraint firstAttribute="width" constant="98" id="zWI-lg-bOw"/>
                                 </constraints>
                                 <variation key="default">
@@ -552,17 +552,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="QSi-sl-wH4" secondAttribute="top" id="Jbi-Jm-OjK"/>
-                            <constraint firstItem="QSi-sl-wH4" firstAttribute="width" secondItem="ZxL-H4-72B" secondAttribute="width" multiplier="0.8" id="Nlt-jQ-90B"/>
+                            <constraint firstItem="438-ql-ScM" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="BO8-bA-UfI"/>
+                            <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="QSi-sl-wH4" secondAttribute="top" id="GhD-GU-S3w"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="top" secondItem="ZxL-H4-72B" secondAttribute="top" id="Vbc-PC-IDV"/>
-                            <constraint firstAttribute="trailing" secondItem="438-ql-ScM" secondAttribute="trailing" id="Wco-Kh-VDW"/>
                             <constraint firstItem="438-ql-ScM" firstAttribute="top" secondItem="DBa-eG-dDl" secondAttribute="bottom" id="YQG-2e-dIw"/>
-                            <constraint firstItem="QSi-sl-wH4" firstAttribute="leading" secondItem="ZxL-H4-72B" secondAttribute="leading" id="hGj-8z-BCz"/>
-                            <constraint firstItem="QSi-sl-wH4" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="nmO-s9-skC"/>
-                            <constraint firstItem="QSi-sl-wH4" firstAttribute="top" secondItem="ZxL-H4-72B" secondAttribute="top" id="ofv-Jf-OIU"/>
+                            <constraint firstAttribute="trailing" secondItem="438-ql-ScM" secondAttribute="trailing" id="aB7-5l-qap"/>
+                            <constraint firstItem="QSi-sl-wH4" firstAttribute="top" secondItem="ZxL-H4-72B" secondAttribute="top" id="aI7-fy-VhP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QSi-sl-wH4" secondAttribute="trailing" constant="80" id="bIR-hG-v6i"/>
+                            <constraint firstItem="QSi-sl-wH4" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="lGH-fV-H7p"/>
+                            <constraint firstItem="QSi-sl-wH4" firstAttribute="leading" secondItem="ZxL-H4-72B" secondAttribute="leading" id="nzm-ef-A2f"/>
                             <constraint firstItem="QSi-sl-wH4" firstAttribute="width" secondItem="ZxL-H4-72B" secondAttribute="width" constant="1" id="pNp-oP-9nz"/>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="bottom" secondItem="fLB-mD-8Ld" secondAttribute="top" id="uTh-yO-G7d"/>
-                            <constraint firstItem="438-ql-ScM" firstAttribute="leading" secondItem="QSi-sl-wH4" secondAttribute="trailing" constant="2" id="yp2-5l-mkV"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
