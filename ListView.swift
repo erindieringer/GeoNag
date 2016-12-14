@@ -31,25 +31,6 @@ class ListView {
         return listName
     }
     
-    // MARK: - Get Summary
-    func summaryForRowAtIndexPath(indexPath: NSIndexPath) -> String {
-        var returnString = ""
-        let index = indexPath.row
-        guard index >= 0 && index < lists.count else {
-            return ""
-        }
-        let returnList = lists[index]
-        if let listItems = returnList.items {
-            let listItemsArray = listItems.array as! [Item]
-            for i in 0..<listItems.count {
-                returnString += (listItemsArray[i].text! + " ")
-            }
-            return returnString
-        } else {
-            return ""
-        }
-    }
-    
     // MARK: - Get List Item View
     func detailViewModelForRowAtIndexPath(indexPath: NSIndexPath) -> ListDetailView {
         let list = lists[indexPath.item]
