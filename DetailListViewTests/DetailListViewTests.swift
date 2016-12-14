@@ -25,11 +25,16 @@ class DetailListViewTests: XCTestCase {
     }
     
     func test_getTitle() {
-        let list = List()
-        list.name = "Reminders"
-        let listDetailView = ListDetailView(list: list)
+        createList("Grocery")
+        let list = getList()
         
-        XCTAssertEqual("Reminders", listDetailView.title())
+        let detailVC = ListDetailView(list: list as! List)
+        let title = detailVC.title()
+        
+        XCTAssertEqual(list.valueForKey("name") as? String, title)
+        deleteLists()
+        
+      
     }
     
     func test_getTags() {
@@ -46,24 +51,71 @@ class DetailListViewTests: XCTestCase {
     }
     
     func test_getReminderItems() {
-        let list = List()
-        list.name = "Reminders"
-        let listDetailView = ListDetailView(list: list)
-        let item1 = Item()
-        item1.text = "milk"
-        let item2 = Item()
-        item2.text = "eggs"
-        listDetailView.items = [item1, item2]
-        
-        XCTAssertEqual(["eggs", "milk"], listDetailView.getReminderItems().map { $0.text! }.sort())
+
     }
     
     func test_numberOfRows() {
         
         
+        
+        
     }
     
     func test_textForRowAtIndexPath() {
+        
+    }
+    
+    //Helper function to retreive list from CoreData for items
+    func getList() -> NSManagedObject {
+        let coreDataHelper = CoreDataHelper()
+        var list: [NSManagedObject] = []
+        let fetchRequest = NSFetchRequest(entityName: "List")
+        let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
+        do {
+            
+            if let records = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]{
+                list = records
+            }
+        }
+        let result = list[0]
+        return result
+
+    }
+    
+    //Helper function to create list for items
+    func createList(name: String) {
+        let coreDataHelper = CoreDataHelper()
+        let listEntity = (coreDataHelper.createRecordForEntity("List"))!
+        
+        // set values of new list entity
+        listEntity.setValue(name, forKey: "name")
+        listEntity.setValue(NSDate(), forKey: "dateCreated" )
+        listEntity.setValue(NSDate(), forKey: "dateModified")
+        listEntity.setValue(0, forKey: "shared")
+        listEntity.setValue(1, forKey: "notifications")
+        listEntity.setValue(NSOrderedSet(), forKey: "items")
+        listEntity.setValue(NSOrderedSet(), forKey: "tags" )
+        listEntity.setValue(NSOrderedSet(), forKey: "friends")
+        
+        // save entity
+        coreDataHelper.coreDataStack.saveContext()
+    }
+    
+    //Helper function to clear CoreData
+    func deleteLists() {
+        let coreDataHelper = CoreDataHelper()
+        let fetchRequest = NSFetchRequest(entityName: "List")
+        let managedObjectContext = coreDataHelper.coreDataStack.managedObjectContext
+        do {
+            
+            if let records = try? managedObjectContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]{
+                for object in records {
+                    managedObjectContext.deleteObject(object)
+                    try!managedObjectContext.save()
+                    
+                }
+            }
+        }
         
     }
     
