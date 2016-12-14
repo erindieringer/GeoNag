@@ -27,6 +27,7 @@
 		597C33131E006DE600F70AF9 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33121E006DE600F70AF9 /* CoreDataHelper.swift */; };
 		597C33181E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33171E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift */; };
 		597C331A1E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33191E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift */; };
+		597C33231E00C6D800F70AF9 /* DetailListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33221E00C6D800F70AF9 /* DetailListViewTests.swift */; };
 		59826B551DF72F15002CE785 /* PlistData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59826B541DF72F15002CE785 /* PlistData.plist */; };
 		59826B6D1DF7CCC5002CE785 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */; };
 		59826B6F1DF7CCEE002CE785 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59826B6E1DF7CCEE002CE785 /* TagViewController.swift */; };
@@ -81,6 +82,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
 			remoteInfo = iOSApp;
+		};
+		597C33251E00C6D800F70AF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 595A0F341DDF7F1F00A68502 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 595A0F3B1DDF7F1F00A68502;
+			remoteInfo = GeoNag;
 		};
 		80D3927A1E0098F2004D0D2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -137,6 +145,9 @@
 		597C33121E006DE600F70AF9 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		597C33171E008A5900F70AF9 /* ListViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		597C33191E008AE800F70AF9 /* ListViewControllerMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewControllerMenuDelegate.swift; sourceTree = "<group>"; };
+		597C33201E00C6D800F70AF9 /* DetailListViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DetailListViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		597C33221E00C6D800F70AF9 /* DetailListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewTests.swift; sourceTree = "<group>"; };
+		597C33241E00C6D800F70AF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59826B541DF72F15002CE785 /* PlistData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlistData.plist; sourceTree = "<group>"; };
 		59826B6C1DF7CCC5002CE785 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		59826B6E1DF7CCEE002CE785 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +218,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		597C331D1E00C6D800F70AF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80D392721E0098F2004D0D2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +274,7 @@
 				80D392831E00AB80004D0D2E /* DataManagerTests.xctest */,
 				80D392911E00BAA7004D0D2E /* TagViewModelTests.xctest */,
 				80D3929F1E00C3A0004D0D2E /* ListViewModelTests.xctest */,
+				597C33201E00C6D800F70AF9 /* DetailListViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				80D392A01E00C3A0004D0D2E /* ListViewModelTests */,
+				597C33211E00C6D800F70AF9 /* DetailListViewTests */,
 				80D392921E00BAA7004D0D2E /* TagViewModelTests */,
 				80D392841E00AB80004D0D2E /* DataManagerTests */,
 				80D392761E0098F2004D0D2E /* CurrentLocationTests */,
@@ -375,6 +395,16 @@
 				59B3361B1DFA6FD600B71E1B /* convenience.png */,
 			);
 			name = Selected;
+			sourceTree = "<group>";
+		};
+		597C33211E00C6D800F70AF9 /* DetailListViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				597C33221E00C6D800F70AF9 /* DetailListViewTests.swift */,
+				597C33241E00C6D800F70AF9 /* Info.plist */,
+			);
+			name = DetailListViewTests;
+			path = ../DetailListViewTests;
 			sourceTree = "<group>";
 		};
 		59AE8D781DF7D5D900EB8B76 /* Tags */ = {
@@ -527,6 +557,24 @@
 			productReference = 595A0F531DDF7F2000A68502 /* GeoNag.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		597C331F1E00C6D800F70AF9 /* DetailListViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 597C33271E00C6D800F70AF9 /* Build configuration list for PBXNativeTarget "DetailListViewTests" */;
+			buildPhases = (
+				597C331C1E00C6D800F70AF9 /* Sources */,
+				597C331D1E00C6D800F70AF9 /* Frameworks */,
+				597C331E1E00C6D800F70AF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				597C33261E00C6D800F70AF9 /* PBXTargetDependency */,
+			);
+			name = DetailListViewTests;
+			productName = DetailListViewTests;
+			productReference = 597C33201E00C6D800F70AF9 /* DetailListViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		80D392741E0098F2004D0D2E /* CurrentLocationTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80D3927C1E0098F2004D0D2E /* Build configuration list for PBXNativeTarget "CurrentLocationTests" */;
@@ -622,6 +670,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 595A0F3B1DDF7F1F00A68502;
 					};
+					597C331F1E00C6D800F70AF9 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 595A0F3B1DDF7F1F00A68502;
+					};
 					80D392741E0098F2004D0D2E = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 595A0F3B1DDF7F1F00A68502;
@@ -659,6 +711,7 @@
 				80D392821E00AB80004D0D2E /* DataManagerTests */,
 				80D392901E00BAA7004D0D2E /* TagViewModelTests */,
 				80D3929E1E00C3A0004D0D2E /* ListViewModelTests */,
+				597C331F1E00C6D800F70AF9 /* DetailListViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -696,6 +749,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		595A0F511DDF7F2000A68502 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		597C331E1E00C6D800F70AF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -784,6 +844,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		597C331C1E00C6D800F70AF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				597C33231E00C6D800F70AF9 /* DetailListViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80D392711E0098F2004D0D2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -823,6 +891,11 @@
 			isa = PBXTargetDependency;
 			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
 			targetProxy = 595A0F541DDF7F2000A68502 /* PBXContainerItemProxy */;
+		};
+		597C33261E00C6D800F70AF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 595A0F3B1DDF7F1F00A68502 /* GeoNag */;
+			targetProxy = 597C33251E00C6D800F70AF9 /* PBXContainerItemProxy */;
 		};
 		80D3927B1E0098F2004D0D2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1003,6 +1076,30 @@
 			};
 			name = Release;
 		};
+		597C33281E00C6D800F70AF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DetailListViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.DetailListViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Debug;
+		};
+		597C33291E00C6D800F70AF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DetailListViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KatAnne.DetailListViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoNag.app/GeoNag";
+			};
+			name = Release;
+		};
 		80D3927D1E0098F2004D0D2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1128,6 +1225,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		597C33271E00C6D800F70AF9 /* Build configuration list for PBXNativeTarget "DetailListViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				597C33281E00C6D800F70AF9 /* Debug */,
+				597C33291E00C6D800F70AF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		80D3927C1E0098F2004D0D2E /* Build configuration list for PBXNativeTarget "CurrentLocationTests" */ = {
 			isa = XCConfigurationList;
